@@ -36,7 +36,7 @@ public class Swiper : MonoBehaviour {
 			start_x = pointer.position.x;
 			start_y = pointer.position.y;
 			swiping = true;
-			Debug.Log("x: " + start_x + ", y: " + start_y);         //!!!!!! DEBUG STATEMENT !!!!!!
+			//Debug.Log("x: " + start_x + ", y: " + start_y);         //!!!!!! DEBUG STATEMENT !!!!!!
 		}
 	}
 
@@ -44,7 +44,7 @@ public class Swiper : MonoBehaviour {
 		if(!tap_mode) {
 			if(swiping) { // avoids unnecesarry triggers when passed over without swiping
 				PointerEventData pointer = data as PointerEventData;
-				Debug.Log("x: " + pointer.position.x + ", y: " + pointer.position.y);
+				//Debug.Log("x: " + pointer.position.x + ", y: " + pointer.position.y);    //!!!!!! DEBUG STATEMENT !!!!!!
 				float delta_x = start_x - pointer.position.x;
 				float delta_y = start_y - pointer.position.y;
 				if(Mathf.Abs(delta_x) > 50.0f || Mathf.Abs(delta_y) > 50.0f) {	// discounts swipes of length < 50
