@@ -26,9 +26,11 @@ public class Navi : MonoBehaviour {
 		field_space = (field_space > 11) ? field_space : field_space + 6;
 	}
 	public void moveLeft() {
+		// use mod to check for back row
 		field_space = (field_space%6 == 0) ? field_space : field_space - 1;
 	}
 	public void moveRight() {
+		// subtract front_row to then use mod to show if max dist from back row
 		field_space = ((field_space-field.GetComponent<Field>().front_row)%6 == 0) ? field_space : field_space + 1;
 	}
 }
