@@ -36,8 +36,8 @@ public class Chip_Hand : MonoBehaviour {
 	}
 
 	public bool chip_removed(int index) {
-
-		if (index < held) { // removing a chip that is in hand
+		if (cust.GetComponent<Cust>().energy >= chips[index].GetComponent<Hand_Chip>().cost) { // have enough energy to play chip
+			cust.GetComponent<Cust>().gauge -= (float)chips[index].GetComponent<Hand_Chip>().cost;	// pay cost
 			Destroy(chips[index]);
 			int i = index;
 			while (i < held - 1) { //shift chips left 1 starting at index
@@ -47,6 +47,7 @@ public class Chip_Hand : MonoBehaviour {
 			}
 			chips[held - 1] = null; // blanks out previous last chip of hand
 			held--;
+
 			return true;
 		}
 		return false;
