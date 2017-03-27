@@ -17,7 +17,10 @@ public class Draw_Button : MonoBehaviour {
 	}
 
 	public void Draw_Chip() {
-		Chip_Hand.GetComponent<Chip_Hand>().chip_added();
+		if(Cust.GetComponent<Cust>().energy >= 3) { // have at least 3 energy to draw
+			Cust.GetComponent<Cust>().gauge -= 3.0f;
+			Chip_Hand.GetComponent<Chip_Hand>().chip_added();
+		}
 	}
 
 }

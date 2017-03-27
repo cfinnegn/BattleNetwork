@@ -6,6 +6,7 @@ public class Chip_Hand : MonoBehaviour {
 	public int held;
 	public GameObject deck; // !!! for now this is a single "ChipImg" that will be cloned !!!
 	public GameObject[] chips;
+	public GameObject cust;
 
 
 	// Use this for initialization
@@ -24,14 +25,14 @@ public class Chip_Hand : MonoBehaviour {
 	}
 
 	public bool chip_added() {
-		if(held < 6) {	// not full hand
-			chips[held] = Instantiate(deck, transform,true);    // adds chip into next open position
-			chips[held].GetComponent<Transform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
-			chips[held].GetComponent<Hand_Chip>().index = held;
-			held++;
-			return true;
+		if(held < 6) {  // not full hand
+				chips[held] = Instantiate(deck, transform, true);    // adds chip into next open position
+				chips[held].GetComponent<Transform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
+				chips[held].GetComponent<Hand_Chip>().index = held;
+				held++;
+				return true;
 		}
-		else { return false; }
+		return false;
 	}
 
 	public bool chip_removed(int index) {

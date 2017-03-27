@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 174253057}
   - component: {fileID: 174253056}
   - component: {fileID: 174253055}
+  - component: {fileID: 174253058}
   m_Layer: 5
   m_Name: CustB
   m_TagString: Untagged
@@ -343,6 +344,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 174253053}
+--- !u!114 &174253058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 174253053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527e4b269537aa5419708da51708f575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gauge: 0
+  energy: 0
+  cust_speed: 2
+  cust_num: {fileID: 0}
 --- !u!1 &213415282
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +999,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 438201023}
+  - component: {fileID: 438201027}
   - component: {fileID: 438201026}
   - component: {fileID: 438201025}
   - component: {fileID: 438201024}
@@ -1078,6 +1095,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 438201022}
+--- !u!114 &438201027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 438201022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527e4b269537aa5419708da51708f575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gauge: 0
+  energy: 0
+  cust_speed: 2
+  cust_num: {fileID: 0}
 --- !u!1001 &467043240
 Prefab:
   m_ObjectHideFlags: 0
@@ -5045,10 +5077,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1318806387}
+  - component: {fileID: 1318806391}
   - component: {fileID: 1318806389}
   - component: {fileID: 1318806388}
   - component: {fileID: 1318806390}
-  - component: {fileID: 1318806391}
   m_Layer: 5
   m_Name: Chip Bay
   m_TagString: Untagged
@@ -5144,6 +5176,7 @@ MonoBehaviour:
   held: 0
   deck: {fileID: 1104178966332636, guid: bf959dcd9fb42bc4985aab5a5347d914, type: 2}
   chips: []
+  cust: {fileID: 438201022}
 --- !u!1 &1371745339
 GameObject:
   m_ObjectHideFlags: 0
@@ -8650,7 +8683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Chip_Hand: {fileID: 1318806386}
-  Cust: {fileID: 0}
+  Cust: {fileID: 438201022}
 --- !u!1 &2007572484
 GameObject:
   m_ObjectHideFlags: 0

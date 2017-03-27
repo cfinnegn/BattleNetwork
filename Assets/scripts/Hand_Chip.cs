@@ -20,7 +20,6 @@ public class Hand_Chip : MonoBehaviour {
 	}
 
 	public void clicked() {
-		Debug.Log(index);
 		GameObject hand = transform.parent.gameObject;
 		hand.GetComponent<Chip_Hand>().chip_removed(index);
 	}
