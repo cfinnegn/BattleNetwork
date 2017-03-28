@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Chip_Hand : MonoBehaviour {
 	public int held;
+	public GameObject hand_num;
 	public GameObject deck; // !!! for now this is a single "ChipImg" that will be cloned !!!
 	public GameObject[] chips;
 	public GameObject cust;
@@ -30,7 +32,8 @@ public class Chip_Hand : MonoBehaviour {
 				chips[held].GetComponent<Transform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
 				chips[held].GetComponent<Hand_Chip>().index = held;
 				held++;
-				return true;
+				hand_num.GetComponent<Text>().text = "x" + held;
+			return true;
 		}
 		return false;
 	}
@@ -47,7 +50,7 @@ public class Chip_Hand : MonoBehaviour {
 			}
 			chips[held - 1] = null; // blanks out previous last chip of hand
 			held--;
-
+			hand_num.GetComponent<Text>().text = "x" + held;
 			return true;
 		}
 		return false;
