@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPC_Navi_Rand : MonoBehaviour {
 
@@ -8,17 +9,21 @@ public class NPC_Navi_Rand : MonoBehaviour {
 	public int field_space;
 	public float move_ready;
 
-	public int HP;
+	public int HP = 100;
+	public GameObject health_disp;
 
 	// Use this for initialization
 	void Start () {
 		field_space = 10;
 		move_ready = 0.5f;
+		HP = 100;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		transform.position = field.GetComponent<Field>().spaces[field_space].transform.position;
+		HP = (HP < 0) ? 0 : HP;	// no negative HP
+		health_disp.GetComponent<Text>().text = "[HP:" + HP + "] ";
 		move_ready -= Time.deltaTime;
 		if (move_ready <= 0.0f) {
 			int direction = Random.Range(1, 9);
@@ -56,5 +61,9 @@ public class NPC_Navi_Rand : MonoBehaviour {
 	public void moveRight() {
 		// use mod to check for back row
 		field_space = (field_space% 6 == 5) ? field_space : field_space + 1;
+	}
+
+	public void hit(int dmg) {
+		HP -= dmg;
 	}
 }

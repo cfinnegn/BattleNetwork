@@ -7,17 +7,12 @@ public class Navi : MonoBehaviour {
 
 	public GameObject field;
 	public int field_space;
+	public GameObject shot_handler;
 
 	public float bust_charge = 0.0f;
-	public float max_charge = 2.0f; // time in seconds for full charge
+	public float max_charge = 1.5f; // time in seconds for full charge
 	bool charging = false;
 	public GameObject charge_ring;
-
-	// Enemy HP data held here temporarily for testing purposes only!!!
-	public GameObject VS_health;
-	int vs_hp = 100;
-	// end enemy health data
-
 
 	// Use this for initialization
 	void Start () {
@@ -35,8 +30,6 @@ public class Navi : MonoBehaviour {
 			if(bust_charge > max_charge) { bust_charge = max_charge; }	// no over charging
 			charge_ring.GetComponent<Image>().fillAmount = bust_charge / max_charge;
 		}
-
-		VS_health.GetComponent<Text>().text = "[HP:" + vs_hp + "] ";    //!!!!!! temporary for testing: will change !!!!!!
 	}
 
 	public void moveUp() {
@@ -56,17 +49,15 @@ public class Navi : MonoBehaviour {
 
 	public void bust_shot() {
 		charging = true;
-		vs_hp--;		//!!!!!! temporary for testing: will change !!!!!!
+		shot_handler.GetComponent<Shot_Handler>().check_hitB(1);
 	}
 
 	public void charge_release() {
 		if(bust_charge == max_charge) {
-			vs_hp -= 10;
+			shot_handler.GetComponent<Shot_Handler>().check_hitB(10);
 		}
 		charging = false;
 		bust_charge = 0.0f;
 		charge_ring.GetComponent<Image>().fillAmount = 0.0f;
 	}
-
-
 }
