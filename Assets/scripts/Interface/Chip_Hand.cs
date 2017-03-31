@@ -30,7 +30,7 @@ public class Chip_Hand : MonoBehaviour {
 		if(held < 6) {  // not full hand
 				chips[held] = Instantiate(deck, transform, true);    // adds chip into next open position
 				chips[held].GetComponent<Transform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
-				chips[held].GetComponent<Hand_Chip>().index = held;
+				chips[held].GetComponent<BattleChip>().index = held;
 				held++;
 				hand_num.GetComponent<Text>().text = "x" + held;
 			return true;
@@ -39,13 +39,13 @@ public class Chip_Hand : MonoBehaviour {
 	}
 
 	public bool chip_removed(int index) {
-		if (cust.GetComponent<Cust>().energy >= chips[index].GetComponent<Hand_Chip>().cost) { // have enough energy to play chip
-			cust.GetComponent<Cust>().gauge -= (float)chips[index].GetComponent<Hand_Chip>().cost;	// pay cost
+		if (cust.GetComponent<Cust>().energy >= chips[index].GetComponent<BattleChip>().cost) { // have enough energy to play chip
+			cust.GetComponent<Cust>().gauge -= (float)chips[index].GetComponent<BattleChip>().cost;	// pay cost
 			Destroy(chips[index]);
 			int i = index;
 			while (i < held - 1) { //shift chips left 1 starting at index
 				chips[i] = chips[i + 1];
-				chips[i].GetComponent<Hand_Chip>().index = i;   // decrement index for later clicking
+				chips[i].GetComponent<BattleChip>().index = i;   // decrement index for later clicking
 				i++;
 			}
 			chips[held - 1] = null; // blanks out previous last chip of hand

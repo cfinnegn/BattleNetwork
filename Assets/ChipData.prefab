@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1086644977822140}
+  m_IsPrefabParent: 1
+--- !u!1 &1086644977822140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4890185021923566}
+  - component: {fileID: 114490561179128592}
+  m_Layer: 0
+  m_Name: ChipData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4890185021923566
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086644977822140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.39668092, y: -1.2086806, z: 90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114490561179128592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086644977822140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887aaaaccb183414d88bcbeaa89cee90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elems:
+  - {fileID: 21300000, guid: 11dc9cb089f0b544e85b6441444bc217, type: 3}
+  - {fileID: 21300000, guid: 85644ab1add6c2542a0c6df84caf7c08, type: 3}
+  - {fileID: 21300000, guid: 86e31a4beda7fb24db2915b4d494aa77, type: 3}
+  - {fileID: 21300000, guid: 2402dbb4ea9477a43b976a3ea9f58485, type: 3}
+  - {fileID: 21300000, guid: 6903f6213c0fd36449bd2d26b272432f, type: 3}
+  - {fileID: 21300000, guid: e405705fd9cacc8438b8b499952bf03e, type: 3}
+  - {fileID: 21300000, guid: 30f8a76495f3e8b4ea71e856695dffd2, type: 3}
+  - {fileID: 21300000, guid: fd1f6063891dcba4b9460ba719a7f103, type: 3}
+  - {fileID: 21300000, guid: d7eb52c001065684f86d8c500f98581f, type: 3}
+  - {fileID: 21300000, guid: 141a0baf12240fb4bb9f290c15995dbf, type: 3}
+  - {fileID: 21300000, guid: e187aad5d22201b48b7fe5ab09edd1be, type: 3}
+  color_codes:
+  - {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.6, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.53333336, g: 0.13333334, b: 0.26666668, a: 1}
+  - {r: 0.53333336, g: 0, b: 0.53333336, a: 1}
+  - {r: 1, g: 0.26666668, b: 1, a: 1}
+  - {r: 0.53333336, g: 0, b: 1, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 0, g: 0.6666667, b: 0.93333334, a: 1}
+  - {r: 0, g: 0.73333335, b: 0.6, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 0.2, g: 0.6, b: 0.2, a: 1}
