@@ -14,6 +14,8 @@ public class Navi : MonoBehaviour {
 	bool charging = false;
 	public GameObject charge_ring;
 
+	public int combo_color = 0;
+
 	// Use this for initialization
 	void Start () {
 		field_space = 7;

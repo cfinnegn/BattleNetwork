@@ -9,6 +9,7 @@ public class BattleChip : MonoBehaviour {
 	public int index;		// !!!!!For clicking a chip in a hand, should probably be done another way!!!!!
 
 	public int cost;
+	public int base_cost;
 	public int color_code;
 	public GameObject cost_icon;
 
@@ -20,7 +21,8 @@ public class BattleChip : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// set cost and color code
-		cost = Random.Range(1, 6);		// !!! Placeholder: Random Cost generation !!!
+		cost = Random.Range(1, 6);      // !!! Placeholder: Random Cost generation !!!
+		base_cost = cost;
 		cost_icon.transform.GetChild(0).GetComponent<Text>().text = "" + cost;
 		color_code = Random.Range(0, 13);
 		cost_icon.GetComponent<Image>().color = ChipData.GetComponent<ChipData>().color_codes[color_code];
@@ -34,10 +36,10 @@ public class BattleChip : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		cost_icon.transform.GetChild(0).GetComponent<Text>().text = "" + cost;
 	}
 
-	public void clicked() {
+	public void clicked() {		// !!!! This is assuming the chip is in a hand !!!! (Ok for now b/c only called by click event)
 		GameObject hand = transform.parent.gameObject;
 		hand.GetComponent<Chip_Hand>().chip_removed(index);
 	}
