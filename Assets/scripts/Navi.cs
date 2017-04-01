@@ -18,6 +18,7 @@ public class Navi : MonoBehaviour {
 	public Sprite[] move_sheet;
 	public float move_speed = 0.015f;
 	public Sprite[] shoot_sheet;
+	public float shoot_speed = 0.03f;
 
 	public Sprite[][] sprite_sheets;  // array of sprites w/ same index as status ints
 	public int sprite_index = 0;	// index of sprite_frame in sheet to display
@@ -48,12 +49,13 @@ public class Navi : MonoBehaviour {
 		transform.position = field.GetComponent<Field>().spaces[field_space].transform.position;
 		// set active sprite sheet based on status
 		transform.GetComponent<SpriteRenderer>().sprite = sprite_sheets[status][sprite_index];
+
 		if(status == MOVE) {
 			sprite_timer += Time.deltaTime;
 			if(sprite_timer >= move_speed) {    // advance frame of animation
 				if(sprite_index == sprite_sheets[status].Length-1) {  // last frame of animation
-																	// update position and reset animation values
-					field_space = next_space;
+					field_space = next_space;	// update navi position
+					// reset animation values
 					status = READY;
 					sprite_index = 0;
 					sprite_timer = 0.0f;
@@ -63,6 +65,31 @@ public class Navi : MonoBehaviour {
 					sprite_timer = 0.0f;
 				}
 			}
+		}	// end move block
+
+		if (status == SHOOT) {
+			sprite_timer += Time.deltaTime;
+			if(sprite_timer >= shoot_speed) {    // advance frame of animation
+				if(sprite_index == sprite_sheets[status].Length - 1) {  // last frame of animation
+					if(bust_charge == max_charge) {	// charge shot
+						shot_handler.GetComponent<Shot_Handler>().check_hitB(10);
+						bust_charge = 0.0f;
+						charge_ring.GetComponent<Image>().fillAmount = 0.0f;
+					}
+					else {	// uncharged shot
+						shot_handler.GetComponent<Shot_Handler>().check_hitB(1);
+					}
+					// reset animation values
+					status = READY;
+					sprite_index = 0;
+					sprite_timer = 0.0f;
+				}
+				else {  // advance frame and reset timer to next frame
+					sprite_index++;
+					sprite_timer = 0.0f;
+				}
+			}
+
 		}
 
 
@@ -105,16 +132,22 @@ public class Navi : MonoBehaviour {
 	}
 
 	public void bust_shot() {
-		charging = true;
-		shot_handler.GetComponent<Shot_Handler>().check_hitB(1);
+		if(status == READY) {
+			charging = true;
+			status = SHOOT;
+			sprite_index = 0;
+		}
 	}
 
 	public void charge_release() {
-		if(bust_charge == max_charge) {
-			shot_handler.GetComponent<Shot_Handler>().check_hitB(10);
+		if(bust_charge == max_charge) {	// fire charge shot when charge full
+			status = SHOOT;
+			sprite_index = 0;
+		}
+		else {	// cancel charge when not full
+			bust_charge = 0.0f;
+			charge_ring.GetComponent<Image>().fillAmount = 0.0f;
 		}
 		charging = false;
-		bust_charge = 0.0f;
-		charge_ring.GetComponent<Image>().fillAmount = 0.0f;
 	}
 }
