@@ -4,9 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Navi : MonoBehaviour {
+	public static int READY = 0;
+	public static int MOVE = 1;
+	public static int SHOOT = 2;
+	public static int SWORD = 3;
+	public static int THROW = 4;
+	public static int SUMMON = 5;
+	public static int DAMAGE = 6;
+
+	public int status = READY;	// track what navi is doing and which sprite to use
+
+	// sprite sheets for different actions, and speed of animations for each
+	public Sprite[] move_sheet;
+	public float move_speed = 0.015f;
+	public Sprite[] shoot_sheet;
+
+	public Sprite[][] sprite_sheets;  // array of sprites w/ same index as status ints
+	public int sprite_index = 0;	// index of sprite_frame in sheet to display
+	public float sprite_timer = 0.0f;	// track time until sprite change
 
 	public GameObject field;
-	public int field_space;
+	public int field_space;	// location of navi on field
+	public int next_space;	// locaiton navi will move to after move animation
 	public GameObject shot_handler;
 
 	public float bust_charge = 0.0f;
@@ -18,6 +37,7 @@ public class Navi : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		sprite_sheets = new Sprite[][]{ move_sheet ,  move_sheet ,  shoot_sheet  };
 		field_space = 7;
 	}
 	
@@ -26,6 +46,25 @@ public class Navi : MonoBehaviour {
 	void Update () {
 		// set the position of the navi equal to the position of the space its on
 		transform.position = field.GetComponent<Field>().spaces[field_space].transform.position;
+		// set active sprite sheet based on status
+		transform.GetComponent<SpriteRenderer>().sprite = sprite_sheets[status][sprite_index];
+		if(status == MOVE) {
+			sprite_timer += Time.deltaTime;
+			if(sprite_timer >= move_speed) {    // advance frame of animation
+				if(sprite_index == sprite_sheets[status].Length-1) {  // last frame of animation
+																	// update position and reset animation values
+					field_space = next_space;
+					status = READY;
+					sprite_index = 0;
+					sprite_timer = 0.0f;
+				}
+				else {	// advance frame and reset timer to next frame
+					sprite_index++;
+					sprite_timer = 0.0f;
+				}
+			}
+		}
+
 
 		if(charging) {
 			bust_charge += Time.deltaTime;
@@ -35,18 +74,34 @@ public class Navi : MonoBehaviour {
 	}
 
 	public void moveUp() {
-		field_space = (field_space < 6) ? field_space : field_space - 6;
+		if(status == READY) {
+			next_space = (field_space < 6) ? field_space : field_space - 6;
+			status = MOVE;
+			sprite_index = 0;
+		}
 	}
 	public void moveDown() {
-		field_space = (field_space > 11) ? field_space : field_space + 6;
+		if(status == READY) {
+			next_space = (field_space > 11) ? field_space : field_space + 6;
+			status = MOVE;
+			sprite_index = 0;
+		}
 	}
 	public void moveLeft() {
-		// use mod to check for back row
-		field_space = (field_space%6 == 0) ? field_space : field_space - 1;
+		if(status == READY) {
+			// use mod to check for back row
+			next_space = (field_space % 6 == 0) ? field_space : field_space - 1;
+			status = MOVE;
+			sprite_index = 0;
+		}
 	}
 	public void moveRight() {
-		// subtract front_row to then use mod to show if max dist from back row
-		field_space = ((field_space-field.GetComponent<Field>().front_row)%6 == 0) ? field_space : field_space + 1;
+		if(status == READY) {
+			// subtract front_row to then use mod to show if max dist from back row
+			next_space = ((field_space - field.GetComponent<Field>().front_row) % 6 == 0) ? field_space : field_space + 1;
+			status = MOVE;
+			sprite_index = 0;
+		}
 	}
 
 	public void bust_shot() {
