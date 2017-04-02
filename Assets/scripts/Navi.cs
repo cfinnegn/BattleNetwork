@@ -36,6 +36,7 @@ public class Navi : TrueSyncBehaviour {
 		if (localOwner.Id == owner.Id) { // If player owns this GO
 			GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
 			GameObject.Find ("Buttons").GetComponent<Tapper> ().Navi = this;
+			GameObject.Find ("Buster Button").GetComponent<Buster> ().Navi = this;
 		}
 		// Setting the player's number for easy acess
 		if (owner.Id == 1)
@@ -71,7 +72,7 @@ public class Navi : TrueSyncBehaviour {
 
 	public override void OnSyncedUpdate () { // Update every synced frame
 		// set the position of the navi equal to the position of the space its on
-		tsTransform.position = field.GetComponent<Field>().spaces[field_space].GetComponent<TSTransform>().position;
+		tsTransform.position = new TSVector(field.GetComponent<Field>().spaces[field_space].transform.position.x,field.GetComponent<Field>().spaces[field_space].transform.position.y, field.GetComponent<Field>().spaces[field_space].transform.position.z);
 
 		p1HP_GO.GetComponent<Text>().text = "[HP:" + p1HP + "] ";
 		p2HP_GO.GetComponent<Text>().text = "[HP:" + p2HP + "] ";    //!!!!!! temporary for testing: will change !!!!!!
@@ -97,17 +98,17 @@ public class Navi : TrueSyncBehaviour {
 	public void bust_shot() {
 		charging = true;
 		if(playerNumber == 1)
-			p1HP -= 1;		//!!!!!! temporary for testing: will change !!!!!!
-		if(playerNumber == 2)
 			p2HP -= 1;		//!!!!!! temporary for testing: will change !!!!!!
+		if(playerNumber == 2)
+			p1HP -= 1;		//!!!!!! temporary for testing: will change !!!!!!
 	}
 
 	public void charge_release() {
 		if(bust_charge == max_charge) {
 			if(playerNumber == 1)
-				p1HP -= 10;		//!!!!!! temporary for testing: will change !!!!!!
-			if(playerNumber == 2)
 				p2HP -= 10;		//!!!!!! temporary for testing: will change !!!!!!
+			if(playerNumber == 2)
+				p1HP -= 10;		//!!!!!! temporary for testing: will change !!!!!!
 		}
 		charging = false;
 		bust_charge = 0.0f;

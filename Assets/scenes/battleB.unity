@@ -185,9 +185,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: 14169971712
+      _serializedValue: 8947848192
     y:
-      _serializedValue: -3778659072
+      _serializedValue: -2386092800
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -419,9 +419,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: -14169971712
+      _serializedValue: -8947848192
     y:
-      _serializedValue: 17003966464
+      _serializedValue: 10737417216
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -684,9 +684,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: 14169971712
+      _serializedValue: 8947848192
     y:
-      _serializedValue: 17003966464
+      _serializedValue: 10737417216
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -1635,9 +1635,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: -70849855488
+      _serializedValue: -44739239936
     y:
-      _serializedValue: -24561285120
+      _serializedValue: -15509602304
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -2157,9 +2157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: -70849855488
+      _serializedValue: -44739239936
     y:
-      _serializedValue: -3778659072
+      _serializedValue: -2386092800
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -2443,9 +2443,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: 70849855488
+      _serializedValue: 44739239936
     y:
-      _serializedValue: -24561285120
+      _serializedValue: -15509602304
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -3329,9 +3329,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: -14169971712
+      _serializedValue: -8947848192
     y:
-      _serializedValue: -24561285120
+      _serializedValue: -15509602304
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -3733,9 +3733,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: 14169971712
+      _serializedValue: 8947848192
     y:
-      _serializedValue: -24561285120
+      _serializedValue: -15509602304
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -5312,9 +5312,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: 42509914112
+      _serializedValue: 26843543552
     y:
-      _serializedValue: -24561285120
+      _serializedValue: -15509602304
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -5601,9 +5601,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: -14169971712
+      _serializedValue: -8947848192
     y:
-      _serializedValue: -3778659072
+      _serializedValue: -2386092800
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -5884,9 +5884,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: 42509914112
+      _serializedValue: 26843543552
     y:
-      _serializedValue: -3778659072
+      _serializedValue: -2386092800
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -6598,9 +6598,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: -70849855488
+      _serializedValue: -44739239936
     y:
-      _serializedValue: 17003966464
+      _serializedValue: 10737417216
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -7354,9 +7354,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: -42509914112
+      _serializedValue: -26843543552
     y:
-      _serializedValue: -24561285120
+      _serializedValue: -15509602304
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -7401,9 +7401,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: 70849855488
+      _serializedValue: 44739239936
     y:
-      _serializedValue: 17003966464
+      _serializedValue: 10737417216
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -7646,9 +7646,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: 42509914112
+      _serializedValue: 26843543552
     y:
-      _serializedValue: 17003966464
+      _serializedValue: 10737417216
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -8593,9 +8593,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: -42509914112
+      _serializedValue: -26843543552
     y:
-      _serializedValue: 17003966464
+      _serializedValue: 10737417216
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -8952,9 +8952,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: 70849855488
+      _serializedValue: 44739239936
     y:
-      _serializedValue: -3778659072
+      _serializedValue: -2386092800
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -9180,9 +9180,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: -42509914112
+      _serializedValue: -26843543552
     y:
-      _serializedValue: -3778659072
+      _serializedValue: -2386092800
     z:
       _serializedValue: 386547056640
   _rotation:
@@ -9701,11 +9701,11 @@ MonoBehaviour:
       _serializedValue: 4294967296
   _scale:
     x:
-      _serializedValue: 125955304
+      _serializedValue: 79536424
     y:
-      _serializedValue: 125955304
+      _serializedValue: 79536424
     z:
-      _serializedValue: 125955304
+      _serializedValue: 79536424
   _serialized: 1
   tsCollider: {fileID: 0}
   tsParent: {fileID: 0}

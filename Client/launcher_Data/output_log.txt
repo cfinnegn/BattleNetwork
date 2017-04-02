@@ -25,20 +25,20 @@ Platform assembly: C:\Users\Bryce\Desktop\Unity Projects\BattleNetwork-master\Cl
 Loading C:\Users\Bryce\Desktop\Unity Projects\BattleNetwork-master\Client\launcher_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
 Platform assembly: C:\Users\Bryce\Desktop\Unity Projects\BattleNetwork-master\Client\launcher_Data\Managed\TrueSync.dll (this message is harmless)
 Loading C:\Users\Bryce\Desktop\Unity Projects\BattleNetwork-master\Client\launcher_Data\Managed\TrueSync.dll into Unity Child Domain
-- Completed reload, in  0.201 seconds
+- Completed reload, in  0.222 seconds
 Platform assembly: C:\Users\Bryce\Desktop\Unity Projects\BattleNetwork-master\Client\launcher_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Bryce\Desktop\Unity Projects\BattleNetwork-master\Client\launcher_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 4480x1090 at -2560,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 4.268241 ms
+UnloadTime: 1.739849 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 11c0 -> priority: 1 
-  Thread -> id: 35a4 -> priority: 1 
+  Thread -> id: 1608 -> priority: 1 
+  Thread -> id: 40e0 -> priority: 1 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.197725 ms
+UnloadTime: 4.107451 ms
 
 Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1155.
-Total: 0.852542 ms (FindLiveObjects: 0.097975 ms CreateObjectMapping: 0.041086 ms MarkObjects: 0.662122 ms  DeleteObjects: 0.050962 ms)
+Total: 1.091949 ms (FindLiveObjects: 0.068345 ms CreateObjectMapping: 0.054913 ms MarkObjects: 0.901529 ms  DeleteObjects: 0.066765 ms)
 
