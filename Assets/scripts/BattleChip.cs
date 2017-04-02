@@ -43,4 +43,10 @@ public class BattleChip : MonoBehaviour {
 		GameObject hand = transform.parent.gameObject;
 		hand.GetComponent<Chip_Hand>().chip_removed(index);
 	}
+
+	public virtual void activate() {	// stub method for individual chips to implement
+	}
+
+	public virtual void deactivate() {	// stub method for individual chips to implement
+	}
 }

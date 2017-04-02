@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Navi : MonoBehaviour {
+	// sprite status ints
 	public static int READY = 0;
 	public static int MOVE = 1;
 	public static int SHOOT = 2;
@@ -24,17 +25,24 @@ public class Navi : MonoBehaviour {
 	public int sprite_index = 0;	// index of sprite_frame in sheet to display
 	public float sprite_timer = 0.0f;	// track time until sprite change
 
+
 	public GameObject field;
 	public int field_space;	// location of navi on field
 	public int next_space;	// locaiton navi will move to after move animation
-	public GameObject shot_handler;
+	
 
+	// buster info
 	public float bust_charge = 0.0f;
 	public float max_charge = 1.5f; // time in seconds for full charge
 	bool charging = false;
 	public GameObject charge_ring;
 
-	public int combo_color = 0;
+
+	public int combo_color = 0;	// color of last chip used
+
+	public GameObject shot_handler;
+	public GameObject deck;
+
 
 	// Use this for initialization
 	void Start () {
