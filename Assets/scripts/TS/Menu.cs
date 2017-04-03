@@ -383,4 +383,8 @@ public class Menu : PunBehaviour {
         this.replayPanel.SetActive(panelType == PanelType.Replay ? true : false);
     }
 
+	public void Enter_Training() {
+		SceneManager.LoadScene(2, LoadSceneMode.Single);	// Battle_Training is 2 in build order
+	}
+
 }

@@ -7,5 +7,13 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/scenes/Menu.unity
+<<<<<<< HEAD
+=======
+    guid: 9ff4f07a5de04154895a1c41e89e5394
+>>>>>>> refs/remotes/cfinnegn/master
   - enabled: 1
     path: Assets/scenes/battleB.unity
+    guid: 72fb4d520805ee9439015568227ebf67
+  - enabled: 1
+    path: Assets/scenes/Battle_Training.unity
+    guid: 91ff357bb5dbbca48bc2ffd7f4943339

@@ -11,6 +11,8 @@ public class NPC_Navi_Rand : MonoBehaviour {
 
 	public int HP = 100;
 	public GameObject health_disp;
+	public GameObject shot_handler;
+	public GameObject shot_disp;
 
 	// Use this for initialization
 	void Start () {
@@ -41,7 +43,10 @@ public class NPC_Navi_Rand : MonoBehaviour {
 				case 8:
 				moveDown();
 				break;
+				case 5:
+				break;
 				default:
+				shoot();
 				break;
 			}
 			move_ready = 0.5f;
@@ -61,6 +66,11 @@ public class NPC_Navi_Rand : MonoBehaviour {
 	public void moveRight() {
 		// use mod to check for back row
 		field_space = (field_space% 6 == 5) ? field_space : field_space + 1;
+	}
+	public void shoot() {
+		GameObject pew = Instantiate(shot_disp, transform);
+		Destroy(pew, 0.5f);
+		shot_handler.GetComponent<Shot_Handler>().check_bust(5, 2);
 	}
 
 	public void hit(int dmg) {
