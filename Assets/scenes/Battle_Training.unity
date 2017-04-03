@@ -464,7 +464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &200873738
 RectTransform:
   m_ObjectHideFlags: 0
@@ -532,6 +532,8 @@ MonoBehaviour:
   move_ready: 0
   HP: 0
   health_disp: {fileID: 478883421}
+  shot_handler: {fileID: 1925764199}
+  shot_disp: {fileID: 1266437722992894, guid: e9ac33af588d24e4fb1aed5a89922aa6, type: 2}
 --- !u!1 &209298814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,7 +1611,7 @@ GameObject:
   - component: {fileID: 478883424}
   - component: {fileID: 478883423}
   m_Layer: 5
-  m_Name: HeatlhB
+  m_Name: HealthB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4676,7 +4678,7 @@ GameObject:
   - component: {fileID: 1064882216}
   - component: {fileID: 1064882215}
   m_Layer: 5
-  m_Name: HeatlhA
+  m_Name: HealthA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10215,6 +10217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerA: {fileID: 0}
   playerB: {fileID: 200873737}
+  training: 1
 --- !u!4 &1925764201
 Transform:
   m_ObjectHideFlags: 0
