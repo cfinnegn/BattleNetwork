@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TrueSync;
 
+
 public class Navi : TrueSyncBehaviour {
 	const byte INPUT_DIRECTION = 0;
 	const byte INPUT_BUSTER = 1;
@@ -22,10 +23,14 @@ public class Navi : TrueSyncBehaviour {
 	bool pendingBuster = false;
 
 
-	public GameObject field;
-	public int field_space_Local;
-	public int field_space;
 
+	public GameObject field;
+
+	public int field_space_Local;
+	public int field_space;	// location of navi on field
+	public int next_space;	// locaiton navi will move to after move animation
+
+	// buster info
 	public float bust_charge = 0.0f;
 	public float max_charge = 2.0f; // time in seconds for full charge
 	bool charging = false;
@@ -33,7 +38,10 @@ public class Navi : TrueSyncBehaviour {
 
 	public int playerNumber = 1;
 
-	public int combo_color = 0;
+	public int combo_color = 0;	// color of last chip used
+
+	public GameObject shot_handler;
+	public GameObject deck;
 
 	Animator anim;
 
