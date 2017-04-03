@@ -35,9 +35,15 @@ public class Navi : TrueSyncBehaviour {
 	public float max_charge = 2.0f; // time in seconds for full charge
 	bool charging = false;
 	public GameObject charge_ring;
+	public int bust_dmg = 1;
+	public int charge1_dmg = 10;
+
+	// HP
+	public int HP = 100;
+	public GameObject health_disp;
 
 	public int playerNumber = 1;
-
+	
 	public int combo_color = 0;	// color of last chip used
 
 	public GameObject shot_handler;
@@ -48,22 +54,25 @@ public class Navi : TrueSyncBehaviour {
 	void Awake(){
 		anim = GetComponent<Animator> ();
 		field = GameObject.Find ("Field");
-		charge_ring = GameObject.Find ("charge ring");
 		shot_handler = GameObject.Find("Shot Handler");
 		if (localOwner.Id == owner.Id) { // If player owns this GO
 			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
+			charge_ring = GameObject.Find("charge ring");
+			health_disp = GameObject.Find("HealthA");
+			GameObject.Find("Swiper").GetComponent<Swiper>().Navi = this;
+			GameObject.Find("Buster Button").GetComponent<Buster>().Navi = this;
+			GameObject.Find("Chip Bay").GetComponent<Chip_Hand>().navi = this.gameObject;
 		}
 	}
 	// Use this for initialization
 	public override void OnSyncedStart() {
-		// Setting References
-		if (localOwner.Id == owner.Id) { // If player owns this GO
-			GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
-			GameObject.Find ("Buster Button").GetComponent<Buster> ().Navi = this;
-			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
-		}
+		// Setting References		!! moved to Awake() !!
+	//	if (localOwner.Id == owner.Id) { // If player owns this GO
+	//		GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
+	//		GameObject.Find ("Buster Button").GetComponent<Buster> ().Navi = this;
+	//		GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
+	//	}
 		// Setting the player's number for easy acess, and loading players into handlers
-		Debug.Log(owner.Id);
 		if(owner.Id <= 1) {
 			shot_handler.GetComponent<Shot_Handler>().playerA = this.transform.gameObject;
 			playerNumber = 1;
@@ -101,8 +110,13 @@ public class Navi : TrueSyncBehaviour {
 		if(charging) {
 			bust_charge += Time.deltaTime;
 			if(bust_charge > max_charge) { bust_charge = max_charge; }	// no over charging
-			charge_ring.GetComponent<Image>().fillAmount = bust_charge / max_charge;
 		}
+
+		// Update View
+		charge_ring.GetComponent<Image>().fillAmount = bust_charge / max_charge;
+		health_disp.GetComponent<Text>().text = "[HP:" + HP + "] ";
+
+
 		moveQueueWindow -= Time.deltaTime;
 		if (moveQueueWindow <= 0f)
 			requestDirection = 0;
@@ -122,11 +136,16 @@ public class Navi : TrueSyncBehaviour {
 		moveCooldown -= TrueSyncManager.DeltaTime;
 		busterCooldown -= TrueSyncManager.DeltaTime;
 
-		if (pulledBuster == 1) {
+		if (pulledBuster > 0 ) {
 			if (pendingMoveUp == false && pendingMoveDown == false && pendingMoveLeft == false && pendingMoveRight == false) {
-				if (busterCooldown <= 0f && moveCooldown <= 0f) {
-					anim.SetTrigger ("Shoot");
-					shot_handler.GetComponent<Shot_Handler>().check_hitB(1);
+				if(busterCooldown <= 0f && moveCooldown <= 0f) {
+					anim.SetTrigger("Shoot");
+					if(pulledBuster == 1) {	// uncharged shot
+						shot_handler.GetComponent<Shot_Handler>().check_bust(bust_dmg, playerNumber);
+					}
+					else if(pulledBuster == 2) {	// charged shot
+						shot_handler.GetComponent<Shot_Handler>().check_bust(charge1_dmg, playerNumber);
+					}
 					busterCooldown = 0.25f;
 					moveCooldown = 0.26f;
 					GetComponent<AudioSource> ().PlayOneShot (Resources.Load<AudioClip> ("Audio/xbustertrim"));
@@ -213,7 +232,13 @@ public class Navi : TrueSyncBehaviour {
 
 	public void charge_release() {
 		charging = false;
+		if(bust_charge == max_charge) {
+			requestBuster = 2;
+			busterQueueWindow = 0.15f;
+		}
 		bust_charge = 0.0f;
 	}
-
+	public void hit(int dmg) {
+		HP -= dmg;
+	}
 }
