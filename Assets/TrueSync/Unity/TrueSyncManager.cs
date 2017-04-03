@@ -246,19 +246,6 @@ namespace TrueSync {
                 ProvideInputData
             );
 
-            if (ReplayRecord.replayMode == ReplayMode.LOAD_REPLAY) {
-                ReplayPicker.replayToLoad.Load();
-
-                ReplayRecord replayRecord = ReplayRecord.replayToLoad;
-                if (replayRecord == null) {
-                    Debug.LogError("Replay Record can't be loaded");
-                    gameObject.SetActive(false);
-                    return;
-                } else {
-                    lockstep.ReplayRecord = replayRecord;
-                }
-            }
-
             if (activeConfig.showStats) {
                 this.gameObject.AddComponent<TrueSyncStats>().Lockstep = lockstep;
             }

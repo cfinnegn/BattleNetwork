@@ -1711,7 +1711,7 @@ MonoBehaviour:
   replayPanel: {fileID: 1095241468}
   replayInfoText: {fileID: 1161057864}
   replayListContent: {fileID: 1761444008}
-  replayPrefabBtn: {fileID: 135432, guid: 143cc1a2c7f9ac240bb7aac8e1467259, type: 2}
+  replayPrefabBtn: {fileID: 181144, guid: 300879ccfe10bfb41bce26e2ed22a565, type: 2}
 --- !u!114 &400027851
 MonoBehaviour:
   m_ObjectHideFlags: 0

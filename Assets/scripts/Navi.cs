@@ -5,7 +5,23 @@ using UnityEngine.UI;
 using TrueSync;
 
 public class Navi : TrueSyncBehaviour {
-	const byte INPUT_field_space = 0;
+	const byte INPUT_DIRECTION = 0;
+	const byte INPUT_BUSTER = 1;
+
+	int requestDirection;
+	float moveQueueWindow = 0.15f;
+	FP moveCooldown = 0f;
+	bool pendingMoveUp = false;
+	bool pendingMoveDown = false;
+	bool pendingMoveLeft = false;
+	bool pendingMoveRight = false;
+
+	int requestBuster = 0;
+	float busterQueueWindow = 0.15f;
+	FP busterCooldown = 0.25f;
+	bool pendingBuster = false;
+
+
 	public GameObject field;
 	public int field_space_Local;
 	public int field_space;
@@ -17,26 +33,25 @@ public class Navi : TrueSyncBehaviour {
 
 	public int playerNumber = 1;
 
-	GameObject p1HP_GO;
-	GameObject p2HP_GO;
-	FP p1HP = 100;
-	FP p2HP = 100;
+	public int combo_color = 0;
+
+	Animator anim;
 
 	void Awake(){
-		transform.SetParent (GameObject.Find ("Canvas").transform);
-		transform.localScale = new Vector3 (1, 1, 1);
+		anim = GetComponent<Animator> ();
 		field = GameObject.Find ("Field");
 		charge_ring = GameObject.Find ("charge ring");
-		p1HP_GO = GameObject.Find ("HealthA");
-		p2HP_GO = GameObject.Find ("HealthB");
+		if (localOwner.Id == owner.Id) { // If player owns this GO
+			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
+		}
 	}
 	// Use this for initialization
 	public override void OnSyncedStart() {
 		// Setting References
 		if (localOwner.Id == owner.Id) { // If player owns this GO
 			GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
-			GameObject.Find ("Buttons").GetComponent<Tapper> ().Navi = this;
 			GameObject.Find ("Buster Button").GetComponent<Buster> ().Navi = this;
+			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
 		}
 		// Setting the player's number for easy acess
 		if (owner.Id == 1)
@@ -56,64 +71,128 @@ public class Navi : TrueSyncBehaviour {
 		}
 	}
 	public override void OnSyncedInput() {
-		int fs_input = field_space_Local;
-
-		TrueSyncInput.SetInt(INPUT_field_space, fs_input);
+		TrueSyncInput.SetInt (INPUT_DIRECTION, requestDirection);
+		TrueSyncInput.SetInt (INPUT_BUSTER, requestBuster);
 	}
-	
+
 
 	void Update(){ // Update every game frame
+		if (localOwner.Id == owner.Id) { // If player owns this GO
+			if(GameObject.Find ("Key Overlay") != null)
+				GameObject.Find ("Key Overlay").GetComponent<Key_Listener> ().Navi = this.gameObject;
+			if(GameObject.Find ("Buttons") != null)
+				GameObject.Find ("Buttons").GetComponent<Tapper> ().Navi = this;
+		}
+
 		if(charging) {
 			bust_charge += Time.deltaTime;
 			if(bust_charge > max_charge) { bust_charge = max_charge; }	// no over charging
 			charge_ring.GetComponent<Image>().fillAmount = bust_charge / max_charge;
 		}
+		moveQueueWindow -= Time.deltaTime;
+		if (moveQueueWindow <= 0f)
+			requestDirection = 0;
+		busterQueueWindow -= Time.deltaTime;
+		if (busterQueueWindow <= 0f)
+			requestBuster = 0;
 	}
 
 	public override void OnSyncedUpdate () { // Update every synced frame
 		// set the position of the navi equal to the position of the space its on
-		tsTransform.position = new TSVector(field.GetComponent<Field>().spaces[field_space].transform.position.x,field.GetComponent<Field>().spaces[field_space].transform.position.y, field.GetComponent<Field>().spaces[field_space].transform.position.z);
 
-		p1HP_GO.GetComponent<Text>().text = "[HP:" + p1HP + "] ";
-		p2HP_GO.GetComponent<Text>().text = "[HP:" + p2HP + "] ";    //!!!!!! temporary for testing: will change !!!!!!
+		int pulledDir = TrueSyncInput.GetInt (INPUT_DIRECTION);
+		int pulledBuster = TrueSyncInput.GetInt (INPUT_BUSTER);
 
-		field_space = TrueSyncInput.GetInt (INPUT_field_space);
+		tsTransform.position = new TSVector(field.GetComponent<Field>().spaces[field_space].transform.position.x,field.GetComponent<Field>().spaces[field_space].transform.position.y+0.1f, field.GetComponent<Field>().spaces[field_space].transform.position.z);
+	
+		moveCooldown -= TrueSyncManager.DeltaTime;
+		busterCooldown -= TrueSyncManager.DeltaTime;
+
+		if (pulledBuster == 1) {
+			if (pendingMoveUp == false && pendingMoveDown == false && pendingMoveLeft == false && pendingMoveRight == false) {
+				if (busterCooldown <= 0f && moveCooldown <= 0f) {
+					anim.SetTrigger ("Shoot");
+					busterCooldown = 0.25f;
+					moveCooldown = 0.26f;
+					GetComponent<AudioSource> ().PlayOneShot (Resources.Load<AudioClip> ("Audio/xbustertrim"));
+				}
+			}
+		}
+
+		if (moveCooldown <= 0f) {
+			if (pendingMoveUp) {
+				field_space = (field_space < 6) ? field_space : field_space - 6;
+				pendingMoveUp = false;
+			}
+			if (pendingMoveDown) {
+				field_space = (field_space > 11) ? field_space : field_space + 6;
+				pendingMoveDown = false;
+			}
+			if (pendingMoveLeft) {
+				field_space = (field_space % 6 == 0) ? field_space : field_space - 1;
+				pendingMoveLeft = false;
+			}
+			if (pendingMoveRight) {
+				field_space = ((field_space - field.GetComponent<Field> ().front_row) % 6 == 0) ? field_space : field_space + 1;
+				pendingMoveRight = false;
+			}
+			if (pulledDir == 1)
+				ServerUp ();
+			if (pulledDir == 2)
+				ServerDown ();
+			if (pulledDir == 3)
+				ServerLeft ();
+			if (pulledDir == 4)
+				ServerRight ();
+		}
+
+
 	}
 
 	public void moveUp() {
-		field_space_Local = (field_space_Local < 6) ? field_space_Local : field_space_Local - 6;
+		requestDirection = 1;
+		moveQueueWindow = 0.15f;
 	}
 	public void moveDown() {
-		field_space_Local = (field_space_Local > 11) ? field_space_Local : field_space_Local + 6;
+		requestDirection = 2;
+		moveQueueWindow = 0.15f;
 	}
 	public void moveLeft() {
-		// use mod to check for back row
-		field_space_Local = (field_space_Local%6 == 0) ? field_space_Local : field_space_Local - 1;
+		requestDirection = 3;
+		moveQueueWindow = 0.15f;
 	}
 	public void moveRight() {
-		// subtract front_row to then use mod to show if max dist from back row
-		field_space_Local = ((field_space_Local-field.GetComponent<Field>().front_row)%6 == 0) ? field_space_Local : field_space_Local + 1;
+		requestDirection = 4;
+		moveQueueWindow = 0.15f;
+	}
+
+	public void ServerUp(){
+		anim.SetTrigger ("Move");
+		pendingMoveUp = true;
+		moveCooldown = 0.26f;
+	}
+	public void ServerDown(){
+		anim.SetTrigger ("Move");
+		pendingMoveDown = true;
+		moveCooldown = 0.26f;
+	}
+	public void ServerLeft(){
+		anim.SetTrigger ("Move");
+		pendingMoveLeft = true;
+		moveCooldown = 0.26f;
+	}
+	public void ServerRight(){
+		anim.SetTrigger ("Move");
+		pendingMoveRight = true;
+		moveCooldown = 0.26f;
 	}
 
 	public void bust_shot() {
-		charging = true;
-		if(playerNumber == 1)
-			p2HP -= 1;		//!!!!!! temporary for testing: will change !!!!!!
-		if(playerNumber == 2)
-			p1HP -= 1;		//!!!!!! temporary for testing: will change !!!!!!
+		requestBuster = 1;
+		busterQueueWindow = 0.15f;
 	}
 
 	public void charge_release() {
-		if(bust_charge == max_charge) {
-			if(playerNumber == 1)
-				p2HP -= 10;		//!!!!!! temporary for testing: will change !!!!!!
-			if(playerNumber == 2)
-				p1HP -= 10;		//!!!!!! temporary for testing: will change !!!!!!
-		}
-		charging = false;
-		bust_charge = 0.0f;
-		charge_ring.GetComponent<Image>().fillAmount = 0.0f;
 	}
-
 
 }
