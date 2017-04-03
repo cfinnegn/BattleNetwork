@@ -116,7 +116,8 @@ public class Navi : TrueSyncBehaviour {
 
 		// Update View
 		charge_ring.GetComponent<Image>().fillAmount = bust_charge / max_charge;
-		health_disp.GetComponent<Text>().text = "[HP:" + HP + "] ";
+		if(health_disp != null)
+			health_disp.GetComponent<Text>().text = "[HP:" + HP + "] ";
 
 
 		moveQueueWindow -= Time.deltaTime;

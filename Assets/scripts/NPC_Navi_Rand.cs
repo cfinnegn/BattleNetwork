@@ -69,6 +69,8 @@ public class NPC_Navi_Rand : MonoBehaviour {
 	}
 	public void shoot() {
 		GameObject pew = Instantiate(shot_disp, transform);
+		pew.transform.localScale = new Vector3 (1, 1, 1);
+		pew.transform.position = new Vector3 (transform.position.x - 1.3f, transform.position.y + 3.3f, transform.position.z);
 		Destroy(pew, 0.5f);
 		shot_handler.GetComponent<Shot_Handler>().check_bust(5, 2);
 	}
