@@ -58,7 +58,7 @@ public class Navi : TrueSyncBehaviour {
 		if (localOwner.Id == owner.Id) { // If player owns this GO
 			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
 			charge_ring = GameObject.Find("charge ring");
-			health_disp = GameObject.Find("HealthA");
+
 			GameObject.Find("Swiper").GetComponent<Swiper>().Navi = this;
 			GameObject.Find("Buster Button").GetComponent<Buster>().Navi = this;
 			GameObject.Find("Chip Bay").GetComponent<Chip_Hand>().navi = this.gameObject;
@@ -75,10 +75,12 @@ public class Navi : TrueSyncBehaviour {
 		// Setting the player's number for easy acess, and loading players into handlers
 		if(owner.Id <= 1) {
 			shot_handler.GetComponent<Shot_Handler>().playerA = this.transform.gameObject;
+			health_disp = GameObject.Find("HealthA");
 			playerNumber = 1;
 		}
 		if(owner.Id == 2) {
 			shot_handler.GetComponent<Shot_Handler>().playerB = this.transform.gameObject;
+			health_disp = GameObject.Find("HealthB");
 			playerNumber = 2;
 		}
 
