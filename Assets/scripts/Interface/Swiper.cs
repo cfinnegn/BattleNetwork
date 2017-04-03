@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class Swiper : MonoBehaviour {
-	public GameObject Navi;
+	public Navi Navi;
 
 	public GameObject buttons;
 	public bool tap_mode = false;
@@ -49,12 +49,12 @@ public class Swiper : MonoBehaviour {
 				float delta_y = start_y - pointer.position.y;
 				if(Mathf.Abs(delta_x) > 50.0f || Mathf.Abs(delta_y) > 50.0f) {	// discounts swipes of length < 50
 					if(Mathf.Abs(delta_x) >= Mathf.Abs(delta_y)) {  //greater horizontal change (slight bias)
-						if(delta_x > 0) { Navi.GetComponent<Navi>().moveLeft(); }
-						else { Navi.GetComponent<Navi>().moveRight(); }
+						if(delta_x > 0) { Navi.moveLeft(); }
+						else { Navi.moveRight(); }
 					}
 					else {      // greater vertical change
-						if(delta_y > 0) { Navi.GetComponent<Navi>().moveDown(); }
-						else { Navi.GetComponent<Navi>().moveUp(); }
+						if(delta_y > 0) { Navi.moveDown(); }
+						else {Navi.moveUp(); }
 					}
 				}
 				swiping = false;
