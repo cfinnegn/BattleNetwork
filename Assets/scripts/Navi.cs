@@ -49,6 +49,7 @@ public class Navi : TrueSyncBehaviour {
 		anim = GetComponent<Animator> ();
 		field = GameObject.Find ("Field");
 		charge_ring = GameObject.Find ("charge ring");
+		shot_handler = GameObject.Find("Shot Handler");
 		if (localOwner.Id == owner.Id) { // If player owns this GO
 			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
 		}
@@ -61,11 +62,16 @@ public class Navi : TrueSyncBehaviour {
 			GameObject.Find ("Buster Button").GetComponent<Buster> ().Navi = this;
 			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
 		}
-		// Setting the player's number for easy acess
-		if (owner.Id == 1)
+		// Setting the player's number for easy acess, and loading players into handlers
+		Debug.Log(owner.Id);
+		if(owner.Id <= 1) {
+			shot_handler.GetComponent<Shot_Handler>().playerA = this.transform.gameObject;
 			playerNumber = 1;
-		if (owner.Id == 2)
+		}
+		if(owner.Id == 2) {
+			shot_handler.GetComponent<Shot_Handler>().playerB = this.transform.gameObject;
 			playerNumber = 2;
+		}
 
 		////////////////////////////// P1 /////////////////////////////
 		if (playerNumber == 1) {
@@ -112,7 +118,7 @@ public class Navi : TrueSyncBehaviour {
 		int pulledBuster = TrueSyncInput.GetInt (INPUT_BUSTER);
 
 		tsTransform.position = new TSVector(field.GetComponent<Field>().spaces[field_space].transform.position.x,field.GetComponent<Field>().spaces[field_space].transform.position.y+0.1f, field.GetComponent<Field>().spaces[field_space].transform.position.z);
-	
+		
 		moveCooldown -= TrueSyncManager.DeltaTime;
 		busterCooldown -= TrueSyncManager.DeltaTime;
 
@@ -120,6 +126,7 @@ public class Navi : TrueSyncBehaviour {
 			if (pendingMoveUp == false && pendingMoveDown == false && pendingMoveLeft == false && pendingMoveRight == false) {
 				if (busterCooldown <= 0f && moveCooldown <= 0f) {
 					anim.SetTrigger ("Shoot");
+					shot_handler.GetComponent<Shot_Handler>().check_hitB(1);
 					busterCooldown = 0.25f;
 					moveCooldown = 0.26f;
 					GetComponent<AudioSource> ().PlayOneShot (Resources.Load<AudioClip> ("Audio/xbustertrim"));
@@ -158,8 +165,11 @@ public class Navi : TrueSyncBehaviour {
 	}
 
 	public void moveUp() {
-		requestDirection = 1;
-		moveQueueWindow = 0.15f;
+		next_space = (field_space < 6) ? field_space : field_space - 6;
+		if(next_space != field_space) {
+			requestDirection = 1;
+			moveQueueWindow = 0.15f;
+		}
 	}
 	public void moveDown() {
 		requestDirection = 2;
@@ -196,11 +206,14 @@ public class Navi : TrueSyncBehaviour {
 	}
 
 	public void bust_shot() {
+		charging = true;
 		requestBuster = 1;
 		busterQueueWindow = 0.15f;
 	}
 
 	public void charge_release() {
+		charging = false;
+		bust_charge = 0.0f;
 	}
 
 }
