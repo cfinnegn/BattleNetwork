@@ -7,13 +7,13 @@ public class Cust : MonoBehaviour {
 	public float gauge;
 	public int energy;
 	public float cust_speed = 2.0f;
-	public Transform cust_num;
+	//public Transform cust_num;
 
 	public Navi navi;
 
 	// Use this for initialization
 	void Start () {
-		cust_num = transform.GetChild(10);	// assuming 9 bars with num as 10th child!!
+	//	cust_num = transform.GetChild(10);	// assuming 9 bars with num as 10th child!!
 		gauge = 3.0f;
 		energy = 3;
 	}

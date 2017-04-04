@@ -417,9 +417,9 @@ GameObject:
   m_Component:
   - component: {fileID: 174253054}
   - component: {fileID: 174253057}
+  - component: {fileID: 174253058}
   - component: {fileID: 174253056}
   - component: {fileID: 174253055}
-  - component: {fileID: 174253058}
   m_Layer: 5
   m_Name: CustB
   m_TagString: Untagged
@@ -526,7 +526,7 @@ MonoBehaviour:
   gauge: 0
   energy: 0
   cust_speed: 2
-  cust_num: {fileID: 0}
+  navi: {fileID: 0}
 --- !u!1 &200658680 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1565747793759888, guid: d9759cf52f106634f9fbaceea1c9af07,
@@ -1585,7 +1585,7 @@ MonoBehaviour:
   gauge: 0
   energy: 0
   cust_speed: 2
-  cust_num: {fileID: 0}
+  navi: {fileID: 0}
 --- !u!1001 &467043240
 Prefab:
   m_ObjectHideFlags: 0
