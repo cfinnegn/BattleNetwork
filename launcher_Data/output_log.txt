@@ -1,4 +1,4 @@
-Initialize engine version: 5.5.2f1 (3829d7f588f3)
+Initialize engine version: 5.6.0f3 (497a0f351392)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -7,44 +7,38 @@ Direct3D:
     VRAM:     3072 MB
     Driver:   21.21.13.7654
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
-Loading C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
-Loading C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\Photon3Unity3D.dll (this message is harmless)
-Loading C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\TrueSync.dll (this message is harmless)
-Loading C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\TrueSync.dll into Unity Child Domain
-- Completed reload, in  0.223 seconds
-Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork-master\launcher_Data\Managed\System.dll (this message is harmless)
-desktop: 1920x1080 60Hz; virtual: 4480x1090 at -2560,0
+Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\TrueSync.dll (this message is harmless)
+Loading C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\TrueSync.dll into Unity Child Domain
+- Completed reload, in  0.197 seconds
+Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\System.dll (this message is harmless)
+desktop: 2560x1080 60Hz; virtual: 4480x1090 at -2560,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 4.572435 ms
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 3028 -> priority: 1 
-  Thread -> id: dfc -> priority: 1 
+UnloadTime: 1.269725 ms
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 25fc -> priority: 1 
+  Thread -> id: 182c -> priority: 1 
+  Thread -> id: 38b8 -> priority: 1 
+  Thread -> id: 3a6c -> priority: 1 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.034958 ms
+UnloadTime: 2.407501 ms
 
-Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1300.
-Total: 1.270911 ms (FindLiveObjects: 0.124444 ms CreateObjectMapping: 0.043456 ms MarkObjects: 1.044541 ms  DeleteObjects: 0.057678 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Chip_Hand.chip_added () [0x00000] in <filename unknown>:0 
-  at Chip_Hand.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1342.
+Total: 1.618959 ms (FindLiveObjects: 0.150913 ms CreateObjectMapping: 0.096789 ms MarkObjects: 1.276836 ms  DeleteObjects: 0.093629 ms)
 

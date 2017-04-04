@@ -22,13 +22,9 @@ public class Navi : TrueSyncBehaviour {
 	FP busterCooldown = 0.25f;
 	bool pendingBuster = false;
 
-
-
 	public GameObject field;
 
-	public int field_space_Local;
 	public int field_space;	// location of navi on field
-	public int next_space;	// locaiton navi will move to after move animation
 
 	// buster info
 	public float bust_charge = 0.0f;
@@ -40,7 +36,8 @@ public class Navi : TrueSyncBehaviour {
 
 	// HP
 	public int HP = 100;
-	public GameObject health_disp;
+	GameObject health_dispA;
+	GameObject health_dispB;
 
 	public int playerNumber = 1;
 	
@@ -53,47 +50,74 @@ public class Navi : TrueSyncBehaviour {
 
 	void Awake(){
 		anim = GetComponent<Animator> ();
-		field = GameObject.Find ("Field");
 		shot_handler = GameObject.Find("Shot Handler");
-		if (localOwner.Id == owner.Id) { // If player owns this GO
-			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
-			charge_ring = GameObject.Find("charge ring");
-
-			GameObject.Find("Swiper").GetComponent<Swiper>().Navi = this;
-			GameObject.Find("Buster Button").GetComponent<Buster>().Navi = this;
-			GameObject.Find("Chip Bay").GetComponent<Chip_Hand>().navi = this.gameObject;
-		}
+		field = GameObject.Find ("Field");
 	}
 	// Use this for initialization
 	public override void OnSyncedStart() {
-		// Setting References		!! moved to Awake() !!
-	//	if (localOwner.Id == owner.Id) { // If player owns this GO
-	//		GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
-	//		GameObject.Find ("Buster Button").GetComponent<Buster> ().Navi = this;
-	//		GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
-	//	}
-		// Setting the player's number for easy acess, and loading players into handlers
-		if(owner.Id <= 1) {
-			shot_handler.GetComponent<Shot_Handler>().playerA = this.transform.gameObject;
-			health_disp = GameObject.Find("HealthA");
+		if (localOwner.Id == owner.Id) { // If player owns this Navi
+			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
+			charge_ring = GameObject.Find ("charge ring");
+			GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
+			GameObject.Find ("Buster Button").GetComponent<Buster> ().Navi = this;
+			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
+		}
+		// Setting the player's number for easy acess
+		if (owner.Id <= 1) {
 			playerNumber = 1;
 		}
-		if(owner.Id == 2) {
-			shot_handler.GetComponent<Shot_Handler>().playerB = this.transform.gameObject;
-			health_disp = GameObject.Find("HealthB");
+		if (owner.Id == 2) {
 			playerNumber = 2;
 		}
 
-		////////////////////////////// P1 /////////////////////////////
-		if (playerNumber == 1) {
-			field_space_Local = 7;
-			field_space = 7;
+		if (localOwner.Id <= 1) { // If I'm Player 1, Set these spawnpoints (LOCAL ONLY!)
+			if (playerNumber == 1) {
+				shot_handler.GetComponent<Shot_Handler> ().playerA = this.transform.gameObject; // Also invert shot_handler's player refs
+				field_space = 7;
+			}
+			if (playerNumber == 2) {
+				field_space = 10;
+				shot_handler.GetComponent<Shot_Handler> ().playerB = this.transform.gameObject;
+			}
 		}
-		////////////////////////////// P2 /////////////////////////////
-		if (playerNumber == 2) {
-			field_space_Local = 10;
-			field_space = 10;
+		if (localOwner.Id == 2) { // If I'm Player 2, Switch these spawnpoints (LOCAL ONLY!)
+			if (playerNumber == 1) {
+				shot_handler.GetComponent<Shot_Handler> ().playerB = this.transform.gameObject;
+				field_space = 10;
+			}
+			if (playerNumber == 2) {
+				shot_handler.GetComponent<Shot_Handler> ().playerA = this.transform.gameObject;
+				field_space = 7;
+			} // If I'm Player 2, Switch tile ownership (LOCAL ONLY!)
+			field.GetComponent<Field> ().spaces [0].GetComponent<TileStatus> ().owner = 2;
+			field.GetComponent<Field> ().spaces [1].GetComponent<TileStatus> ().owner = 2;
+			field.GetComponent<Field> ().spaces [2].GetComponent<TileStatus> ().owner = 2;
+			field.GetComponent<Field> ().spaces [3].GetComponent<TileStatus> ().owner = 1;
+			field.GetComponent<Field> ().spaces [4].GetComponent<TileStatus> ().owner = 1;
+			field.GetComponent<Field> ().spaces [5].GetComponent<TileStatus> ().owner = 1;
+			field.GetComponent<Field> ().spaces [6].GetComponent<TileStatus> ().owner = 2;
+			field.GetComponent<Field> ().spaces [7].GetComponent<TileStatus> ().owner = 2;
+			field.GetComponent<Field> ().spaces [8].GetComponent<TileStatus> ().owner = 2;
+			field.GetComponent<Field> ().spaces [9].GetComponent<TileStatus> ().owner = 1;
+			field.GetComponent<Field> ().spaces [10].GetComponent<TileStatus> ().owner = 1;
+			field.GetComponent<Field> ().spaces [11].GetComponent<TileStatus> ().owner = 1;
+			field.GetComponent<Field> ().spaces [12].GetComponent<TileStatus> ().owner = 2;
+			field.GetComponent<Field> ().spaces [13].GetComponent<TileStatus> ().owner = 2;
+			field.GetComponent<Field> ().spaces [14].GetComponent<TileStatus> ().owner = 2;
+			field.GetComponent<Field> ().spaces [15].GetComponent<TileStatus> ().owner = 1;
+			field.GetComponent<Field> ().spaces [16].GetComponent<TileStatus> ().owner = 1;
+			field.GetComponent<Field> ().spaces [17].GetComponent<TileStatus> ().owner = 1;
 		}
+		if (localOwner.Id != owner.Id) { // If player DOESN"T own this Navi
+			tsTransform.scale = new TSVector (-tsTransform.scale.x, tsTransform.scale.y, tsTransform.scale.z);
+			health_dispB = GameObject.Find ("HealthB");
+			GameObject.Find ("PlayerIDB").GetComponent<Text>().text = owner.Name;
+		}
+		if (localOwner.Id == owner.Id) {
+			health_dispA = GameObject.Find ("HealthA");
+			GameObject.Find ("PlayerIDA").GetComponent<Text>().text = owner.Name;
+		}
+		
 	}
 	public override void OnSyncedInput() {
 		TrueSyncInput.SetInt (INPUT_DIRECTION, requestDirection);
@@ -115,9 +139,12 @@ public class Navi : TrueSyncBehaviour {
 		}
 
 		// Update View
-		charge_ring.GetComponent<Image>().fillAmount = bust_charge / max_charge;
-		if(health_disp != null)
-			health_disp.GetComponent<Text>().text = "[HP:" + HP + "] ";
+		if(charge_ring != null)
+			charge_ring.GetComponent<Image>().fillAmount = bust_charge / max_charge;
+		if(health_dispA != null)
+			health_dispA.GetComponent<Text>().text = "[HP:" + HP + "] ";
+		if(health_dispB != null)
+			health_dispB.GetComponent<Text>().text = "[HP:" + HP + "] ";
 
 
 		moveQueueWindow -= Time.deltaTime;
@@ -134,7 +161,9 @@ public class Navi : TrueSyncBehaviour {
 		int pulledDir = TrueSyncInput.GetInt (INPUT_DIRECTION);
 		int pulledBuster = TrueSyncInput.GetInt (INPUT_BUSTER);
 
-		tsTransform.position = new TSVector(field.GetComponent<Field>().spaces[field_space].transform.position.x,field.GetComponent<Field>().spaces[field_space].transform.position.y+0.1f, field.GetComponent<Field>().spaces[field_space].transform.position.z);
+		if (field != null) {
+				tsTransform.position = new TSVector (field.GetComponent<Field> ().spaces [field_space].transform.position.x, field.GetComponent<Field> ().spaces [field_space].transform.position.y + 0.1f, field.GetComponent<Field> ().spaces [field_space].transform.position.z);
+		}
 		
 		moveCooldown -= TrueSyncManager.DeltaTime;
 		busterCooldown -= TrueSyncManager.DeltaTime;
@@ -155,43 +184,42 @@ public class Navi : TrueSyncBehaviour {
 				}
 			}
 		}
-
+			
 		if (moveCooldown <= 0f) {
-			if (pendingMoveUp) {
-				field_space = (field_space < 6) ? field_space : field_space - 6;
-				pendingMoveUp = false;
-			}
-			if (pendingMoveDown) {
-				field_space = (field_space > 11) ? field_space : field_space + 6;
-				pendingMoveDown = false;
-			}
-			if (pendingMoveLeft) {
-				field_space = (field_space % 6 == 0) ? field_space : field_space - 1;
-				pendingMoveLeft = false;
-			}
+			// Finishes the movement
+				if (pendingMoveUp) {
+					field_space = (field_space < 6) ? field_space : field_space - 6;
+					pendingMoveUp = false;
+				}
+				if (pendingMoveDown) {
+					field_space = (field_space > 11) ? field_space : field_space + 6;
+					pendingMoveDown = false;
+				}
+				if (pendingMoveLeft) {
+					field_space = (field_space % 6 == 0) ? field_space : field_space - 1;
+					pendingMoveLeft = false;
+				}
 			if (pendingMoveRight) {
 				field_space = ((field_space - field.GetComponent<Field> ().front_row) % 6 == 0) ? field_space : field_space + 1;
 				pendingMoveRight = false;
 			}
+			// Starts the Movement (1)
 			if (pulledDir == 1)
-				ServerUp ();
+				StartUp ();
 			if (pulledDir == 2)
-				ServerDown ();
+				StartDown ();
 			if (pulledDir == 3)
-				ServerLeft ();
+				StartLeft ();
 			if (pulledDir == 4)
-				ServerRight ();
+				StartRight ();
 		}
 
 
 	}
-
+	// Sends a Direction Input Locally
 	public void moveUp() {
-		next_space = (field_space < 6) ? field_space : field_space - 6;
-		if(next_space != field_space) {
-			requestDirection = 1;
-			moveQueueWindow = 0.15f;
-		}
+		requestDirection = 1;
+		moveQueueWindow = 0.15f;
 	}
 	public void moveDown() {
 		requestDirection = 2;
@@ -206,25 +234,62 @@ public class Navi : TrueSyncBehaviour {
 		moveQueueWindow = 0.15f;
 	}
 
-	public void ServerUp(){
-		anim.SetTrigger ("Move");
-		pendingMoveUp = true;
-		moveCooldown = 0.26f;
+	// Starts the Movement (2)
+	public void StartUp(){
+		if (field_space < 6) // Stops OutOfBounds
+			return;
+		if (field.GetComponent<Field> ().spaces [field_space - 6].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
+			anim.SetTrigger ("Move");
+			pendingMoveUp = true;
+			moveCooldown = 0.26f;
+		}
 	}
-	public void ServerDown(){
-		anim.SetTrigger ("Move");
-		pendingMoveDown = true;
-		moveCooldown = 0.26f;
+	public void StartDown(){
+		if (field_space > 11) // Stops OutOfBounds
+			return;
+		if (field.GetComponent<Field> ().spaces [field_space + 6].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
+			anim.SetTrigger ("Move");
+			pendingMoveDown = true;
+			moveCooldown = 0.26f;
+		}
 	}
-	public void ServerLeft(){
-		anim.SetTrigger ("Move");
-		pendingMoveLeft = true;
-		moveCooldown = 0.26f;
+	public void StartLeft(){
+		if (field_space % 6 == 0) // Stops OutOfBounds
+			return;
+		if (localOwner.Id == owner.Id) { // Owner movement
+			if (field.GetComponent<Field> ().spaces [field_space - 1].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
+				anim.SetTrigger ("Move");
+				pendingMoveLeft = true;
+				moveCooldown = 0.26f;
+			}
+		}
+		if (localOwner.Id != owner.Id) { //Flip for non-owner
+			if (field_space == 5 || field_space == 11 ||field_space == 17 ) // If on the right ledge and trying to move right
+				return;
+			if (field.GetComponent<Field> ().spaces [field_space+1].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
+				anim.SetTrigger ("Move");
+				pendingMoveRight = true;
+				moveCooldown = 0.26f;
+			}
+		}
 	}
-	public void ServerRight(){
-		anim.SetTrigger ("Move");
-		pendingMoveRight = true;
-		moveCooldown = 0.26f;
+	public void StartRight(){
+		if ((field_space - field.GetComponent<Field> ().front_row) % 6 == 0) // Stops OutOfBounds
+			return;
+		if (localOwner.Id == owner.Id) { // Owner movement
+			if(field.GetComponent<Field> ().spaces [field_space+1].GetComponent<TileStatus> ().owner == playerNumber){ // Checks if player owns that tile
+			anim.SetTrigger ("Move");
+			pendingMoveRight = true;
+			moveCooldown = 0.26f;
+			}
+		}
+		if (localOwner.Id != owner.Id) { //Flip for non-owner
+			if (field.GetComponent<Field> ().spaces [field_space-1].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
+				anim.SetTrigger ("Move");
+				pendingMoveLeft = true;
+				moveCooldown = 0.26f;
+			}
+		}
 	}
 
 	public void bust_shot() {
