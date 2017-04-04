@@ -198,9 +198,7 @@ MonoBehaviour:
     id: 0
     name: 
   field: {fileID: 0}
-  field_space_Local: 0
   field_space: 0
-  next_space: 0
   bust_charge: 0
   max_charge: 1.5
   charge_ring: {fileID: 0}
@@ -208,7 +206,7 @@ MonoBehaviour:
   charge1_dmg: 10
   HP: 100
   health_disp: {fileID: 0}
-  playerNumber: 0
+  playerNumber: 2
   combo_color: 0
   shot_handler: {fileID: 0}
   deck: {fileID: 0}
