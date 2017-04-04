@@ -39,6 +39,16 @@ public class Navi : TrueSyncBehaviour {
 	GameObject health_dispA;
 	GameObject health_dispB;
 
+	//chips and cust
+	public int chips_held;
+	GameObject held_dispA;
+	GameObject held_dispB;
+	public int cust_energy;
+	public float cust_fill;
+	// child(10) is energy # display
+	GameObject cust_dispA;
+	GameObject cust_dispB;
+
 	public int playerNumber = 1;
 	
 	public int combo_color = 0;	// color of last chip used
@@ -74,6 +84,7 @@ public class Navi : TrueSyncBehaviour {
 			if (playerNumber == 1) {
 				shot_handler.GetComponent<Shot_Handler> ().playerA = this.transform.gameObject; // Also invert shot_handler's player refs
 				field_space = 7;
+
 			}
 			if (playerNumber == 2) {
 				field_space = 10;
@@ -111,10 +122,14 @@ public class Navi : TrueSyncBehaviour {
 		if (localOwner.Id != owner.Id) { // If player DOESN"T own this Navi
 			tsTransform.scale = new TSVector (-tsTransform.scale.x, tsTransform.scale.y, tsTransform.scale.z);
 			health_dispB = GameObject.Find ("HealthB");
+			cust_dispB = GameObject.Find("CustB");
+			cust_dispB.GetComponent<Cust>().navi = this;
 			GameObject.Find ("PlayerIDB").GetComponent<Text>().text = owner.Name;
 		}
 		if (localOwner.Id == owner.Id) {
 			health_dispA = GameObject.Find ("HealthA");
+			cust_dispA = GameObject.Find("CustA");
+			cust_dispA.GetComponent<Cust>().navi = this;
 			GameObject.Find ("PlayerIDA").GetComponent<Text>().text = owner.Name;
 		}
 		
@@ -308,5 +323,44 @@ public class Navi : TrueSyncBehaviour {
 	}
 	public void hit(int dmg) {
 		HP -= dmg;
+	}
+
+	public void updateCust() {
+		if(cust_dispA != null) {	// owner's Navi
+			// set usable energy display num
+			cust_dispA.transform.GetChild(10).GetChild(0).GetComponent<Text>().text = "" + cust_energy;
+			// gauge filling
+			int i = 0;
+			while(i < 10) { //increment through each bar; the first 9 children
+				if(i < cust_energy) {   // full bars
+					cust_dispA.transform.GetChild(i).GetChild(0).GetComponent<Image>().fillAmount = 1.0f;
+				}
+				else if(i == cust_energy) {  // filling bar
+					cust_dispA.transform.GetChild(i).GetChild(0).GetComponent<Image>().fillAmount = cust_fill - (float)cust_energy;
+				}
+				else {
+					cust_dispA.transform.GetChild(i).GetChild(0).GetComponent<Image>().fillAmount = 0.0f;
+				}
+				i++;
+			}
+		}
+		if(cust_dispB != null) { // opponent's Navi
+			// set usable energy display num
+			cust_dispB.transform.GetChild(10).GetChild(0).GetComponent<Text>().text = "" + cust_energy;
+			// gauge filling
+			int i = 0;
+			while(i < 10) { //increment through each bar; the first 9 children
+				if(i < cust_energy) {   // full bars
+					cust_dispB.transform.GetChild(i).GetChild(0).GetComponent<Image>().fillAmount = 1.0f;
+				}
+				else if(i == cust_energy) {  // filling bar
+					cust_dispB.transform.GetChild(i).GetChild(0).GetComponent<Image>().fillAmount = cust_fill - (float)cust_energy;
+				}
+				else {
+					cust_dispB.transform.GetChild(i).GetChild(0).GetComponent<Image>().fillAmount = 0.0f;
+				}
+				i++;
+			}
+		}
 	}
 }
