@@ -523,10 +523,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527e4b269537aa5419708da51708f575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gauge: 0
-  energy: 0
-  cust_speed: 2
-  navi: {fileID: 0}
+  numberOfPlayers: 0
+  ownerIndex: -1
+  owner:
+    id: 0
+    name: 
+  localOwner:
+    id: 0
+    name: 
+  gauge:
+    _serializedValue: 0
+  energy:
+    _serializedValue: 0
+  used_energy:
+    _serializedValue: 0
+  cust_speed:
+    _serializedValue: 8589934592
+  cust_num: {fileID: 0}
+  pending_energy_use: 0
 --- !u!1 &200658680 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1565747793759888, guid: d9759cf52f106634f9fbaceea1c9af07,
@@ -815,6 +829,50 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 213415282}
+--- !u!1 &254046914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 254046916}
+  - component: {fileID: 254046915}
+  m_Layer: 0
+  m_Name: Chip Database
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &254046915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254046914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b88c1457ea990478c09fc99c0735f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  draw_Cost: 3
+  ID_1_Cost: 2
+  ID_2_Cost: 3
+  ID_3_Cost: 4
+--- !u!4 &254046916
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254046914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.977359, y: 1.8874775, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &254578215
 Prefab:
   m_ObjectHideFlags: 0
@@ -1582,10 +1640,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527e4b269537aa5419708da51708f575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gauge: 0
-  energy: 0
-  cust_speed: 2
-  navi: {fileID: 0}
+  numberOfPlayers: 0
+  ownerIndex: -1
+  owner:
+    id: 0
+    name: 
+  localOwner:
+    id: 0
+    name: 
+  gauge:
+    _serializedValue: 0
+  energy:
+    _serializedValue: 0
+  used_energy:
+    _serializedValue: 0
+  cust_speed:
+    _serializedValue: 8589934592
+  cust_num: {fileID: 0}
+  pending_energy_use: 0
 --- !u!1001 &467043240
 Prefab:
   m_ObjectHideFlags: 0
@@ -11027,13 +11099,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2006719988}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e399022cece375c4e9a2a203e5c0c3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Chip_Hand: {fileID: 1318806386}
   Cust: {fileID: 438201022}
+  navi: {fileID: 0}
 --- !u!1 &2007572484
 GameObject:
   m_ObjectHideFlags: 0

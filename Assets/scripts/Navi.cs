@@ -8,7 +8,7 @@ using TrueSync;
 public class Navi : TrueSyncBehaviour {
 	const byte INPUT_DIRECTION = 0;
 	const byte INPUT_BUSTER = 1;
-	const byte INPUT_CUST = 0;
+	const byte INPUT_CUST = 2;
 
 	// netcode values for movement
 	int requestDirection;
@@ -25,12 +25,12 @@ public class Navi : TrueSyncBehaviour {
 	FP busterCooldown = 0.25f;
 	bool pendingBuster = false;
 
-	//netcode values for cust
-	int requestCust = 0;
-	float custQueueWindow = 0.15f;
-	FP custCooldown = 0.25f;
-	bool pendingcust = false;
-	int chip_to_use;
+	//netcode values for chips
+	int requestChip = 0;
+	float chipQueueWindow = 0.15f;
+	FP chipGCD = 0.25f;
+
+	ChipDatabase chipData;
 
 	public GameObject field;
 
@@ -62,7 +62,6 @@ public class Navi : TrueSyncBehaviour {
 	public int combo_color = 0;	// color of last chip used
 
 	public GameObject shot_handler;
-	public GameObject deck;
 
 	Animator anim;
 
@@ -70,6 +69,7 @@ public class Navi : TrueSyncBehaviour {
 		anim = GetComponent<Animator> ();
 		shot_handler = GameObject.Find("Shot Handler");
 		field = GameObject.Find ("Field");
+		chipData = GameObject.Find ("Chip Database").GetComponent<ChipDatabase>();
 	}
 	// Use this for initialization
 	public override void OnSyncedStart() {
@@ -134,19 +134,21 @@ public class Navi : TrueSyncBehaviour {
 			cust_dispB = GameObject.Find("CustB");
 			//cust_dispB.GetComponent<Cust>().navi = this;
 			GameObject.Find ("PlayerIDB").GetComponent<Text>().text = owner.Name;
+			gameObject.tag = "Enemy Navi";
 		}
-		if (localOwner.Id == owner.Id) {
+		if (localOwner.Id == owner.Id || localOwner.Id == null) {
 			health_dispA = GameObject.Find ("HealthA");
 			cust_dispA = GameObject.Find("CustA");
 			//cust_dispA.GetComponent<Cust>().navi = this;
 			GameObject.Find ("PlayerIDA").GetComponent<Text>().text = owner.Name;
+			gameObject.tag = "My Navi";
 		}
 		
 	}
 	public override void OnSyncedInput() {
 		TrueSyncInput.SetInt (INPUT_DIRECTION, requestDirection);
 		TrueSyncInput.SetInt (INPUT_BUSTER, requestBuster);
-		TrueSyncInput.SetInt(INPUT_CUST, requestCust);
+		TrueSyncInput.SetInt(INPUT_CUST, requestChip);
 	}
 
 
@@ -188,27 +190,27 @@ public class Navi : TrueSyncBehaviour {
 
 		int pulledDir = TrueSyncInput.GetInt (INPUT_DIRECTION);
 		int pulledBuster = TrueSyncInput.GetInt (INPUT_BUSTER);
-		int pulledCust = TrueSyncInput.GetInt(INPUT_CUST);
+		int pulledChipId = TrueSyncInput.GetInt (INPUT_CUST);
 
 		// set position to field tile position
 		if (field != null) {
-				tsTransform.position = new TSVector (field.GetComponent<Field> ().spaces [field_space].transform.position.x, field.GetComponent<Field> ().spaces [field_space].transform.position.y + 0.1f, field.GetComponent<Field> ().spaces [field_space].transform.position.z);
+			tsTransform.position = new TSVector (field.GetComponent<Field> ().spaces [field_space].transform.position.x, field.GetComponent<Field> ().spaces [field_space].transform.position.y + 0.1f, field.GetComponent<Field> ().spaces [field_space].transform.position.z);
 		}
 		
 		moveCooldown -= TrueSyncManager.DeltaTime;
 		busterCooldown -= TrueSyncManager.DeltaTime;
+		chipGCD -= TrueSyncManager.DeltaTime;
 
 
 		// buster shot
-		if (pulledBuster > 0 ) {
+		if (pulledBuster > 0) {
 			if (pendingMoveUp == false && pendingMoveDown == false && pendingMoveLeft == false && pendingMoveRight == false) {
-				if(busterCooldown <= 0f && moveCooldown <= 0f) {
-					anim.SetTrigger("Shoot");
-					if(pulledBuster == 1) {	// uncharged shot
-						shot_handler.GetComponent<Shot_Handler>().check_bust(bust_dmg, playerNumber);
-					}
-					else if(pulledBuster == 2) {	// charged shot
-						shot_handler.GetComponent<Shot_Handler>().check_bust(charge1_dmg, playerNumber);
+				if (busterCooldown <= 0f && moveCooldown <= 0f) {
+					anim.SetTrigger ("Shoot");
+					if (pulledBuster == 1) {	// uncharged shot
+						shot_handler.GetComponent<Shot_Handler> ().check_bust (bust_dmg, playerNumber);
+					} else if (pulledBuster == 2) {	// charged shot
+						shot_handler.GetComponent<Shot_Handler> ().check_bust (charge1_dmg, playerNumber);
 					}
 					busterCooldown = 0.25f;
 					moveCooldown = 0.26f;
@@ -220,18 +222,18 @@ public class Navi : TrueSyncBehaviour {
 		// movement
 		if (moveCooldown <= 0f) {
 			// Finishes the movement
-				if (pendingMoveUp) {
-					field_space = (field_space < 6) ? field_space : field_space - 6;
-					pendingMoveUp = false;
-				}
-				if (pendingMoveDown) {
-					field_space = (field_space > 11) ? field_space : field_space + 6;
-					pendingMoveDown = false;
-				}
-				if (pendingMoveLeft) {
-					field_space = (field_space % 6 == 0) ? field_space : field_space - 1;
-					pendingMoveLeft = false;
-				}
+			if (pendingMoveUp) {
+				field_space = (field_space < 6) ? field_space : field_space - 6;
+				pendingMoveUp = false;
+			}
+			if (pendingMoveDown) {
+				field_space = (field_space > 11) ? field_space : field_space + 6;
+				pendingMoveDown = false;
+			}
+			if (pendingMoveLeft) {
+				field_space = (field_space % 6 == 0) ? field_space : field_space - 1;
+				pendingMoveLeft = false;
+			}
 			if (pendingMoveRight) {
 				field_space = ((field_space - field.GetComponent<Field> ().front_row) % 6 == 0) ? field_space : field_space + 1;
 				pendingMoveRight = false;
@@ -247,17 +249,24 @@ public class Navi : TrueSyncBehaviour {
 				StartRight ();
 		}
 		// using or drawing chips
-		if(pulledCust != 0 && pendingcust) {
-			if(pulledCust < 0) {
-				Debug.Log("pulled cust");
-				chip_hand.GetComponent<Chip_Hand>().chip_removed(chip_to_use);
-				requestCust = 0;
-				pendingcust = false;
+		if (pulledChipId != 0 && chipGCD <= 0f) {
+			Debug.Log ("Playing Chip: " + pulledChipId);
+			//	chip_hand.GetComponent<Chip_Hand> ().chip_removed (chip_to_use); <reimplement this
+			int cost = chipData.GetCost(pulledChipId);
+			if(localOwner.Id == owner.Id){
+				cust_dispA.GetComponent<Cust> ().gauge -= cost;
+				if(pulledChipId == -1)
+					chip_hand.GetComponent<Chip_Hand>().chip_added();
 			}
+			if(localOwner.Id != owner.Id){
+				cust_dispB.GetComponent<Cust> ().gauge -= cost;
+			}
+			chipGCD = 0.25f;
+			pulledChipId = 0;
+			requestChip = 0;
 		}
-
-
 	}
+
 	// Sends a Direction Input Locally
 	public void moveUp() {
 		requestDirection = 1;
@@ -352,10 +361,10 @@ public class Navi : TrueSyncBehaviour {
 		HP -= dmg;
 	}
 
-	public void useChip(int hand_index) {
-		chip_to_use = hand_index;
-		requestCust = -1;
-		pendingcust = true;
+	public void useChip(int chipId) {
+		int cost = chipData.GetCost(chipId);
+		if(cust_dispA.GetComponent<Cust>().gauge >= cost)
+			requestChip = chipId;
 	}
 
 }

@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TrueSync;
 
-public class BattleChip : MonoBehaviour {
+public class BattleChip : TrueSyncBehaviour {
 	public GameObject ChipData;
 
 	public int index;		// !!!!!For clicking a chip in a hand, should probably be done another way!!!!!
+
+	public Navi navi;
+	public int chipId = 1;
 
 	public int cost;
 	public int base_cost;
@@ -37,12 +41,14 @@ public class BattleChip : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		cost_icon.transform.GetChild(0).GetComponent<Text>().text = "" + cost;
+		if(GameObject.FindGameObjectWithTag("My Navi")!= null)
+			navi = GameObject.FindGameObjectWithTag("My Navi").GetComponent<Navi>();
 	}
 
 	public void clicked() {		// !!!! This is assuming the chip is in a hand !!!! (Ok for now b/c only called by click event)
 		GameObject hand = transform.parent.gameObject;
-		//hand.GetComponent<Chip_Hand>().chip_removed(index);
-		hand.GetComponent<Chip_Hand>().navi.GetComponent<Navi>().useChip(index);
+		hand.GetComponent<Chip_Hand>().chip_removed(index,chipId);
+		navi.useChip(chipId);
 	}
 
 	public virtual void activate() {	// stub method for individual chips to implement

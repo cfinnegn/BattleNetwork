@@ -36,6 +36,9 @@ public class Key_Listener : MonoBehaviour {
 		if(Input.GetKeyDown("+") || Input.GetKeyDown("=")) {	// Draw Chip Button
 			DrawButton.GetComponent<Draw_Button>().Draw_Chip();
 		}
+
+		////////////////////////// FIX THIS TO WORK WITH THE NEW SYSTEM. IT NEEDS TO BE FED THE SELECTED CARD'S ID.
+		/*
 		if(Input.GetKeyDown("0")) { // Chips in hand
 			Chip_hand.GetComponent<Chip_Hand>().chip_removed(0);
 		}
@@ -59,5 +62,6 @@ public class Key_Listener : MonoBehaviour {
 			Chip_hand.GetComponent<Chip_Hand>().chip_removed(5);
 
 		}
+		*/
 	}
 }
