@@ -17,7 +17,7 @@ public class Chip_Hand : MonoBehaviour {
 		int target_hold = 3;	// !! set starting hand size here
 		chips = new GameObject[6];
 		held = 0;
-		while(held < target_hold) {	// loop until holding targed number
+		while(held < target_hold) {	// loop until holding target number
 			chip_added();
 		}
 	}
@@ -55,11 +55,13 @@ public class Chip_Hand : MonoBehaviour {
 
 	public bool chip_removed(int index) {
 		if (cust.GetComponent<Cust>().energy >= chips[index].GetComponent<BattleChip>().cost) { // have enough energy to play chip
-			cust.GetComponent<Cust>().gauge -= (float)chips[index].GetComponent<BattleChip>().cost; // pay cost
+			cust.GetComponent<Cust>().spend((float)chips[index].GetComponent<BattleChip>().cost); // pay cost
 			if(chips[index].GetComponent<BattleChip>().color_code != 1) {   // update combo color when not white chip
 				navi.GetComponent<Navi>().combo_color = chips[index].GetComponent<BattleChip>().color_code;
 			}
-			Destroy(chips[index]);
+			Destroy(chips[index]);	// chip cannot be referenced beyond this point
+
+			// reorder hand
 			int i = index;
 			while (i < held - 1) { //shift chips left 1 starting at index
 				chips[i] = chips[i + 1];

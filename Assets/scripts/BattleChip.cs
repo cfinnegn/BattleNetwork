@@ -41,7 +41,8 @@ public class BattleChip : MonoBehaviour {
 
 	public void clicked() {		// !!!! This is assuming the chip is in a hand !!!! (Ok for now b/c only called by click event)
 		GameObject hand = transform.parent.gameObject;
-		hand.GetComponent<Chip_Hand>().chip_removed(index);
+		//hand.GetComponent<Chip_Hand>().chip_removed(index);
+		hand.GetComponent<Chip_Hand>().navi.GetComponent<Navi>().useChip(index);
 	}
 
 	public virtual void activate() {	// stub method for individual chips to implement
