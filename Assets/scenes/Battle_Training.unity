@@ -523,10 +523,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527e4b269537aa5419708da51708f575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gauge: 0
-  energy: 0
-  cust_speed: 2
-  navi: {fileID: 0}
+  numberOfPlayers: 0
+  ownerIndex: -1
+  owner:
+    id: 0
+    name: 
+  localOwner:
+    id: 0
+    name: 
+  gauge:
+    _serializedValue: 0
+  energy:
+    _serializedValue: 0
+  used_energy:
+    _serializedValue: 0
+  cust_speed:
+    _serializedValue: 8589934592
+  cust_num: {fileID: 0}
+  pending_energy_use: 0
 --- !u!1 &200873737
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -840, y: 375}
+  m_AnchoredPosition: {x: -840, y: -75}
   m_SizeDelta: {x: 150, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209298816
@@ -1544,10 +1558,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527e4b269537aa5419708da51708f575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gauge: 0
-  energy: 0
-  cust_speed: 2
-  navi: {fileID: 0}
+  numberOfPlayers: 0
+  ownerIndex: -1
+  owner:
+    id: 0
+    name: 
+  localOwner:
+    id: 0
+    name: 
+  gauge:
+    _serializedValue: 0
+  energy:
+    _serializedValue: 0
+  used_energy:
+    _serializedValue: 0
+  cust_speed:
+    _serializedValue: 8589934592
+  cust_num: {fileID: 0}
+  pending_energy_use: 0
 --- !u!1001 &467043240
 Prefab:
   m_ObjectHideFlags: 0
@@ -3545,7 +3573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &844160068
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4065,7 +4093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -853, y: 478}
+  m_AnchoredPosition: {x: -825, y: 25}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962009516
@@ -11051,6 +11079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Chip_Hand: {fileID: 1318806386}
   Cust: {fileID: 438201022}
+  navi: {fileID: 0}
 --- !u!1 &2007572484
 GameObject:
   m_ObjectHideFlags: 0
