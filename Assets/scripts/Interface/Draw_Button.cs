@@ -5,6 +5,7 @@ using UnityEngine;
 public class Draw_Button : MonoBehaviour {
 	public GameObject Chip_Hand;
 	public GameObject Cust;
+	public Navi navi;
 
 	// Use this for initialization
 	void Start () {
@@ -13,13 +14,13 @@ public class Draw_Button : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(GameObject.FindGameObjectWithTag("My Navi")!= null)
+			navi = GameObject.FindGameObjectWithTag("My Navi").GetComponent<Navi>();
 	}
 
 	public void Draw_Chip() {
 		if(Cust.GetComponent<Cust>().energy >= 3) { // have at least 3 energy to draw
-			Cust.GetComponent<Cust>().gauge -= 3.0f;
-			Chip_Hand.GetComponent<Chip_Hand>().chip_added();
+			navi.useChip(-1);
 		}
 	}
 

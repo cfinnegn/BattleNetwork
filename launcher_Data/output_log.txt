@@ -23,22 +23,118 @@ Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\Ph
 Loading C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
 Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\TrueSync.dll (this message is harmless)
 Loading C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\TrueSync.dll into Unity Child Domain
-- Completed reload, in  0.197 seconds
+- Completed reload, in  0.032 seconds
 Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Bryce\Desktop\BattleNetwork\launcher_Data\Managed\System.dll (this message is harmless)
 desktop: 2560x1080 60Hz; virtual: 4480x1090 at -2560,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.269725 ms
+UnloadTime: 2.194563 ms
 Setting up 4 worker threads for Enlighten.
-  Thread -> id: 25fc -> priority: 1 
-  Thread -> id: 182c -> priority: 1 
-  Thread -> id: 38b8 -> priority: 1 
-  Thread -> id: 3a6c -> priority: 1 
+  Thread -> id: 3380 -> priority: 1 
+  Thread -> id: 3820 -> priority: 1 
+  Thread -> id: 334 -> priority: 1 
+  Thread -> id: e20 -> priority: 1 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.407501 ms
+UnloadTime: 2.507451 ms
 
-Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1342.
-Total: 1.618959 ms (FindLiveObjects: 0.150913 ms CreateObjectMapping: 0.096789 ms MarkObjects: 1.276836 ms  DeleteObjects: 0.093629 ms)
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1346.
+Total: 1.219158 ms (FindLiveObjects: 0.110222 ms CreateObjectMapping: 0.045827 ms MarkObjects: 1.003849 ms  DeleteObjects: 0.058864 ms)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: -1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: -1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: -1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: -1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: -1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: -1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: -1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: -1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: -1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Playing Chip: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 

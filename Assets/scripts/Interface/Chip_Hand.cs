@@ -53,9 +53,11 @@ public class Chip_Hand : MonoBehaviour {
 		return false;
 	}
 
-	public bool chip_removed(int index) {
-		if (cust.GetComponent<Cust>().energy >= chips[index].GetComponent<BattleChip>().cost) { // have enough energy to play chip
-			cust.GetComponent<Cust>().spend((float)chips[index].GetComponent<BattleChip>().cost); // pay cost
+	public bool chip_removed(int index, int chipId) {
+		ChipDatabase chipData = GameObject.Find ("Chip Database").GetComponent<ChipDatabase> ();
+		int cost = chipData.GetCost (chipId);
+		if (cust.GetComponent<Cust>().energy >= cost) { // have enough energy to play chip
+			//cust.GetComponent<Cust>().spend((float)chips[index].GetComponent<BattleChip>().cost); // pay cost
 			if(chips[index].GetComponent<BattleChip>().color_code != 1) {   // update combo color when not white chip
 				navi.GetComponent<Navi>().combo_color = chips[index].GetComponent<BattleChip>().color_code;
 			}
