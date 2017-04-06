@@ -10,10 +10,13 @@ public class ChipDatabase : MonoBehaviour {
 	public int[] color_code;
 	public int[] power;
 	public string[] name;
+
+	public Hashtable chipDB;
 	// Use this for initialization
 	void Start () {
+	//	chipDB.Add("BN1-001", new BC_Cannon(1));
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	}

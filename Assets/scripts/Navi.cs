@@ -30,7 +30,7 @@ public class Navi : TrueSyncBehaviour {
 	float chipQueueWindow = 0.15f;
 	FP chipGCD = 0.25f;
 
-	ChipDatabase chipData;
+	public ChipDatabase chipData;
 
 	public GameObject field;
 
@@ -72,14 +72,14 @@ public class Navi : TrueSyncBehaviour {
 		chipData = GameObject.Find ("Chip Database").GetComponent<ChipDatabase>();
 	}
 	// Use this for initialization
-	public override void OnSyncedStart() {
+	public override void OnSyncedStart() {		// ???? Should this be called for both Navis???
 		if (localOwner.Id == owner.Id) { // If player owns this Navi
 			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
 			chip_hand = GameObject.Find("Chip Bay");
 			charge_ring = GameObject.Find ("charge ring");
 			GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
 			GameObject.Find ("Buster Button").GetComponent<Buster> ().Navi = this;
-			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
+			//GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
 		}
 		// Setting the player's number for easy acess
 		if (owner.Id <= 1) {
@@ -255,7 +255,7 @@ public class Navi : TrueSyncBehaviour {
 			int cost = chipData.GetCost(pulledChipId);
 			if(localOwner.Id == owner.Id){
 				cust_dispA.GetComponent<Cust> ().gauge -= cost;
-				if(pulledChipId == -1)
+				if(pulledChipId == -1)	// No chip w/ ID:-1; placeholder for chip drawing
 					chip_hand.GetComponent<Chip_Hand>().chip_added();
 			}
 			if(localOwner.Id != owner.Id){

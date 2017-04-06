@@ -37,7 +37,6 @@ public class Key_Listener : MonoBehaviour {
 			DrawButton.GetComponent<Draw_Button>().Draw_Chip();
 		}
 
-
 		if(Input.GetKeyDown("0")) { // Chips in hand
 			GameObject.Find("Chip Bay").GetComponent<Chip_Hand>().chips[0].GetComponent<BattleChip>().clicked();
 		}

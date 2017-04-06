@@ -300,7 +300,7 @@ MonoBehaviour:
   localOwner:
     id: 0
     name: 
-  ChipData: {fileID: 1086644977822140, guid: a04384b18c599dc4ea5e27d331debea7, type: 2}
+  ChipData: {fileID: 0}
   index: 0
   navi: {fileID: 0}
   chipId: 1

@@ -37,10 +37,10 @@ public class BattleChip : TrueSyncBehaviour {
 		base_cost = cost;
 		cost_icon.transform.GetChild(0).GetComponent<Text>().text = "" + cost;
 		elem = chipDatabase.GetElem (chipId);
-		elem_icon.GetComponent<Image>().sprite = ChipData.GetComponent<ChipData>().elems[elem];
-		color_code = chipDatabase.GetColorCode(chipId);
-		cost_icon.GetComponent<Image>().color = ChipData.GetComponent<ChipData>().color_codes[color_code];
-		power = chipDatabase.GetPower(chipId);              // !!! Placeholder: Power Ratio to Cost !!!
+//		elem_icon.GetComponent<Image>().sprite = ChipData.GetComponent<ChipData>().elems[elem];   ////////////ELEMENT AND COLOR BROKEN
+//		color_code = chipDatabase.GetColorCode(chipId);
+//		cost_icon.GetComponent<Image>().color = ChipData.GetComponent<ChipData>().color_codes[color_code];
+		power = chipDatabase.GetPower(chipId);
 		power_text.text = "" + power;
 		name.text = chipDatabase.GetName (chipId);
 
@@ -48,7 +48,7 @@ public class BattleChip : TrueSyncBehaviour {
 
 		// set power and element
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		cost_icon.transform.GetChild(0).GetComponent<Text>().text = "" + cost;
@@ -67,4 +67,9 @@ public class BattleChip : TrueSyncBehaviour {
 
 	public virtual void deactivate() {	// stub method for individual chips to implement
 	}
+
+
+//	public int getCost() { return cost; }
+//	public int getPower() { return power; }
+//	public int getElem() { return elem; }
 }

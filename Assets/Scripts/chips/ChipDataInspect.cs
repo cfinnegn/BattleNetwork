@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cannon_chip : BattleChip {
+public class ChipDataInspect : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -11,12 +11,6 @@ public class Cannon_chip : BattleChip {
 	
 	// Update is called once per frame
 	void Update () {
-	}
-
-	public override void activate() {
-		base.activate();
-	}
-	public override void deactivate() {
-		base.deactivate();
+		
 	}
 }

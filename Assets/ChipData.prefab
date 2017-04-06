@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4890185021923566}
   - component: {fileID: 114490561179128592}
+  - component: {fileID: 114739393378094358}
   m_Layer: 0
   m_Name: ChipData
   m_TagString: Untagged
@@ -78,3 +79,22 @@ MonoBehaviour:
   - {r: 0, g: 0.73333335, b: 0.6, a: 1}
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 0.2, g: 0.6, b: 0.2, a: 1}
+--- !u!114 &114739393378094358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086644977822140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b88c1457ea990478c09fc99c0735f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  draw_Cost: 3
+  ID_1_Cost: 2
+  ID_2_Cost: 3
+  ID_3_Cost: 4
+  DBIDs:
+  - BNA_001
+  DBchips:
+  - {fileID: 1669226692587238, guid: b04dbcf37c6f53c418d1dc8672abc954, type: 2}
