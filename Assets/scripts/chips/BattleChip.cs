@@ -34,7 +34,7 @@ public class BattleChip : TrueSyncBehaviour {
 		cost_icon.GetComponent<Image>().color = ChipData.color_codes[color_code];
 
 		// set power and element
-		elem = Random.Range(0, 10);     // !!! Placeholder: Random Elem generation !!!
+		elem = Random.Range(0, 9);     // !!! Placeholder: Random Elem generation !!!
 		elem_icon.GetComponent<Image>().sprite = ChipData.elems[elem];
 		power = cost * 10;              // !!! Placeholder: Power Ratio to Cost !!!
 		power_text.text = "" + power;

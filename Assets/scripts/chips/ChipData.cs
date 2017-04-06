@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChipData : MonoBehaviour {
+public class ChipData {
 
 	public static int NORMAL = 0;
 	public static int FIRE = 1;
@@ -17,18 +17,33 @@ public class ChipData : MonoBehaviour {
 	public static int SUMMON = 9;
 
 	public static Sprite[] elems = {
-		Resources.Load<Sprite>("Resources/Sprites/elem/Type_null"),
-		Resources.Load<Sprite>("Resources/Sprites/elem/Type_fire"),
-		Resources.Load<Sprite>("Resources/Sprites/elem/Type_water"),
-		Resources.Load<Sprite>("Resources/Sprites/elem/Type_electric"),
-		Resources.Load<Sprite>("Resources/Sprites/elem/Type_wood"),
-		Resources.Load<Sprite>("Resources/Sprites/elem/Type_sword"),
-		Resources.Load<Sprite>("Resources/Sprites/elem/Type_stone"),
-		Resources.Load<Sprite>("Resources/Sprites/elem/Type_recover"),
-		Resources.Load<Sprite>("Resources/Sprites/elem/Type_buff"),
-		Resources.Load<Sprite>("Resources/Sprites/elem/Type_aura"),
-		Resources.Load<Sprite>("Resources/Sprites/elem/Type_summon")
+		Resources.Load<Sprite>("Sprites/elem/Type_null"),
+		Resources.Load<Sprite>("Sprites/elem/Type_fire"),
+		Resources.Load<Sprite>("Sprites/elem/Type_water"),
+		Resources.Load<Sprite>("Sprites/elem/Type_electric"),
+		Resources.Load<Sprite>("Sprites/elem/Type_wood"),
+		Resources.Load<Sprite>("Sprites/elem/Type_sword"),
+		Resources.Load<Sprite>("Sprites/elem/Type_stone"),
+		Resources.Load<Sprite>("Sprites/elem/Type_recover"),
+		Resources.Load<Sprite>("Sprites/elem/Type_buff"),
+		Resources.Load<Sprite>("Sprites/elem/Type_aura"),
+		Resources.Load<Sprite>("Sprites/elem/Type_summon")
 	};
+
+	/*\	public static string[] elems = {
+		"Type_null",
+		"Type_fire",
+		"Type_water",
+		"Type_electric",
+		"Type_wood",
+		"Type_sword",
+		"Type_stone",
+		"Type_recover",
+		"Type_buff",
+		"Type_aura",
+		"Type_summon"
+	};
+	*/
 	public static Color[] color_codes = {
 		new Color(0.75f, 0.75f, 0.75f),	// grey
 		new Color(1.0f, 1.0f, 1.0f),	// white
