@@ -30,7 +30,7 @@ public class BattleChip : TrueSyncBehaviour {
 		cost = Random.Range(1, 6);      // !!! Placeholder: Random Cost generation !!!
 		base_cost = cost;
 		cost_icon.transform.GetChild(0).GetComponent<Text>().text = "" + cost;
-		color_code = Random.Range(0, 13);
+		color_code = Random.Range(0, 12);
 		cost_icon.GetComponent<Image>().color = ChipData.color_codes[color_code];
 
 		// set power and element
