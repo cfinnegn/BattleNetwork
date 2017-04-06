@@ -255,7 +255,7 @@ public class Navi : TrueSyncBehaviour {
 			int cost = chipData.GetCost(pulledChipId);
 			if(localOwner.Id == owner.Id){
 				cust_dispA.GetComponent<Cust> ().gauge -= cost;
-				if(pulledChipId == -1)
+				if(pulledChipId == -1)	// No chip w/ ID:-1; placeholder for chip drawing
 					chip_hand.GetComponent<Chip_Hand>().chip_added();
 			}
 			if(localOwner.Id != owner.Id){

@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cannon_chip : BattleChip {
+
 
 	// Use this for initialization
 	void Start () {

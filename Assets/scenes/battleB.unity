@@ -860,6 +860,8 @@ MonoBehaviour:
   ID_1_Cost: 2
   ID_2_Cost: 3
   ID_3_Cost: 4
+  DBIDs: 
+  DBchips: []
 --- !u!4 &254046916
 Transform:
   m_ObjectHideFlags: 0
