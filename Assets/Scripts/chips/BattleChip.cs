@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TrueSync;
 
 public class BattleChip : TrueSyncBehaviour {
+	ChipDatabase chipDatabase;
 	public GameObject ChipData;
 
 	public int index;		// !!!!!For clicking a chip in a hand, should probably be done another way!!!!!
@@ -21,21 +22,31 @@ public class BattleChip : TrueSyncBehaviour {
 	public int elem;
 	public GameObject elem_icon;
 	public Text power_text;
+	public Text name;
 
+	void Awake(){
+		chipDatabase = GameObject.Find ("Chip Database").GetComponent<ChipDatabase>();
+	}
 	// Use this for initialization
 	void Start () {
-		// set cost and color code
-		cost = Random.Range(1, 6);      // !!! Placeholder: Random Cost generation !!!
+
+		// Draw a random chip in the database
+		chipId = Random.Range(1,4); // Start at 1. Max = number of chips in the database
+		// pull from database
+		cost = chipDatabase.GetCost(chipId);
 		base_cost = cost;
 		cost_icon.transform.GetChild(0).GetComponent<Text>().text = "" + cost;
-		color_code = Random.Range(0, 13);
+		elem = chipDatabase.GetElem (chipId);
+		elem_icon.GetComponent<Image>().sprite = ChipData.GetComponent<ChipData>().elems[elem];
+		color_code = chipDatabase.GetColorCode(chipId);
 		cost_icon.GetComponent<Image>().color = ChipData.GetComponent<ChipData>().color_codes[color_code];
+		power = chipDatabase.GetPower(chipId);              // !!! Placeholder: Power Ratio to Cost !!!
+		power_text.text = "" + power;
+		name.text = chipDatabase.GetName (chipId);
+
+		// set cost and color code
 
 		// set power and element
-		elem = Random.Range(0, 10);     // !!! Placeholder: Random Elem generation !!!
-		elem_icon.GetComponent<Image>().sprite = ChipData.GetComponent<ChipData>().elems[elem];
-		power = cost * 10;              // !!! Placeholder: Power Ratio to Cost !!!
-		power_text.text = "" + power;
 	}
 	
 	// Update is called once per frame

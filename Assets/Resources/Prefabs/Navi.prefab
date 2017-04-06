@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 82001293793643094}
   m_Layer: 5
   m_Name: Navi
-  m_TagString: Untagged
+  m_TagString: My Navi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,11 +205,9 @@ MonoBehaviour:
   bust_dmg: 1
   charge1_dmg: 10
   HP: 100
-  health_disp: {fileID: 0}
   playerNumber: 2
   combo_color: 0
   shot_handler: {fileID: 0}
-  deck: {fileID: 0}
 --- !u!212 &212171665549001346
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -37,31 +37,29 @@ public class Key_Listener : MonoBehaviour {
 			DrawButton.GetComponent<Draw_Button>().Draw_Chip();
 		}
 
-		////////////////////////// FIX THIS TO WORK WITH THE NEW SYSTEM. IT NEEDS TO BE FED THE SELECTED CARD'S ID.
-		/*
+
 		if(Input.GetKeyDown("0")) { // Chips in hand
-			Chip_hand.GetComponent<Chip_Hand>().chip_removed(0);
+			GameObject.Find("Chip Bay").GetComponent<Chip_Hand>().chips[0].GetComponent<BattleChip>().clicked();
 		}
 		if(Input.GetKeyDown("9")) {
-			Chip_hand.GetComponent<Chip_Hand>().chip_removed(1);
+			GameObject.Find("Chip Bay").GetComponent<Chip_Hand>().chips[1].GetComponent<BattleChip>().clicked();
 
 		}
 		if(Input.GetKeyDown("8")) {
-			Chip_hand.GetComponent<Chip_Hand>().chip_removed(2);
+			GameObject.Find("Chip Bay").GetComponent<Chip_Hand>().chips[2].GetComponent<BattleChip>().clicked();
 
 		}
 		if(Input.GetKeyDown("7")) {
-			Chip_hand.GetComponent<Chip_Hand>().chip_removed(3);
+			GameObject.Find("Chip Bay").GetComponent<Chip_Hand>().chips[3].GetComponent<BattleChip>().clicked();
 
 		}
 		if(Input.GetKeyDown("6")) {
-			Chip_hand.GetComponent<Chip_Hand>().chip_removed(4);
+			GameObject.Find("Chip Bay").GetComponent<Chip_Hand>().chips[4].GetComponent<BattleChip>().clicked();
 
 		}
 		if(Input.GetKeyDown("5")) {
-			Chip_hand.GetComponent<Chip_Hand>().chip_removed(5);
+			GameObject.Find("Chip Bay").GetComponent<Chip_Hand>().chips[5].GetComponent<BattleChip>().clicked();
 
 		}
-		*/
 	}
 }

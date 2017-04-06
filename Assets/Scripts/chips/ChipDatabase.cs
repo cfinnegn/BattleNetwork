@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ChipDatabase : MonoBehaviour {
 	public int draw_Cost = 3;
-	public int ID_1_Cost = 2;
-	public int ID_2_Cost = 3;
-	public int ID_3_Cost = 4;
+	// Starts on Element 1
+	public int[] cost;
+	public int[] elem;
+	public int[] color_code;
+	public int[] power;
+	public string[] name;
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -20,15 +22,22 @@ public class ChipDatabase : MonoBehaviour {
 		if (chipId == -1) {
 			return draw_Cost;
 		}
-		if (chipId == 1) {
-			return ID_1_Cost;
-		}
-		if (chipId == 2) {
-			return ID_2_Cost;
-		}
-		if (chipId == 3) {
-			return ID_3_Cost;
-		}
-		return 0;
+		return cost[chipId];
+	}
+
+	public int GetElem(int chipId){
+		return elem[chipId];
+	}
+
+	public int GetColorCode(int chipId){
+		return color_code[chipId];
+	}
+
+	public int GetPower(int chipId){
+		return power[chipId];
+	}
+
+	public string GetName(int chipId){
+		return name[chipId];
 	}
 }
