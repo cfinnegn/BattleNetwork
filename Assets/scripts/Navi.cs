@@ -30,7 +30,7 @@ public class Navi : TrueSyncBehaviour {
 	float chipQueueWindow = 0.15f;
 	FP chipGCD = 0.25f;
 
-	ChipDatabase chipData;
+	public ChipDatabase chipData;
 
 	public GameObject field;
 
@@ -72,7 +72,7 @@ public class Navi : TrueSyncBehaviour {
 		chipData = GameObject.Find ("Chip Database").GetComponent<ChipDatabase>();
 	}
 	// Use this for initialization
-	public override void OnSyncedStart() {
+	public override void OnSyncedStart() {		// ???? Should this be called for both Navis???
 		if (localOwner.Id == owner.Id) { // If player owns this Navi
 			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
 			chip_hand = GameObject.Find("Chip Bay");
