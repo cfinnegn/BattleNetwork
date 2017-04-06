@@ -5,9 +5,11 @@ using UnityEngine.UI;
 using TrueSync;
 
 public class BattleChip : TrueSyncBehaviour {
-	public GameObject ChipData;
+	//public GameObject ChipData;
 
-	public int index;		// !!!!!For clicking a chip in a hand, should probably be done another way!!!!!
+	public int index;       // !!!!!For clicking a chip in a hand, should probably be done another way!!!!!
+
+	public ChipLogic chip_logic;
 
 	public Navi navi;
 	public int chipId = 1;
@@ -29,11 +31,11 @@ public class BattleChip : TrueSyncBehaviour {
 		base_cost = cost;
 		cost_icon.transform.GetChild(0).GetComponent<Text>().text = "" + cost;
 		color_code = Random.Range(0, 13);
-		cost_icon.GetComponent<Image>().color = ChipData.GetComponent<ChipData>().color_codes[color_code];
+		cost_icon.GetComponent<Image>().color = ChipData.color_codes[color_code];
 
 		// set power and element
 		elem = Random.Range(0, 10);     // !!! Placeholder: Random Elem generation !!!
-		elem_icon.GetComponent<Image>().sprite = ChipData.GetComponent<ChipData>().elems[elem];
+		elem_icon.GetComponent<Image>().sprite = ChipData.elems[elem];
 		power = cost * 10;              // !!! Placeholder: Power Ratio to Cost !!!
 		power_text.text = "" + power;
 	}
@@ -51,9 +53,13 @@ public class BattleChip : TrueSyncBehaviour {
 		navi.useChip(chipId);
 	}
 
-	public virtual void activate() {	// stub method for individual chips to implement
+	public void activate() {	// stub method for individual chips to implement
 	}
 
-	public virtual void deactivate() {	// stub method for individual chips to implement
+	public void deactivate() {	// stub method for individual chips to implement
 	}
+
+	public int getCost() { return cost; }
+	public int getPower() { return power; }
+	public int getElem() { return elem; }
 }

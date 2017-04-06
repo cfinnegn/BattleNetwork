@@ -9,16 +9,12 @@ public class ChipDatabase : MonoBehaviour {
 	public int ID_3_Cost = 4;
 
 	// components of hashtable extracted for editing in Unity inspector
-	public string[] DBIDs;	
-	public GameObject[] DBchips;
+
 
 	public Hashtable chipDB;
 	// Use this for initialization
 	void Start () {
-		int i = 0;
-		while((i < DBIDs.Length) && i < (DBchips.Length)) { // combine arrays into hashtable
-			chipDB.Add(DBIDs[i], DBchips[i]);
-		}
+		chipDB.Add("BN1-001", new BC_Cannon(1));
 
 	}
 	

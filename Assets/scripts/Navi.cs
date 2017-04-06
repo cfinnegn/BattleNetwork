@@ -79,7 +79,7 @@ public class Navi : TrueSyncBehaviour {
 			charge_ring = GameObject.Find ("charge ring");
 			GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
 			GameObject.Find ("Buster Button").GetComponent<Buster> ().Navi = this;
-			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
+			//GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
 		}
 		// Setting the player's number for easy acess
 		if (owner.Id <= 1) {
