@@ -197,6 +197,7 @@ MonoBehaviour:
   localOwner:
     id: 0
     name: 
+  chipdatabase: {fileID: 0}
   field: {fileID: 0}
   field_space: 0
   bust_charge: 0
@@ -205,11 +206,10 @@ MonoBehaviour:
   bust_dmg: 1
   charge1_dmg: 10
   HP: 100
-  health_disp: {fileID: 0}
   playerNumber: 2
+  deck: {fileID: 1233071777399432, guid: 0f934f69ebf6cb045a6427b279fe0124, type: 2}
   combo_color: 0
   shot_handler: {fileID: 0}
-  deck: {fileID: 0}
 --- !u!212 &212171665549001346
 SpriteRenderer:
   m_ObjectHideFlags: 1

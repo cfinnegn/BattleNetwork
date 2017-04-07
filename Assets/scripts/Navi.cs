@@ -29,6 +29,7 @@ public class Navi : TrueSyncBehaviour {
 	int requestChip = 0;
 	float chipQueueWindow = 0.15f;
 	FP chipGCD = 0.25f;
+	bool pendingChip = false;
 
 	public ChipDatabase chipdatabase;
 
@@ -58,7 +59,8 @@ public class Navi : TrueSyncBehaviour {
 	GameObject cust_dispB;
 
 	public int playerNumber = 1;
-	
+
+	public GameObject deck;
 	public int combo_color = 0;	// color of last chip used
 
 	public GameObject shot_handler;
@@ -70,12 +72,16 @@ public class Navi : TrueSyncBehaviour {
 		shot_handler = GameObject.Find("Shot Handler");
 		field = GameObject.Find ("Field");
 		chipdatabase = GameObject.Find ("Chip Database").GetComponent<ChipDatabase>();
+		deck = Instantiate(deck);
+		deck.GetComponent<Deck>().Build_FileIn();
+		deck.GetComponent<Deck>().init();
 	}
 	// Use this for initialization
 	public override void OnSyncedStart() {		// ???? Should this be called for both Navis???
 		if (localOwner.Id == owner.Id) { // If player owns this Navi
 			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
 			chip_hand = GameObject.Find("Chip Bay");
+			chip_hand.GetComponent<Chip_Hand>().init();
 			charge_ring = GameObject.Find ("charge ring");
 			GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
 			GameObject.Find ("Buster Button").GetComponent<Buster> ().Navi = this;
@@ -249,7 +255,8 @@ public class Navi : TrueSyncBehaviour {
 				StartRight ();
 		}
 		// using or drawing chips
-		if (pulledChipId != 0 && chipGCD <= 0f) {
+		if (pulledChipId != 0 && chipGCD <= 0f && pendingChip) {
+			Debug.Log("server chip: " + pendingChip);
 			int cost;
 			if(pulledChipId == -1) {
 				cost = 3;
@@ -261,16 +268,19 @@ public class Navi : TrueSyncBehaviour {
 			}
 			if(localOwner.Id == owner.Id){
 				cust_dispA.GetComponent<Cust> ().gauge -= cost;
-				if(pulledChipId == -1)	// No chip w/ ID:-1; placeholder for chip drawing
+				if(pulledChipId == -1) {    // No chip w/ ID:-1; placeholder for chip drawing
 					chip_hand.GetComponent<Chip_Hand>().chip_added();
+					Debug.Log("Problem?");
+				}
 			}
 			if(localOwner.Id != owner.Id){
 				cust_dispB.GetComponent<Cust> ().gauge -= cost;
-
 			}
 			chipGCD = 0.25f;
 			pulledChipId = 0;
 			requestChip = 0;
+			pendingChip = false;
+			Debug.Log("pending chip? " + pendingChip);
 		}
 	}
 
@@ -369,15 +379,18 @@ public class Navi : TrueSyncBehaviour {
 	}
 
 	public void useChip(int chipId) {
+		//Debug.Log("local chip");
 		int cost;
 		if(chipId == -1) {	// chip drawn
-			cost = 3;
+			cost = 3;			// !!!!!! DRAW COST HARDCODED HERE !!!!!!
 		}
 		else {
 			cost = chipdatabase.chipDB[chipId].cost;
 		}
-		if(cust_dispA.GetComponent<Cust>().gauge >= cost)
+		if(cust_dispA.GetComponent<Cust>().gauge >= cost) {
 			requestChip = chipId;
+			pendingChip = true;
+		}
 	}
 
 }

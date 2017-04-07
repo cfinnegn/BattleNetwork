@@ -856,10 +856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b88c1457ea990478c09fc99c0735f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  draw_Cost: 3
-  ID_1_Cost: 2
-  ID_2_Cost: 3
-  ID_3_Cost: 4
 --- !u!4 &254046916
 Transform:
   m_ObjectHideFlags: 0
@@ -6856,7 +6852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   held: 0
   hand_num: {fileID: 1396893921}
-  deck: {fileID: 1104178966332636, guid: bf959dcd9fb42bc4985aab5a5347d914, type: 2}
+  chip_obj: {fileID: 1104178966332636, guid: bf959dcd9fb42bc4985aab5a5347d914, type: 2}
   chips: []
   cust: {fileID: 438201022}
   navi: {fileID: 1277639234672924, guid: d4be643acb3b2b343b956956ca647cf2, type: 2}

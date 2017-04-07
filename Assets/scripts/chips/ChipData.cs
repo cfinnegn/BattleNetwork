@@ -29,18 +29,16 @@ public class ChipData {
 		Resources.Load<Sprite>("Sprites/elem/Type_aura"),
 		Resources.Load<Sprite>("Sprites/elem/Type_summon")
 	};
-
 	public static Color[] color_codes = {
 		new Color(0.75f, 0.75f, 0.75f),	// grey
 		new Color(1.0f, 1.0f, 1.0f),	// white
 		new Color(1.0f, 1.0f, 0.0f),	// yellow
-		new Color(1.0f, 0.5f, 0.0f),	// orange
+		new Color(1.0f, 0.65f, 0.0f),	// orange
 		new Color(1.0f, 0.0f, 0.0f),	// red
-		new Color(0.75f, 0.0f, 0.25f),	// deep red
-		new Color(1.0f, 0.5f, 0.5f),	// pink
-		new Color(0.5f, 0.0f, 0.75f),	// purple
+		new Color(1.0f, 0.4f, 0.6f),	// pink
+		new Color(0.6f, 0.0f, 0.75f),	// purple
 		new Color(0.0f, 0.0f, 1.0f),	// blue
-		new Color(0.0f, 0.75f, 0.75f),	// teal
+		new Color(0.0f, 0.7f, 0.7f),	// teal
 		new Color(0.0f, 1.0f, 0.0f),	// green
 		new Color(0.0f, 0.5f, 0.0f),	// deep green
 		new Color(0.75f, 0.75f, 0.0f)	// banana

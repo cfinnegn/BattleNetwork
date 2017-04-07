@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Chip_Hand : MonoBehaviour {
 	public int held;
 	public GameObject hand_num;
-	public GameObject deck; // !!! for now this is a single "ChipImg" that will be cloned !!!
+	public GameObject chip_obj; // !!! for now this is a single "ChipImg" that will be cloned !!!
 	public GameObject[] chips;
 	public GameObject cust;
 	public GameObject navi;
@@ -14,10 +14,12 @@ public class Chip_Hand : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		int target_hold = 3;	// !! set starting hand size here
+		//int target_hold = 3;	// !! set starting hand size here
 		chips = new GameObject[6];
 		held = 0;
-		while(held < target_hold) {	// loop until holding target number
+	}
+	public void init() {
+		while(held < 3) { // loop until holding target number
 			chip_added();
 		}
 	}
@@ -42,8 +44,11 @@ public class Chip_Hand : MonoBehaviour {
 
 	public bool chip_added() {
 		if(held < 6) {  // not full hand
-			chips[held] = Instantiate(deck, transform, true);    // adds chip into next open position
+			chips[held] = Instantiate(chip_obj, transform, true);    // adds chip into next open position
 			chips[held].GetComponent<Transform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
+			DeckSlot chdata = navi.GetComponent<Navi>().deck.GetComponent<Deck>().Draw_chip();
+			chips[held].GetComponent<BattleChip>().RecieveData(chdata);
+			Debug.Log("Data Recieved");
 			chips[held].GetComponent<BattleChip>().index = held;
 			held++;
 			hand_num.GetComponent<Text>().text = "x" + held;

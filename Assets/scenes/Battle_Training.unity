@@ -6744,7 +6744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   held: 0
   hand_num: {fileID: 1396893921}
-  deck: {fileID: 1104178966332636, guid: bf959dcd9fb42bc4985aab5a5347d914, type: 2}
+  chip_obj: {fileID: 1104178966332636, guid: bf959dcd9fb42bc4985aab5a5347d914, type: 2}
   chips: []
   cust: {fileID: 438201022}
   navi: {fileID: 1277639234672924, guid: d4be643acb3b2b343b956956ca647cf2, type: 2}
