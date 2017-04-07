@@ -15,7 +15,8 @@ public abstract class ChipLogic {
 
 	public int power;
 	public int elem;
-	public Sprite chip_sprite;
+	public Sprite chip_sprite;	// any battle sprites/animation overlays that need to be loaded
+	public Sprite chipimg;	// the image on the face of the chip
 
 	//public ChipData = new ChipData();
 

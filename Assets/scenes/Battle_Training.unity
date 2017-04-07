@@ -8888,10 +8888,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b88c1457ea990478c09fc99c0735f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  draw_Cost: 3
-  ID_1_Cost: 2
-  ID_2_Cost: 5
-  ID_3_Cost: 6
 --- !u!4 &1722132624
 Transform:
   m_ObjectHideFlags: 0

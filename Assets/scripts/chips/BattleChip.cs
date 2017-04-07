@@ -24,16 +24,19 @@ public class BattleChip : TrueSyncBehaviour {
 	public Text power_text;
 
 	public Text chip_name;
+	public Image chip_image;
 
 	// Use this for initialization
 	void Start () {
 		ChipDatabase chipDataBase = GameObject.Find("Chip Database").GetComponent<ChipDatabase>();
 		// !! temp: selects random key
 		List<int> chipKeys = new List<int>(chipDataBase.chipDB.Keys); 
-		chip_logic = chipDataBase.chipDB[chipKeys[Random.Range(0, chipDataBase.chipDB.Count-1)]];
+		chip_logic = chipDataBase.chipDB[chipKeys[Random.Range(0, chipDataBase.chipDB.Count)]];
 		Debug.Log(chip_logic.chipName);
 
+		//set name and image
 		chip_name.text = chip_logic.chipName;
+		chip_image.sprite = chip_logic.chipimg;
 		// set cost and color code
 		base_cost = chip_logic.base_cost;
 		cost = chip_logic.cost;

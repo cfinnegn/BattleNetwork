@@ -22,6 +22,7 @@ public class BC_Cannon : ChipLogic {
 		this.cost = this.base_cost;
 		this.elem = 0;  // null elem
 		this.power = 40;
+		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Cannon");
 	}
 
 
@@ -29,7 +30,7 @@ public class BC_Cannon : ChipLogic {
 		throw new NotImplementedException();
 	}
 
-	public override void initColor(int color) {
+	public override void initColor(int color) {	// sets color and changes cost if needed
 		throw new NotImplementedException();
 	}
 
