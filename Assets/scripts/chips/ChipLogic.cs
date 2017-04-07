@@ -6,7 +6,8 @@ using UnityEngine;
 public abstract class ChipLogic {
 
 	//	working on finding a way of forcing sublcasses to define
-	public string ID;
+	public int ID;
+	public string chipName;
 
 	public int base_cost;
 	public int cost;
@@ -18,8 +19,9 @@ public abstract class ChipLogic {
 
 	//public ChipData = new ChipData();
 
+	public abstract void initColor(int color);
 
-	public abstract void activate();
+	public abstract void activate(Navi n);
 
-	public abstract void deactivate();
+	public abstract void deactivate(Navi n);
 }

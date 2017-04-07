@@ -8890,8 +8890,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   draw_Cost: 3
   ID_1_Cost: 2
-  ID_2_Cost: 3
-  ID_3_Cost: 4
+  ID_2_Cost: 5
+  ID_3_Cost: 6
 --- !u!4 &1722132624
 Transform:
   m_ObjectHideFlags: 0

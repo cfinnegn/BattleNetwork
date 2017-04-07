@@ -11,11 +11,11 @@ public class ChipDatabase : MonoBehaviour {
 	// components of hashtable extracted for editing in Unity inspector
 
 
-	public Hashtable chipDB;
+	public Dictionary <int, ChipLogic> chipDB = new Dictionary<int, ChipLogic>();
 	// Use this for initialization
 	void Start () {
-		chipDB.Add("BN1-001", new BC_Cannon(1));
-
+		chipDB.Add(1, new BC_Cannon());
+		// add more lines for more chips
 	}
 	
 	// Update is called once per frame

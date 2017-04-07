@@ -30,7 +30,7 @@ public class Navi : TrueSyncBehaviour {
 	float chipQueueWindow = 0.15f;
 	FP chipGCD = 0.25f;
 
-	public ChipDatabase chipData;
+	public ChipDatabase chipdatabase;
 
 	public GameObject field;
 
@@ -69,7 +69,7 @@ public class Navi : TrueSyncBehaviour {
 		anim = GetComponent<Animator> ();
 		shot_handler = GameObject.Find("Shot Handler");
 		field = GameObject.Find ("Field");
-		chipData = GameObject.Find ("Chip Database").GetComponent<ChipDatabase>();
+		chipdatabase = GameObject.Find ("Chip Database").GetComponent<ChipDatabase>();
 	}
 	// Use this for initialization
 	public override void OnSyncedStart() {		// ???? Should this be called for both Navis???
@@ -250,9 +250,15 @@ public class Navi : TrueSyncBehaviour {
 		}
 		// using or drawing chips
 		if (pulledChipId != 0 && chipGCD <= 0f) {
-			Debug.Log ("Playing Chip: " + pulledChipId);
+			int cost;
+			if(pulledChipId == -1) {
+				cost = 3;
+			}
 			//	chip_hand.GetComponent<Chip_Hand> ().chip_removed (chip_to_use); <reimplement this
-			int cost = chipData.GetCost(pulledChipId);
+			else {
+				cost = chipdatabase.chipDB[pulledChipId].cost;
+				Debug.Log("Playing Chip: " + chipdatabase.chipDB[pulledChipId].chipName);
+			}
 			if(localOwner.Id == owner.Id){
 				cust_dispA.GetComponent<Cust> ().gauge -= cost;
 				if(pulledChipId == -1)	// No chip w/ ID:-1; placeholder for chip drawing
@@ -260,6 +266,7 @@ public class Navi : TrueSyncBehaviour {
 			}
 			if(localOwner.Id != owner.Id){
 				cust_dispB.GetComponent<Cust> ().gauge -= cost;
+
 			}
 			chipGCD = 0.25f;
 			pulledChipId = 0;
@@ -362,7 +369,13 @@ public class Navi : TrueSyncBehaviour {
 	}
 
 	public void useChip(int chipId) {
-		int cost = chipData.GetCost(chipId);
+		int cost;
+		if(chipId == -1) {	// chip drawn
+			cost = 3;
+		}
+		else {
+			cost = chipdatabase.chipDB[chipId].cost;
+		}
 		if(cust_dispA.GetComponent<Cust>().gauge >= cost)
 			requestChip = chipId;
 	}

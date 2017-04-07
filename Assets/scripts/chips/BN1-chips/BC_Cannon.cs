@@ -14,9 +14,10 @@ public class BC_Cannon : ChipLogic {
 		public Sprite chip_sprite;
 	*/
 
-	public BC_Cannon(int color) {
-		this.ID = "BN1-001";
-		this.color_code = color;
+	public BC_Cannon() {
+		this.ID = 1;
+		this.chipName = "Cannon";
+		this.color_code = 0;
 		this.base_cost = 3;	// setup if statement for setting cost based on color
 		this.cost = this.base_cost;
 		this.elem = 0;  // null elem
@@ -24,11 +25,15 @@ public class BC_Cannon : ChipLogic {
 	}
 
 
-	public override void activate() {
+	public override void activate(Navi navi) {
 		throw new NotImplementedException();
 	}
 
-	public override void deactivate() {
+	public override void initColor(int color) {
+		throw new NotImplementedException();
+	}
+
+	public override void deactivate(Navi navi) {
 		throw new NotImplementedException();
 	}
 

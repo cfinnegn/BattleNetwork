@@ -30,20 +30,6 @@ public class ChipData {
 		Resources.Load<Sprite>("Sprites/elem/Type_summon")
 	};
 
-	/*\	public static string[] elems = {
-		"Type_null",
-		"Type_fire",
-		"Type_water",
-		"Type_electric",
-		"Type_wood",
-		"Type_sword",
-		"Type_stone",
-		"Type_recover",
-		"Type_buff",
-		"Type_aura",
-		"Type_summon"
-	};
-	*/
 	public static Color[] color_codes = {
 		new Color(0.75f, 0.75f, 0.75f),	// grey
 		new Color(1.0f, 1.0f, 1.0f),	// white

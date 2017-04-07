@@ -292,15 +292,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d4f243daba12e44292d6c70e182d2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChipData: {fileID: 1086644977822140, guid: a04384b18c599dc4ea5e27d331debea7, type: 2}
+  numberOfPlayers: 0
+  ownerIndex: -1
+  owner:
+    id: 0
+    name: 
+  localOwner:
+    id: 0
+    name: 
   index: 0
+  navi: {fileID: 0}
   cost: 0
+  base_cost: 0
   color_code: 0
   cost_icon: {fileID: 1030907574024538}
   power: 0
   elem: 0
   elem_icon: {fileID: 1652428858950280}
   power_text: {fileID: 114460658569748414}
+  chip_name: {fileID: 114611161272569996}
 --- !u!114 &114460658569748414
 MonoBehaviour:
   m_ObjectHideFlags: 1
