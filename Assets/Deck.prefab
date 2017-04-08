@@ -53,4 +53,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck_Id_inspect: 
   deck_color_inspect: 
-  csvFile: {fileID: 4900000, guid: e205ecfd231e27245a2f71c5f49f2c1e, type: 3}
+  csvFile: {fileID: 4900000, guid: be36c6c80afcf5f4683e8a5a73680da4, type: 3}

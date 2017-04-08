@@ -258,8 +258,8 @@ public class Navi : TrueSyncBehaviour {
 		if (pulledChipId != 0 && chipGCD <= 0f && pendingChip) {
 			Debug.Log("server chip: " + pendingChip);
 			int cost;
-			if(pulledChipId == -1) {
-				cost = 3;
+			if(pulledChipId == -1) {	// drawing chip
+				cost = 2;						// !!!!!! DRAW COST HARDCODED HERE !!!!!!
 			}
 			//	chip_hand.GetComponent<Chip_Hand> ().chip_removed (chip_to_use); <reimplement this
 			else {
@@ -382,7 +382,7 @@ public class Navi : TrueSyncBehaviour {
 		//Debug.Log("local chip");
 		int cost;
 		if(chipId == -1) {	// chip drawn
-			cost = 3;			// !!!!!! DRAW COST HARDCODED HERE !!!!!!
+			cost = 2;			// !!!!!! DRAW COST HARDCODED HERE !!!!!!
 		}
 		else {
 			cost = chipdatabase.chipDB[chipId].cost;

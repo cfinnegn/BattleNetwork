@@ -19,7 +19,7 @@ public class Draw_Button : MonoBehaviour {
 	}
 
 	public void Draw_Chip() {
-		if(Cust.GetComponent<Cust>().energy >= 3) { // have at least 3 energy to draw
+		if(Cust.GetComponent<Cust>().energy >= 2) { // have at least 2 energy to draw
 			navi.useChip(-1);
 		}
 	}
