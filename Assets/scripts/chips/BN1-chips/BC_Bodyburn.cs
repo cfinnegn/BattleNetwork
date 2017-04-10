@@ -20,10 +20,14 @@ public class BC_Bodyburn : ChipLogic {
 
 
 	public override void activate(Navi n) {
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
 	public override void deactivate(Navi n) {
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
+	}
+
+	public override void OnSyncedUpdate(Navi navi) {
+		//throw new NotImplementedException();
 	}
 }

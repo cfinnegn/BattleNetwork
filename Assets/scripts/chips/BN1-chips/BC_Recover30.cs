@@ -19,11 +19,15 @@ public class BC_Recover30 : ChipLogic {
 
 
 	public override void activate(Navi navi) {
-		throw new NotImplementedException();
+		navi.HP += power;
+		// add animation
 	}
 
 	public override void deactivate(Navi navi) {
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
+	public override void OnSyncedUpdate(Navi navi) {
+		//throw new NotImplementedException();
+	}
 }

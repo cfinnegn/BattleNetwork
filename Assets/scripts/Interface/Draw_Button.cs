@@ -20,7 +20,7 @@ public class Draw_Button : MonoBehaviour {
 
 	public void Draw_Chip() {
 		if(Cust.GetComponent<Cust>().energy >= 2) { // have at least 2 energy to draw
-			navi.useChip(-1);
+			navi.useChip(-1, 0);	// -1 is a non-chip-code that represents draw, 0 is grey
 		}
 	}
 

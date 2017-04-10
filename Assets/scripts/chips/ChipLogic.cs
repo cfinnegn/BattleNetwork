@@ -18,8 +18,9 @@ public abstract class ChipLogic {
 	public int elem;
 	public Sprite chip_sprite;	// any battle sprites/animation overlays that need to be loaded
 	public Sprite chipimg;  // the image on the face of the chip
+	public string chipText = "¯\\_(ツ)_/¯";
 
-	//public ChipData = new ChipData();
+	public float decay_rate = 1;	// for chips that can become active chips with time limited effects: default to -1dur/sec
 
 	public virtual void initColor(int color) {
 		if(color_opt.Contains(color)) {
@@ -30,7 +31,9 @@ public abstract class ChipLogic {
 		}
 	}
 
-	public abstract void activate(Navi n);
+	public abstract void activate(Navi navi);
 
-	public abstract void deactivate(Navi n);
+	public abstract void OnSyncedUpdate(Navi navi);
+
+	public abstract void deactivate(Navi navi);
 }

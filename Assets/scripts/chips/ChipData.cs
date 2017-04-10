@@ -14,7 +14,7 @@ public class ChipData {
 	public static int STONE = 6;
 	public static int RECOV = 7;
 	public static int BUFF = 8;
-	public static int AURA = 9;
+	public static int BODY = 9;
 	public static int SUMMON = 10;
 
 	public static Sprite[] elems = {
@@ -27,7 +27,7 @@ public class ChipData {
 		Resources.Load<Sprite>("Sprites/elem/Type_stone"),
 		Resources.Load<Sprite>("Sprites/elem/Type_recover"),
 		Resources.Load<Sprite>("Sprites/elem/Type_buff"),
-		Resources.Load<Sprite>("Sprites/elem/Type_aura"),
+		Resources.Load<Sprite>("Sprites/elem/Type_body"),
 		Resources.Load<Sprite>("Sprites/elem/Type_summon")
 	};
 

@@ -19,11 +19,15 @@ public class BC_Woodtower : ChipLogic {
 
 
 
-	public override void activate(Navi n) {
-		throw new NotImplementedException();
+	public override void activate(Navi navi) {
+		//throw new NotImplementedException();
 	}
 
-	public override void deactivate(Navi n) {
-		throw new NotImplementedException();
+	public override void deactivate(Navi navi) {
+		//throw new NotImplementedException();
+	}
+
+	public override void OnSyncedUpdate(Navi navi) {
+		//throw new NotImplementedException();
 	}
 }

@@ -131,7 +131,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277639234672924}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2bcf6a071359dd6448eb2812565086a4, type: 2}
   m_CullingMode: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: 0
+      _serializedValue: 4290672328704
     y:
       _serializedValue: 0
     z:
@@ -197,19 +197,53 @@ MonoBehaviour:
   localOwner:
     id: 0
     name: 
-  chipdatabase: {fileID: 0}
+  playerNumber: 2
   field: {fileID: 0}
   field_space: 0
+  row: 0
+  column: 0
   bust_charge: 0
   max_charge: 1.5
   charge_ring: {fileID: 0}
   bust_dmg: 1
   charge1_dmg: 10
   HP: 100
-  playerNumber: 2
+  cust_dispA: {fileID: 0}
+  cust_dispB: {fileID: 0}
+  chipdatabase: {fileID: 0}
   deck: {fileID: 1233071777399432, guid: 0f934f69ebf6cb045a6427b279fe0124, type: 2}
+  AC_dispA: {fileID: 0}
+  AC_dispB: {fileID: 0}
   combo_color: 0
+  combo_level: 0
   shot_handler: {fileID: 0}
+  idleSprite: {fileID: 21300000, guid: fd10ec169fe1e2044818e29e34088888, type: 3}
+  moveAnim: 0
+  moveSprite:
+  - {fileID: 21300000, guid: fd10ec169fe1e2044818e29e34088888, type: 3}
+  - {fileID: 21300002, guid: fd10ec169fe1e2044818e29e34088888, type: 3}
+  - {fileID: 21300004, guid: fd10ec169fe1e2044818e29e34088888, type: 3}
+  - {fileID: 21300006, guid: fd10ec169fe1e2044818e29e34088888, type: 3}
+  moveFR: 0.05
+  shootAnim: 0
+  shootSprite:
+  - {fileID: 21300000, guid: 12f487e8087e40340b5d150e725ec9c0, type: 3}
+  - {fileID: 21300002, guid: 12f487e8087e40340b5d150e725ec9c0, type: 3}
+  - {fileID: 21300004, guid: 12f487e8087e40340b5d150e725ec9c0, type: 3}
+  - {fileID: 21300006, guid: 12f487e8087e40340b5d150e725ec9c0, type: 3}
+  - {fileID: 21300008, guid: 12f487e8087e40340b5d150e725ec9c0, type: 3}
+  shootFR: 0.05
+  swordAnim: 0
+  swordSprite:
+  - {fileID: 21300000, guid: 68ca085f43195c84a936b71805832196, type: 3}
+  - {fileID: 21300002, guid: 68ca085f43195c84a936b71805832196, type: 3}
+  - {fileID: 21300004, guid: 68ca085f43195c84a936b71805832196, type: 3}
+  - {fileID: 21300006, guid: 68ca085f43195c84a936b71805832196, type: 3}
+  - {fileID: 21300008, guid: 68ca085f43195c84a936b71805832196, type: 3}
+  - {fileID: 21300010, guid: 68ca085f43195c84a936b71805832196, type: 3}
+  - {fileID: 21300012, guid: 68ca085f43195c84a936b71805832196, type: 3}
+  swordFR: 0.06
+  isIdle: 1
 --- !u!212 &212171665549001346
 SpriteRenderer:
   m_ObjectHideFlags: 1

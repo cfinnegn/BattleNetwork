@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NPC_Navi_Rand : MonoBehaviour {
+public class NPC_Navi_Rand : Navi {
 
-	public GameObject field;
-	public int field_space;
+	////public GameObject field;
+	////public int field_space;
 	public float move_ready;
 
-	public int HP = 100;
+	////public int HP = 100;
 	public GameObject health_disp;
-	public GameObject shot_handler;
+	////public GameObject shot_handler;
 	public GameObject shot_disp;
 
+	new void Awake() {
+		//override Navi.Awake() to prevent error
+	}
+
 	// Use this for initialization
-	void Start () {
+	public override void OnSyncedStart() {
 		field_space = 10;
 		move_ready = 0.5f;
 		HP = 100;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public override void OnSyncedUpdate () {
+		UpdateRowColumn();
 		transform.position = field.GetComponent<Field>().spaces[field_space].transform.position;
 		HP = (HP < 0) ? 0 : HP;	// no negative HP
 		health_disp.GetComponent<Text>().text = "[HP:" + HP + "] ";
@@ -53,29 +58,32 @@ public class NPC_Navi_Rand : MonoBehaviour {
 		}
 	}
 
-	public void moveUp() {
+	public new void moveUp() {
 		field_space = (field_space < 6) ? field_space : field_space - 6;
 	}
-	public void moveDown() {
+	public new void moveDown() {
 		field_space = (field_space > 11) ? field_space : field_space + 6;
 	}
-	public void moveLeft() {
+	public new void moveLeft() {
 		// use mod to check if 1 forward of Player front row
-		field_space = (field_space % 6 == field.GetComponent<Field>().front_row+1) ? field_space : field_space - 1;
+		field_space = (field_space % 6 == field.GetComponent<Field>().front_row + 1) ? field_space : field_space - 1;
 	}
-	public void moveRight() {
+	public new void moveRight() {
 		// use mod to check for back row
-		field_space = (field_space% 6 == 5) ? field_space : field_space + 1;
+		field_space = (field_space % 6 == 5) ? field_space : field_space + 1;
 	}
 	public void shoot() {
-		GameObject pew = Instantiate(shot_disp, transform);
-		pew.transform.localScale = new Vector3 (1, 1, 1);
-		pew.transform.position = new Vector3 (transform.position.x - 1.3f, transform.position.y + 3.3f, transform.position.z);
-		Destroy(pew, 0.5f);
-		shot_handler.GetComponent<Shot_Handler>().check_bust(5, 2);
+		if(shot_handler.GetComponent<Shot_Handler>().playerA != null) {	// ensure the player is loaded before shooting
+			GameObject pew = Instantiate(shot_disp, transform);
+			pew.transform.localScale = new Vector3(1, 1, 1);
+			pew.transform.position = new Vector3(transform.position.x - 1.3f, transform.position.y + 3.3f, transform.position.z);
+			Destroy(pew, 0.5f);
+
+			shot_handler.GetComponent<Shot_Handler>().check_bust(5, 2, 0);
+		}
 	}
 
-	public void hit(int dmg) {
-		HP -= dmg;
-	}
+	//public void hit(int dmg) {
+	//	HP -= dmg;
+	//}
 }

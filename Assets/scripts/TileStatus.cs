@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TileStatus : MonoBehaviour {
 	public int owner = 1;
+	public int row = 1;
+	public int column = 1;
 	public bool cracked = false;
 	public bool broken = false;
 	public bool occupied = false;

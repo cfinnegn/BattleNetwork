@@ -19,11 +19,36 @@ public class BC_Longsword : ChipLogic {
 
 
 	public override void activate(Navi navi) {
-		throw new NotImplementedException();
+		navi.swordAnim = true;
+
+		// If being activated by me
+		if(navi.localOwner.Id == navi.owner.Id){
+			// new method of grabbing navi reference thorugh shot handler
+			Navi enemyNavi = navi.shot_handler.GetComponent<Shot_Handler>().playerB.GetComponent<Navi>();
+			if (navi.row == enemyNavi.row) {
+				if (enemyNavi.field_space - navi.field_space <= 2) {
+					enemyNavi.hit (power, 2);
+				}
+			}
+		}
+
+		// If being activated by enemy
+		if(navi.localOwner.Id != navi.owner.Id){
+			// new method of grabbing navi reference thorugh shot handler
+			Navi myNavi = navi.shot_handler.GetComponent<Shot_Handler>().playerA.GetComponent<Navi>();
+			if (navi.row == myNavi.row) {
+				if (navi.field_space - myNavi.field_space<= 2) {
+					myNavi.hit (power, 2);
+				}
+			}
+		}
 	}
 
 	public override void deactivate(Navi navi) {
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
+	public override void OnSyncedUpdate(Navi navi) {
+		//throw new NotImplementedException();
+	}
 }

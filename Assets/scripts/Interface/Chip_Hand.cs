@@ -27,16 +27,23 @@ public class Chip_Hand : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		int i = 0;
+		Navi n = navi.GetComponent<Navi>();
 		while(i < held) {
-			if(chips[i].GetComponent<BattleChip>().color_code == navi.GetComponent<Navi>().combo_color) { // color combo reduces cost by 1
-				if(chips[i].GetComponent<BattleChip>().color_code != 0) {  // grey chips can't combo
-					chips[i].GetComponent<BattleChip>().cost = chips[i].GetComponent<BattleChip>().base_cost - 1;
-					chips[i].GetComponent<BattleChip>().cost_icon.GetComponent<Outline>().enabled = true;	// outline helps combo chips stand out
+			BattleChip bc = chips[i].GetComponent<BattleChip>();
+			if((bc.color_code == n.combo_color)) { // chip in combo
+				if((n.combo_color != ChipData.WHITE) && (n.combo_color != ChipData.GREY)) {	// white and grey don't combo
+					if(n.combo_level <= 2) {
+						bc.cost = (bc.base_cost - 1 >= 0) ? bc.base_cost - 1 : 0;  // no negative cost
+					}
+					else {  // after 3rd chip in combo, discount become 2
+						bc.cost = (bc.base_cost - 2 >= 0) ? bc.base_cost - 2 : 0;  // no negative cost
+					}
+					bc.cost_icon.GetComponent<Outline>().enabled = true;
 				}
 			}
 			else {	// reset all non-combo-color chips back to base cost
-				chips[i].GetComponent<BattleChip>().cost = chips[i].GetComponent<BattleChip>().base_cost;
-				chips[i].GetComponent<BattleChip>().cost_icon.GetComponent<Outline>().enabled = false;
+				bc.cost = bc.base_cost;
+				bc.cost_icon.GetComponent<Outline>().enabled = false;
 			}
 			i++;
 		}
@@ -48,11 +55,9 @@ public class Chip_Hand : MonoBehaviour {
 			chips[held].GetComponent<Transform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
 			DeckSlot chdata = navi.GetComponent<Navi>().deck.GetComponent<Deck>().Draw_chip();
 			chips[held].GetComponent<BattleChip>().RecieveData(chdata);
-			Debug.Log("Data Recieved");
 			chips[held].GetComponent<BattleChip>().index = held;
 			held++;
 			hand_num.GetComponent<Text>().text = "x" + held;
-			navi.GetComponent<Navi>().combo_color = 0;	// drawing resets chip combo
 			return true;
 		}
 		return false;
@@ -60,10 +65,7 @@ public class Chip_Hand : MonoBehaviour {
 
 	public bool chip_removed(int index, int cost) {
 		if (cust.GetComponent<Cust>().energy >= cost) { // have enough energy to play chip
-			//cust.GetComponent<Cust>().spend((float)chips[index].GetComponent<BattleChip>().cost); // pay cost
-			if(chips[index].GetComponent<BattleChip>().color_code != 1) {   // update combo color when not white chip
-				navi.GetComponent<Navi>().combo_color = chips[index].GetComponent<BattleChip>().color_code;
-			}
+
 			Destroy(chips[index]);	// chip cannot be referenced beyond this point
 
 			// reorder hand

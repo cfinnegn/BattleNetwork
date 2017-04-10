@@ -19,12 +19,15 @@ public class BC_MCannon : ChipLogic {
 
 
 	public override void activate(Navi navi) {
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
 	public override void deactivate(Navi navi) {
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
+	public override void OnSyncedUpdate(Navi navi) {
+		//throw new NotImplementedException();
+	}
 }
 
