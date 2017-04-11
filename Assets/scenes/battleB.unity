@@ -769,12 +769,24 @@ MonoBehaviour:
   combo_level: 0
   shot_handler: {fileID: 0}
   idleSprite: {fileID: 0}
+  moveFR: 0.05
   moveAnim: 0
   moveSprite: []
+  stunFR: 0.06
+  stunAnim: 0
+  stunSprite: []
+  shootFR: 0.04
   shootAnim: 0
   shootSprite: []
+  swordFR: 0.06
   swordAnim: 0
   swordSprite: []
+  throwFR: 0.07
+  throwAnim: 0
+  throwSprite: []
+  castFR: 0.07
+  castAnim: 0
+  castSprite: []
   isIdle: 1
   move_ready: 0
   health_disp: {fileID: 478883421}
@@ -7397,7 +7409,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 71.15068, y: 0}
+  m_AnchoredPosition: {x: 71.27189, y: 0}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1365979053
@@ -12164,7 +12176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 71.15068, y: 0}
+  m_AnchoredPosition: {x: 71.27189, y: 0}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046787782

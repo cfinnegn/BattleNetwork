@@ -218,13 +218,21 @@ MonoBehaviour:
   combo_level: 0
   shot_handler: {fileID: 0}
   idleSprite: {fileID: 21300000, guid: fd10ec169fe1e2044818e29e34088888, type: 3}
+  moveFR: 0.05
   moveAnim: 0
   moveSprite:
   - {fileID: 21300000, guid: fd10ec169fe1e2044818e29e34088888, type: 3}
   - {fileID: 21300002, guid: fd10ec169fe1e2044818e29e34088888, type: 3}
   - {fileID: 21300004, guid: fd10ec169fe1e2044818e29e34088888, type: 3}
   - {fileID: 21300006, guid: fd10ec169fe1e2044818e29e34088888, type: 3}
-  moveFR: 0.05
+  stunFR: 0.06
+  stunAnim: 0
+  stunSprite:
+  - {fileID: 21300000, guid: a33281b972e08ff4ea842c9981251cfc, type: 3}
+  - {fileID: 21300002, guid: a33281b972e08ff4ea842c9981251cfc, type: 3}
+  - {fileID: 21300004, guid: a33281b972e08ff4ea842c9981251cfc, type: 3}
+  - {fileID: 21300006, guid: a33281b972e08ff4ea842c9981251cfc, type: 3}
+  shootFR: 0.04
   shootAnim: 0
   shootSprite:
   - {fileID: 21300000, guid: 12f487e8087e40340b5d150e725ec9c0, type: 3}
@@ -232,7 +240,7 @@ MonoBehaviour:
   - {fileID: 21300004, guid: 12f487e8087e40340b5d150e725ec9c0, type: 3}
   - {fileID: 21300006, guid: 12f487e8087e40340b5d150e725ec9c0, type: 3}
   - {fileID: 21300008, guid: 12f487e8087e40340b5d150e725ec9c0, type: 3}
-  shootFR: 0.05
+  swordFR: 0.06
   swordAnim: 0
   swordSprite:
   - {fileID: 21300000, guid: 68ca085f43195c84a936b71805832196, type: 3}
@@ -242,7 +250,21 @@ MonoBehaviour:
   - {fileID: 21300008, guid: 68ca085f43195c84a936b71805832196, type: 3}
   - {fileID: 21300010, guid: 68ca085f43195c84a936b71805832196, type: 3}
   - {fileID: 21300012, guid: 68ca085f43195c84a936b71805832196, type: 3}
-  swordFR: 0.06
+  throwFR: 0.07
+  throwAnim: 0
+  throwSprite:
+  - {fileID: 21300000, guid: f75de9b8b008fd447be86f11f0671078, type: 3}
+  - {fileID: 21300002, guid: f75de9b8b008fd447be86f11f0671078, type: 3}
+  - {fileID: 21300004, guid: f75de9b8b008fd447be86f11f0671078, type: 3}
+  - {fileID: 21300006, guid: f75de9b8b008fd447be86f11f0671078, type: 3}
+  - {fileID: 21300008, guid: f75de9b8b008fd447be86f11f0671078, type: 3}
+  castFR: 0.07
+  castAnim: 0
+  castSprite:
+  - {fileID: 21300000, guid: 9ea55d4751503f54aaf01abb0d60bdee, type: 3}
+  - {fileID: 21300002, guid: 9ea55d4751503f54aaf01abb0d60bdee, type: 3}
+  - {fileID: 21300004, guid: 9ea55d4751503f54aaf01abb0d60bdee, type: 3}
+  - {fileID: 21300006, guid: 9ea55d4751503f54aaf01abb0d60bdee, type: 3}
   isIdle: 1
 --- !u!212 &212171665549001346
 SpriteRenderer:

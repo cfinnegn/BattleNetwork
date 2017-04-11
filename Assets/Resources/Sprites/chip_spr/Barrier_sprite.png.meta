@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: a33281b972e08ff4ea842c9981251cfc
-timeCreated: 1491861707
+guid: 4a35b2f933527f448b19a45280a5c85a
+timeCreated: 1491862832
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: MegaStun_0
-    21300002: MegaStun_1
-    21300004: MegaStun_2
-    21300006: MegaStun_3
+    21300000: Barrier_sprite_0
+    21300002: Barrier_sprite_1
+    21300004: Barrier_sprite_2
+    21300006: Barrier_sprite_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -82,54 +82,54 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MegaStun_0
+      name: Barrier_sprite_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 11
-        width: 34
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.28}
+        x: 1
+        y: 6
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MegaStun_1
+      name: Barrier_sprite_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 11
-        width: 34
-        height: 50
-      alignment: 9
-      pivot: {x: 0.57, y: 0.28}
+        x: 62
+        y: 5
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MegaStun_2
+      name: Barrier_sprite_2
       rect:
         serializedVersion: 2
-        x: 83
-        y: 11
-        width: 34
-        height: 50
-      alignment: 9
-      pivot: {x: 0.55, y: 0.28}
+        x: 125
+        y: 4
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MegaStun_3
+      name: Barrier_sprite_3
       rect:
         serializedVersion: 2
-        x: 118
-        y: 11
-        width: 34
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.28}
+        x: 190
+        y: 4
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

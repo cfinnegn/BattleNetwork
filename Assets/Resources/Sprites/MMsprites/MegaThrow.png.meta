@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: f75de9b8b008fd447be86f11f0671078
-timeCreated: 1491857991
+timeCreated: 1491861990
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: MegaThrow_0
+    21300002: MegaThrow_1
+    21300004: MegaThrow_2
+    21300006: MegaThrow_3
+    21300008: MegaThrow_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,13 +39,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 30
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -58,9 +63,90 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: MegaThrow_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4
+        width: 38
+        height: 52
+      alignment: 9
+      pivot: {x: 0.55, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MegaThrow_1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 4
+        width: 44
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MegaThrow_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 4
+        width: 40
+        height: 52
+      alignment: 9
+      pivot: {x: 0.46, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MegaThrow_3
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 4
+        width: 54
+        height: 52
+      alignment: 9
+      pivot: {x: 0.35, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MegaThrow_4
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 4
+        width: 51
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

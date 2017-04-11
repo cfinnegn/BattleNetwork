@@ -15,6 +15,8 @@ public class BC_Cannon : ChipLogic {
 		this.elem = ChipData.NORMAL;  // null elem
 		this.power = 40;
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Cannon");
+		this.chip_sprite = Resources.LoadAll<Sprite>("Sprites/Chip_spr/Cannon");
+		this.chipFR = 0.12f;
 	}
 
 

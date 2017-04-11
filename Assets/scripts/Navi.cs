@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TrueSync;
-
+using System;
 
 public class Navi : TrueSyncBehaviour {
 	const byte INPUT_DIRECTION = 0;
@@ -57,7 +57,6 @@ public class Navi : TrueSyncBehaviour {
 	// child(10) is energy # display
 	public GameObject cust_dispA;
 	public GameObject cust_dispB;
-
 	
 	public ChipDatabase chipdatabase;
 	public GameObject deck;
@@ -65,6 +64,7 @@ public class Navi : TrueSyncBehaviour {
 	public GameObject AC_dispA;
 	public GameObject AC_dispB;
 
+	public List<ChipLogic> running_chips = new List<ChipLogic>();	// activated chips with effects that need updating
 
 	public int combo_color = 0; // color of last chip used
 	public int combo_level = 0;
@@ -74,37 +74,43 @@ public class Navi : TrueSyncBehaviour {
 	// Animations
 	SpriteRenderer sr;
 	public Sprite idleSprite;
-	//public readonly int idleAnim = 0;
+	public float moveFR = 0.05f;
 	public bool moveAnim = false;
 	public Sprite[] moveSprite;
-	//public readonly int moveAnim = 1;
-	public float moveFR = 0.05f;
+	public float stunFR = 0.06f;
+	public bool stunAnim = false;
+	public Sprite[] stunSprite;
+	public float shootFR = 0.04f;
 	public bool shootAnim = false;
 	public Sprite[] shootSprite;
-	//public readonly int shootAnim = 2;
-	public float shootFR = 0.05f;
+	public float swordFR = 0.06f;
 	public bool swordAnim = false;
 	public Sprite[] swordSprite;
-	//public readonly int swordAnim = 3;
-	public float swordFR = 0.06f;
-	//public int animState = 0;
-	FP currentFrame;
+	public float throwFR = 0.07f;
+	public bool throwAnim = false;
+	public Sprite[] throwSprite;
+	public float castFR = 0.07f;
+	public bool castAnim = false;
+	public Sprite[] castSprite;
+	
+	int currentFrame;
 	FP frameTimer;
 
 	public bool isIdle = true; // If no animations are playing
 
-	public void PlayAnimation(FP frame){
-		if (!moveAnim && !shootAnim && !swordAnim) { // If Idle
+	public void PlayAnimation(int frame){
+		if (!moveAnim && !stunAnim && !shootAnim && !swordAnim && !throwAnim && !castAnim) { // If Idle
 			sr.sprite = idleSprite;
 			isIdle = true;
 		} else
 			isIdle = false;
 		
-		// Move Animation
-		if (frameTimer <= 0) {
-			if (moveAnim) {
+		
+		if (frameTimer <= 0) {	// time to advance animation
+			// Move Animation
+			if(moveAnim) {
 				if (frame < moveSprite.Length) {
-					sr.sprite = moveSprite[frame.AsInt ()];
+					sr.sprite = moveSprite[frame];
 					frameTimer = moveFR; // time between frames
 					currentFrame += 1;
 				} else {
@@ -112,33 +118,67 @@ public class Navi : TrueSyncBehaviour {
 					moveAnim = false;
 				}
 			}
-		}
-		// Buster (Shoot) Animation
-		if (frameTimer <= 0) {
-			if (shootAnim) {
-				if (frame < shootSprite.Length) {
-					sr.sprite = shootSprite[frame.AsInt ()];
+			// Stun Animation
+			if(stunAnim) {
+				if(frame < stunSprite.Length) {
+					sr.sprite = stunSprite[frame];
+					frameTimer = stunFR; // time between frames
+					currentFrame += 1;
+				}
+				else {
+					currentFrame = 0;
+					stunAnim = false;
+				}
+			}
+			// Buster (Shoot) Animation
+			if(shootAnim) {
+				if(frame < shootSprite.Length) {
+					sr.sprite = shootSprite[frame];
 					frameTimer = shootFR; // time between frames
 					currentFrame += 1;
-				} else {
+				}
+				else {
 					currentFrame = 0;
 					shootAnim = false;
 				}
 			}
-		}
-		// Sword Animation
-		if (frameTimer <= 0) {
-			if (swordAnim) {
-				if (frame < swordSprite.Length) {
-					sr.sprite = swordSprite[frame.AsInt ()];
+			// Sword Animation
+			if(swordAnim) {
+				if(frame < swordSprite.Length) {
+					sr.sprite = swordSprite[frame];
 					frameTimer = swordFR; // time between frames
 					currentFrame += 1;
-				} else {
+				}
+				else {
 					currentFrame = 0;
 					swordAnim = false;
 				}
 			}
-		}
+			// Throw Animation
+			if(throwAnim) {
+				if(frame < throwSprite.Length) {
+					sr.sprite = throwSprite[frame];
+					frameTimer = throwFR; // time between frames
+					currentFrame += 1;
+				}
+				else {
+					currentFrame = 0;
+					throwAnim = false;
+				}
+			}
+			// Cast Animation
+			if(castAnim) {
+				if(frame < castSprite.Length) {
+					sr.sprite = castSprite[frame];
+					frameTimer = castFR; // time between frames
+					currentFrame += 1;
+				}
+				else {
+					currentFrame = 0;
+					castAnim = false;
+				}
+			}
+		}	// end anim change block
 	}
 
 	void Awake(){
@@ -286,8 +326,13 @@ public class Navi : TrueSyncBehaviour {
 
 		UpdateRowColumn ();
 
+		// active chip
 		if(active_chip != null) {
 			active_chip.OnSyncedUpdate(this);
+		}
+		// activated chips in need of updating
+		foreach(ChipLogic c in running_chips.ToArray()) {	// use toArray() to make a copy of the list to avoid enumeration edit error
+			c.OnSyncedUpdate(this);
 		}
 
 		chipGCD -= TrueSyncManager.DeltaTime;
@@ -484,7 +529,19 @@ public class Navi : TrueSyncBehaviour {
 	}
 	public void hit(int dmg, int stun) {
 		// stun: 0 = none, 1 = light_stagger, 2 = stagger, 3 = stun, 4 = sp_stun
+		if((active_chip != null) && (active_chip.hit_eff)) {
+			try {
+				active_chip.onHit(this, dmg, stun);
+				return;	// hit handling passed off to active chip
+			}
+			catch (NotImplementedException){
+				Debug.Log("Chip: " + active_chip.chipName + " flagged with hit_eff, but has no onHit() method");
+			}
+		}
 		HP -= dmg;
+		if(stun == 1) {
+			stunAnim = true;
+		}
 	}
 
 	public void useChip(int chipId, int chipColor) {

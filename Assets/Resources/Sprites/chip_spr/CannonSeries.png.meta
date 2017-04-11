@@ -1,0 +1,436 @@
+fileFormatVersion: 2
+guid: 8d954913e574ff74e80c3e8e2e216d71
+timeCreated: 1491878490
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Cannon_0
+    21300002: Cannon_1
+    21300004: Cannon_2
+    21300006: Cannon_3
+    21300008: Cannon_4
+    21300010: Cannon_5
+    21300012: Cannon_6
+    21300014: Cannon_7
+    21300016: CannonSeries_8
+    21300018: CannonSeries_9
+    21300020: CannonSeries_10
+    21300022: CannonSeries_11
+    21300024: CannonSeries_12
+    21300026: CannonSeries_13
+    21300028: CannonSeries_14
+    21300030: CannonSeries_15
+    21300032: CannonSeries_16
+    21300034: CannonSeries_17
+    21300036: CannonSeries_18
+    21300038: CannonSeries_19
+    21300040: CannonSeries_20
+    21300042: CannonSeries_21
+    21300044: CannonSeries_22
+    21300046: CannonSeries_23
+    21300048: Hi_Cannon_0
+    21300050: Hi_Cannon_1
+    21300052: Hi_Cannon_2
+    21300054: Hi_Cannon_3
+    21300056: Hi_Cannon_4
+    21300058: Hi_Cannon_5
+    21300060: Hi_Cannon_6
+    21300062: Hi_Cannon_7
+    21300064: MCannon_0
+    21300066: MCannon_1
+    21300068: MCannon_3
+    21300070: MCannon_4
+    21300072: MCannon_5
+    21300074: MCannon_6
+    21300076: MCannon_7
+    21300078: MCannon_8
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 30
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cannon_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 141
+        width: 23
+        height: 16
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cannon_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 141
+        width: 23
+        height: 16
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cannon_2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 141
+        width: 23
+        height: 16
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cannon_3
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 140
+        width: 36
+        height: 18
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cannon_4
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 132
+        width: 45
+        height: 34
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cannon_5
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 129
+        width: 56
+        height: 40
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cannon_6
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 122
+        width: 60
+        height: 54
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cannon_7
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 120
+        width: 61
+        height: 58
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hi_Cannon_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 82
+        width: 23
+        height: 16
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hi_Cannon_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 82
+        width: 23
+        height: 16
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hi_Cannon_2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 82
+        width: 23
+        height: 16
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hi_Cannon_3
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 81
+        width: 36
+        height: 18
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hi_Cannon_4
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 73
+        width: 45
+        height: 34
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hi_Cannon_5
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 70
+        width: 56
+        height: 40
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hi_Cannon_6
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 63
+        width: 60
+        height: 54
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hi_Cannon_7
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 61
+        width: 61
+        height: 58
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MCannon_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 23
+        width: 23
+        height: 16
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MCannon_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 23
+        width: 23
+        height: 16
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MCannon_3
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 23
+        width: 23
+        height: 16
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MCannon_4
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 22
+        width: 36
+        height: 18
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MCannon_5
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 14
+        width: 45
+        height: 34
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MCannon_6
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 11
+        width: 56
+        height: 40
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MCannon_7
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 4
+        width: 60
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MCannon_8
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 2
+        width: 61
+        height: 58
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

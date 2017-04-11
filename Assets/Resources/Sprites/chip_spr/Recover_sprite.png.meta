@@ -1,13 +1,17 @@
 fileFormatVersion: 2
-guid: a33281b972e08ff4ea842c9981251cfc
-timeCreated: 1491861707
+guid: a4eda80b2f4ac454abf5d44b8ebfcd8c
+timeCreated: 1491873647
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: MegaStun_0
-    21300002: MegaStun_1
-    21300004: MegaStun_2
-    21300006: MegaStun_3
+    21300000: Recover_ sprite_0
+    21300002: Recover_ sprite_1
+    21300004: Recover_ sprite_2
+    21300006: Recover_ sprite_3
+    21300008: Recover_ sprite_4
+    21300010: Recover_ sprite_5
+    21300012: Recover_ sprite_6
+    21300014: Recover_ sprite_7
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -82,54 +86,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MegaStun_0
+      name: Recover_ sprite_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 11
-        width: 34
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.28}
+        x: 6
+        y: 0
+        width: 31
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MegaStun_1
+      name: Recover_ sprite_1
       rect:
         serializedVersion: 2
         x: 48
-        y: 11
-        width: 34
-        height: 50
-      alignment: 9
-      pivot: {x: 0.57, y: 0.28}
+        y: 0
+        width: 31
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MegaStun_2
+      name: Recover_ sprite_2
       rect:
         serializedVersion: 2
-        x: 83
-        y: 11
-        width: 34
-        height: 50
-      alignment: 9
-      pivot: {x: 0.55, y: 0.28}
+        x: 91
+        y: 0
+        width: 31
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MegaStun_3
+      name: Recover_ sprite_3
       rect:
         serializedVersion: 2
-        x: 118
-        y: 11
-        width: 34
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.28}
+        x: 135
+        y: 0
+        width: 31
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Recover_ sprite_4
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 0
+        width: 31
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Recover_ sprite_5
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 0
+        width: 31
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Recover_ sprite_6
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 0
+        width: 31
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Recover_ sprite_7
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 0
+        width: 31
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

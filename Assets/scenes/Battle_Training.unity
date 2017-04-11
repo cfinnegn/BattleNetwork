@@ -669,6 +669,8 @@ MonoBehaviour:
   bust_dmg: 1
   charge1_dmg: 10
   HP: 100
+  cust_dispA: {fileID: 0}
+  cust_dispB: {fileID: 0}
   chipdatabase: {fileID: 0}
   deck: {fileID: 0}
   AC_dispA: {fileID: 0}
@@ -676,6 +678,26 @@ MonoBehaviour:
   combo_color: 0
   combo_level: 0
   shot_handler: {fileID: 1925764199}
+  idleSprite: {fileID: 0}
+  moveFR: 0.05
+  moveAnim: 0
+  moveSprite: []
+  stunFR: 0.06
+  stunAnim: 0
+  stunSprite: []
+  shootFR: 0.04
+  shootAnim: 0
+  shootSprite: []
+  swordFR: 0.06
+  swordAnim: 0
+  swordSprite: []
+  throwFR: 0.06
+  throwAnim: 0
+  throwSprite: []
+  castFR: 0.06
+  castAnim: 0
+  castSprite: []
+  isIdle: 1
   move_ready: 0
   health_disp: {fileID: 478883421}
   shot_disp: {fileID: 1266437722992894, guid: e9ac33af588d24e4fb1aed5a89922aa6, type: 2}
