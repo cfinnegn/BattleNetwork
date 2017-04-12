@@ -18,7 +18,7 @@ public class BC_Recover50 : ChipLogic {
 		this.power = 50;
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Recover50");
 		this.chip_sprite = Resources.LoadAll<Sprite>("Sprites/Chip_spr/Recover_sprite");
-		this.chipFR = 0.12f;
+		this.chipFR = 0.04f;
 		this.chipText = "Recover 50 HP.";
 	}
 
@@ -29,8 +29,9 @@ public class BC_Recover50 : ChipLogic {
 		// setup sprite renderer for animation
 		chip_renderObj = new GameObject();
 		chip_renderObj.transform.SetParent(navi.transform, false);
-		chip_renderObj.transform.position += new Vector3(0f, 0.3f, 0f); // offset sprite up to match navi
+		chip_renderObj.transform.position += navi.body_offset; // offset sprite up to match navi
 		chip_renderObj.AddComponent<SpriteRenderer>();
+		chip_anim_frame = 0;
 		chip_renderObj.GetComponent<SpriteRenderer>().sprite = chip_sprite[chip_anim_frame];
 		chip_renderObj.GetComponent<SpriteRenderer>().sortingOrder = 4; //	sorted just below barrier effects
 		chip_renderObj.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.9f);
@@ -39,7 +40,8 @@ public class BC_Recover50 : ChipLogic {
 	}
 
 	public override void deactivate(Navi navi) {
-		//throw new NotImplementedException();
+		UnityEngine.Object.Destroy(chip_renderObj); // removes the chip's sprite
+		navi.running_chips.Remove(this);    // removes self from running chips list to no longer be called on synced update
 	}
 
 	public override void OnSyncedUpdate(Navi navi) {
@@ -53,6 +55,7 @@ public class BC_Recover50 : ChipLogic {
 		}
 		frametimer -= Time.deltaTime;
 		if(frametimer <= 0) {
+			frametimer = chipFR;
 			if(chip_anim_frame < chip_sprite.Length - 1) {  // advance to next frame if not at end
 				chip_anim_frame++;
 				chip_renderObj.GetComponent<SpriteRenderer>().sprite = chip_sprite[chip_anim_frame];
@@ -62,7 +65,7 @@ public class BC_Recover50 : ChipLogic {
 					navi.HP += power;
 					power = 0;
 				}
-				navi.running_chips.Remove(this);    // removes self from running chips list to no longer be called on synced update
+				deactivate(navi);
 			}
 		}
 	}

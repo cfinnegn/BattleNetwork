@@ -1,17 +1,17 @@
 fileFormatVersion: 2
 guid: 8d954913e574ff74e80c3e8e2e216d71
-timeCreated: 1491878490
+timeCreated: 1491950318
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Cannon_0
+    21300000: Cannon_1
     21300002: Cannon_1
-    21300004: Cannon_2
-    21300006: Cannon_3
+    21300004: Cannon_1
+    21300006: Cannon_2
     21300008: Cannon_4
-    21300010: Cannon_5
-    21300012: Cannon_6
-    21300014: Cannon_7
+    21300010: Cannon_3
+    21300012: Cannon_4
+    21300014: Cannon_5
     21300016: CannonSeries_8
     21300018: CannonSeries_9
     21300020: CannonSeries_10
@@ -28,22 +28,27 @@ TextureImporter:
     21300042: CannonSeries_21
     21300044: CannonSeries_22
     21300046: CannonSeries_23
-    21300048: Hi_Cannon_0
-    21300050: Hi_Cannon_1
-    21300052: Hi_Cannon_2
-    21300054: Hi_Cannon_3
-    21300056: Hi_Cannon_4
-    21300058: Hi_Cannon_5
-    21300060: Hi_Cannon_6
-    21300062: Hi_Cannon_7
-    21300064: MCannon_0
+    21300048: HiCannon_1
+    21300050: HiCannon_1
+    21300052: HiCannon_1
+    21300054: HiCannon_2
+    21300056: HiCannon_4
+    21300058: HiCannon_3
+    21300060: HiCannon_4
+    21300062: HiCannon_5
+    21300064: MCannon_1
     21300066: MCannon_1
-    21300068: MCannon_3
-    21300070: MCannon_4
-    21300072: MCannon_5
-    21300074: MCannon_6
-    21300076: MCannon_7
-    21300078: MCannon_8
+    21300068: MCannon_0
+    21300070: MCannon_1
+    21300072: MCannon_3
+    21300074: MCannon_2
+    21300076: MCannon_3
+    21300078: MCannon_4
+    21300080: MCannon_5
+    21300082: CannonSeries_0
+    21300084: HiCannon_0
+    21300086: CannonSeries_2
+    21300088: Cannon_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -118,23 +123,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cannon_0
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 141
-        width: 23
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: Cannon_1
       rect:
         serializedVersion: 2
-        x: 38
+        x: 73
         y: 141
         width: 23
         height: 16
@@ -147,19 +139,6 @@ TextureImporter:
       name: Cannon_2
       rect:
         serializedVersion: 2
-        x: 73
-        y: 141
-        width: 23
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Cannon_3
-      rect:
-        serializedVersion: 2
         x: 111
         y: 140
         width: 36
@@ -170,20 +149,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Cannon_4
-      rect:
-        serializedVersion: 2
-        x: 162
-        y: 132
-        width: 45
-        height: 34
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Cannon_5
+      name: Cannon_3
       rect:
         serializedVersion: 2
         x: 218
@@ -196,7 +162,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Cannon_6
+      name: Cannon_4
       rect:
         serializedVersion: 2
         x: 287
@@ -209,7 +175,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Cannon_7
+      name: Cannon_5
       rect:
         serializedVersion: 2
         x: 358
@@ -222,33 +188,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Hi_Cannon_0
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 82
-        width: 23
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Hi_Cannon_1
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 82
-        width: 23
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Hi_Cannon_2
+      name: HiCannon_1
       rect:
         serializedVersion: 2
         x: 73
@@ -261,7 +201,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Hi_Cannon_3
+      name: HiCannon_2
       rect:
         serializedVersion: 2
         x: 111
@@ -274,20 +214,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Hi_Cannon_4
-      rect:
-        serializedVersion: 2
-        x: 162
-        y: 73
-        width: 45
-        height: 34
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Hi_Cannon_5
+      name: HiCannon_3
       rect:
         serializedVersion: 2
         x: 218
@@ -300,7 +227,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Hi_Cannon_6
+      name: HiCannon_4
       rect:
         serializedVersion: 2
         x: 287
@@ -313,7 +240,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Hi_Cannon_7
+      name: HiCannon_5
       rect:
         serializedVersion: 2
         x: 358
@@ -326,33 +253,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MCannon_0
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 23
-        width: 23
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: MCannon_1
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 23
-        width: 23
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: MCannon_3
       rect:
         serializedVersion: 2
         x: 73
@@ -365,7 +266,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MCannon_4
+      name: MCannon_2
       rect:
         serializedVersion: 2
         x: 111
@@ -378,20 +279,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MCannon_5
-      rect:
-        serializedVersion: 2
-        x: 162
-        y: 14
-        width: 45
-        height: 34
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: MCannon_6
+      name: MCannon_3
       rect:
         serializedVersion: 2
         x: 218
@@ -404,7 +292,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MCannon_7
+      name: MCannon_4
       rect:
         serializedVersion: 2
         x: 287
@@ -417,7 +305,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MCannon_8
+      name: MCannon_5
       rect:
         serializedVersion: 2
         x: 358
@@ -426,6 +314,45 @@ TextureImporter:
         height: 58
       alignment: 4
       pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cannon_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 141
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HiCannon_0
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 82
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MCannon_0
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 23
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

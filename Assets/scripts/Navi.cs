@@ -32,6 +32,7 @@ public class Navi : TrueSyncBehaviour {
 
 	public int playerNumber = 1;
 
+	// field
 	public GameObject field;
 	public int field_space;	// location of navi on field
 	public int row;
@@ -58,13 +59,13 @@ public class Navi : TrueSyncBehaviour {
 	public GameObject cust_dispA;
 	public GameObject cust_dispB;
 	
+	// chipdb/deck/activechip(s)
 	public ChipDatabase chipdatabase;
 	public GameObject deck;
 	public ChipLogic active_chip;
+	public List<ChipLogic> running_chips = new List<ChipLogic>();	// activated chips with effects that need updating
 	public GameObject AC_dispA;
 	public GameObject AC_dispB;
-
-	public List<ChipLogic> running_chips = new List<ChipLogic>();	// activated chips with effects that need updating
 
 	public int combo_color = 0; // color of last chip used
 	public int combo_level = 0;
@@ -92,11 +93,38 @@ public class Navi : TrueSyncBehaviour {
 	public float castFR = 0.07f;
 	public bool castAnim = false;
 	public Sprite[] castSprite;
-	
+
 	int currentFrame;
 	FP frameTimer;
+	public bool rate_controlled = false;// set to true in ChipLogic if chip's animation controls changing of Navi sprite frames
 
 	public bool isIdle = true; // If no animations are playing
+
+	public GameObject eff_renderObj;
+
+	// offset vectors for overlyaing chip animations
+	public Vector3 buster_offset = new Vector3(1.1f, 1.25f, 1.0f);
+	public Vector3 body_offset = new Vector3(0.0f, 0.3f, 0.0f);
+
+	public void controlledSpriteSet(int frame) {	// method that allows chips to override and control animation
+		if(rate_controlled) {   // only execute logic when chip is controlling animation rate
+			if(stunAnim) {
+				sr.sprite = stunSprite[(frame < stunSprite.Length) ? frame : 0];
+			}
+			if(shootAnim) {
+				sr.sprite = shootSprite[(frame < shootSprite.Length) ? frame : 0];
+			}
+			if(swordAnim) {
+				sr.sprite = swordSprite[(frame < swordSprite.Length) ? frame : 0];
+			}
+			if(throwAnim) {
+				sr.sprite = throwSprite[(frame < throwSprite.Length) ? frame : 0];
+			}
+			if(castAnim) {
+				sr.sprite = castSprite[(frame < castSprite.Length) ? frame : 0];
+			}
+		}
+	}
 
 	public void PlayAnimation(int frame){
 		if (!moveAnim && !stunAnim && !shootAnim && !swordAnim && !throwAnim && !castAnim) { // If Idle
@@ -106,7 +134,7 @@ public class Navi : TrueSyncBehaviour {
 			isIdle = false;
 		
 		
-		if (frameTimer <= 0) {	// time to advance animation
+		if ((frameTimer <= 0) && !rate_controlled) {	// time to advance animation, not controlled by chip
 			// Move Animation
 			if(moveAnim) {
 				if (frame < moveSprite.Length) {
@@ -178,7 +206,10 @@ public class Navi : TrueSyncBehaviour {
 					castAnim = false;
 				}
 			}
-		}	// end anim change block
+		}   // end anim change block
+		if(eff_renderObj.GetActive()) {
+			eff_renderObj.GetComponent<HitEffectOverlay>().OnSyncedUpdate();
+		}
 	}
 
 	void Awake(){
@@ -189,7 +220,9 @@ public class Navi : TrueSyncBehaviour {
 		deck = Instantiate(deck);
 		deck.GetComponent<Deck>().Build_FileIn();
 		deck.GetComponent<Deck>().init();
+		eff_renderObj.GetComponent<HitEffectOverlay>().init(transform);
 	}
+
 	// Use this for initialization
 	public override void OnSyncedStart() {		// ???? Should this be called for both Navis???
 		if (localOwner.Id == owner.Id) { // If player owns this Navi
@@ -331,7 +364,7 @@ public class Navi : TrueSyncBehaviour {
 			active_chip.OnSyncedUpdate(this);
 		}
 		// activated chips in need of updating
-		foreach(ChipLogic c in running_chips.ToArray()) {	// use toArray() to make a copy of the list to avoid enumeration edit error
+		foreach(ChipLogic c in running_chips.ToArray()) {	// use toArray() to make a copy of the list to avoid enumeration edit errorb
 			c.OnSyncedUpdate(this);
 		}
 
@@ -539,8 +572,13 @@ public class Navi : TrueSyncBehaviour {
 			}
 		}
 		HP -= dmg;
-		if(stun == 1) {
+		if(stun >= 1) {	//	!!!!!!! PLACEHOLDER MAKING ALL STUN LIGHT STAGGER, CHANGE WHEN HIGHER STUN IMPLEMENTED !!!!!!
 			stunAnim = true;
+		}
+		else {      // !!!!!! PLACEHOLDER right now a buster shot is the only 0 stun hit, and is the only hit with small_hit_effect
+			eff_renderObj.SetActive(true);
+			// randomize hit effect position
+			eff_renderObj.transform.position += new Vector3(UnityEngine.Random.Range(-0.3f, 0.3f), UnityEngine.Random.Range(-0.4f, 0.6f));
 		}
 	}
 

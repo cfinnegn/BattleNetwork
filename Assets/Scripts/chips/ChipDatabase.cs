@@ -7,9 +7,9 @@ public class ChipDatabase : MonoBehaviour {
 	public Dictionary <int, ChipLogic> chipDB = new Dictionary<int, ChipLogic>();
 	// Use this for initialization
 	void Start () {
-		chipDB.Add(1, new BC_Cannon());
-		chipDB.Add(2, new BC_HiCannon());
-		chipDB.Add(3, new BC_MCannon());
+		chipDB.Add(1, new BC_Cannon());		//*
+		chipDB.Add(2, new BC_HiCannon());	//*
+		chipDB.Add(3, new BC_MCannon());	//*
 		chipDB.Add(4, new BC_Sword());		// in progress
 		chipDB.Add(5, new BC_WideSword());	// in progress
 		chipDB.Add(6, new BC_Longsword());	// in progress

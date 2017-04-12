@@ -23,8 +23,9 @@ public class NPC_Navi_Rand : Navi {
 		field_space = 10;
 		move_ready = 0.5f;
 		HP = 100;
+		eff_renderObj.GetComponent<HitEffectOverlay>().init(transform);
 	}
-	
+
 	// Update is called once per frame
 	public override void OnSyncedUpdate () {
 		UpdateRowColumn();
@@ -56,6 +57,9 @@ public class NPC_Navi_Rand : Navi {
 			}
 			move_ready = 0.5f;
 		}
+		if(eff_renderObj.GetActive()) {
+			eff_renderObj.GetComponent<HitEffectOverlay>().OnSyncedUpdate();
+		}
 	}
 
 	public new void moveUp() {
@@ -83,7 +87,4 @@ public class NPC_Navi_Rand : Navi {
 		}
 	}
 
-	//public void hit(int dmg) {
-	//	HP -= dmg;
-	//}
 }

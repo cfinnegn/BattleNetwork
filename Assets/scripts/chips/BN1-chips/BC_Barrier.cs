@@ -54,12 +54,14 @@ public class BC_Barrier : ChipLogic {
 		// Setup sprite renderer for chip's sprite
 		chip_renderObj = new GameObject();
 		chip_renderObj.transform.SetParent(navi.transform, false);
-		chip_renderObj.transform.position += new Vector3(0f, 0.3f, 0f);	// offset sprite up to match navi
+		chip_renderObj.transform.position += navi.body_offset;	// offset sprite up to match navi
 		chip_renderObj.AddComponent<SpriteRenderer>();
+		chip_anim_frame = 0;
 		chip_renderObj.GetComponent<SpriteRenderer>().sprite = chip_sprite[chip_anim_frame];
 		chip_renderObj.GetComponent<SpriteRenderer>().sortingOrder = 5; //	ensures sprite appear overtop
 		chip_renderObj.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
 		frametimer = chipFR;
+		OnSyncedUpdate(navi);
 	}
 
 	public override void OnSyncedUpdate(Navi navi) {
