@@ -8,6 +8,7 @@ public abstract class ChipLogic {
 	//	working on finding a way of forcing sublcasses to define
 	public int ID;
 	public string chipName;
+	public ChipEffect effect;	// for common chip behaviors abstracted as ChipEffect scripts
 
 	public int base_cost;
 	public int cost;
@@ -18,6 +19,7 @@ public abstract class ChipLogic {
 	public int elem;
 	public float chipFR = 0.075f;   // rate at which frames of a chips animation change
 	public float frametimer = 0;
+	public GameObject chip_renderObj;	// object that holds Sprite Renderer for chip animation
 	public Sprite[] chip_sprite;    // any battle sprites/animation overlays that need to be loaded
 	public int chip_anim_frame = 0;	// the current frame of the chip's sprite animation
 	public Sprite chipimg;  // the image on the face of the chip

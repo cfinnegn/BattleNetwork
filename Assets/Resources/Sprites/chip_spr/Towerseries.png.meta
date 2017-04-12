@@ -1,0 +1,392 @@
+fileFormatVersion: 2
+guid: 114b63add25f97b4990e85ad950e09fa
+timeCreated: 1492020419
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: FireT_0
+    21300002: FireT_1
+    21300004: FireT_2
+    21300006: FireT_3
+    21300008: FireT_4
+    21300010: FireT_5
+    21300012: FireT_6
+    21300014: WaterT_0
+    21300016: WaterT_1
+    21300018: WaterT_2
+    21300020: WaterT_3
+    21300022: WaterT_4
+    21300024: WaterT_5
+    21300026: WaterT_6
+    21300028: WaterT_7
+    21300030: WaterT_8
+    21300032: WaterT_9
+    21300034: WoodT_0
+    21300036: WoodT_1
+    21300038: WoodT_2
+    21300040: WoodT_4
+    21300042: WoodT_3
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FireT_0
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 230
+        width: 14
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FireT_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 228
+        width: 22
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FireT_2
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 227
+        width: 28
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FireT_3
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 227
+        width: 32
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FireT_4
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 227
+        width: 32
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FireT_5
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 227
+        width: 32
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FireT_6
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 227
+        width: 32
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WaterT_0
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 177
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WaterT_1
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 171
+        width: 28
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WaterT_2
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 171
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WaterT_3
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 168
+        width: 40
+        height: 39
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WaterT_4
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 103
+        width: 54
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5, y: 0.28}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WaterT_5
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 103
+        width: 54
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5, y: 0.28}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WaterT_6
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 103
+        width: 56
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0.28}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WaterT_7
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 103
+        width: 56
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0.28}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WaterT_8
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 103
+        width: 58
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0.28}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WaterT_9
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 103
+        width: 58
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0.28}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WoodT_0
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 16
+        width: 16
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WoodT_1
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 16
+        width: 28
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WoodT_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 16
+        width: 32
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WoodT_4
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 16
+        width: 32
+        height: 71
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WoodT_3
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 16
+        width: 32
+        height: 66
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

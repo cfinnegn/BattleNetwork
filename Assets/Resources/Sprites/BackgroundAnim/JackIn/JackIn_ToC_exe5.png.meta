@@ -1,0 +1,1109 @@
+fileFormatVersion: 2
+guid: 38b721f2bdf527348ab620b0ff78d94e
+timeCreated: 1492022580
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: JackIn_ToC_exe5_0
+    21300002: JackIn_ToC_exe5_1
+    21300004: JackIn_ToC_exe5_2
+    21300006: JackIn_ToC_exe5_3
+    21300008: JackIn_ToC_exe5_4
+    21300010: JackIn_ToC_exe5_5
+    21300012: JackIn_ToC_exe5_6
+    21300014: JackIn_ToC_exe5_7
+    21300016: JackIn_ToC_exe5_8
+    21300018: JackIn_ToC_exe5_9
+    21300020: JackIn_ToC_exe5_10
+    21300022: JackIn_ToC_exe5_11
+    21300024: JackIn_ToC_exe5_12
+    21300026: JackIn_ToC_exe5_13
+    21300028: JackIn_ToC_exe5_14
+    21300030: JackIn_ToC_exe5_15
+    21300032: JackIn_ToC_exe5_16
+    21300034: JackIn_ToC_exe5_17
+    21300036: JackIn_ToC_exe5_18
+    21300038: JackIn_ToC_exe5_19
+    21300040: JackIn_ToC_exe5_20
+    21300042: JackIn_ToC_exe5_21
+    21300044: JackIn_ToC_exe5_22
+    21300046: JackIn_ToC_exe5_23
+    21300048: JackIn_ToC_exe5_24
+    21300050: JackIn_ToC_exe5_25
+    21300052: JackIn_ToC_exe5_26
+    21300054: JackIn_ToC_exe5_27
+    21300056: JackIn_ToC_exe5_28
+    21300058: JackIn_ToC_exe5_29
+    21300060: JackIn_ToC_exe5_30
+    21300062: JackIn_ToC_exe5_31
+    21300064: JackIn_ToC_exe5_32
+    21300066: JackIn_ToC_exe5_33
+    21300068: JackIn_ToC_exe5_34
+    21300070: JackIn_ToC_exe5_35
+    21300072: JackIn_ToC_exe5_36
+    21300074: JackIn_ToC_exe5_37
+    21300076: JackIn_ToC_exe5_38
+    21300078: JackIn_ToC_exe5_39
+    21300080: JackIn_ToC_exe5_40
+    21300082: JackIn_ToC_exe5_41
+    21300084: JackIn_ToC_exe5_42
+    21300086: JackIn_ToC_exe5_43
+    21300088: JackIn_ToC_exe5_44
+    21300090: JackIn_ToC_exe5_45
+    21300092: JackIn_ToC_exe5_46
+    21300094: JackIn_ToC_exe5_47
+    21300096: JackIn_ToC_exe5_48
+    21300098: JackIn_ToC_exe5_49
+    21300100: JackIn_ToC_exe5_50
+    21300102: JackIn_ToC_exe5_51
+    21300104: JackIn_ToC_exe5_52
+    21300106: JackIn_ToC_exe5_53
+    21300108: JackIn_ToC_exe5_54
+    21300110: JackIn_ToC_exe5_55
+    21300112: JackIn_ToC_exe5_56
+    21300114: JackIn_ToC_exe5_57
+    21300116: JackIn_ToC_exe5_58
+    21300118: JackIn_ToC_exe5_59
+    21300120: JackIn_ToC_exe5_60
+    21300122: JackIn_ToC_exe5_61
+    21300124: JackIn_ToC_exe5_62
+    21300126: JackIn_ToC_exe5_63
+    21300128: JackIn_ToC_exe5_64
+    21300130: JackIn_ToC_exe5_65
+    21300132: JackIn_ToC_exe5_66
+    21300134: JackIn_ToC_exe5_67
+    21300136: JackIn_ToC_exe5_68
+    21300138: JackIn_ToC_exe5_69
+    21300140: JackIn_ToC_exe5_70
+    21300142: JackIn_ToC_exe5_71
+    21300144: JackIn_ToC_exe5_72
+    21300146: JackIn_ToC_exe5_73
+    21300148: JackIn_ToC_exe5_74
+    21300150: JackIn_ToC_exe5_75
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 3041
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_1
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 3041
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_2
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 3041
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_3
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 3040
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2874
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_5
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 2874
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_6
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 2874
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_7
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 2874
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2707
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_9
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 2707
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_10
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 2707
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_11
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 2707
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_12
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2540
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_13
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 2540
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_14
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 2540
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_15
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 2541
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_16
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2372
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_17
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 2372
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_18
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 2372
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_19
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 2372
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_20
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2203
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_21
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 2202
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_22
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 2202
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_23
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 2202
+        width: 239
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_24
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2034
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_25
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 2034
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_26
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 2034
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_27
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 2035
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_28
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1866
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_29
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 1866
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_30
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 1866
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_31
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 1865
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_32
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1698
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_33
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 1698
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_34
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 1698
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_35
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 1698
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_36
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1529
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_37
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 1529
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_38
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 1529
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_39
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 1529
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_40
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1360
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_41
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 1360
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_42
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 1360
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_43
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 1360
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_44
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1190
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_45
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 1190
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_46
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 1189
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_47
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 1189
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_48
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1020
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_49
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 1020
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_50
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 1020
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_51
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 1020
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_52
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 851
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_53
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 850
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_54
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 851
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_55
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 851
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_56
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 681
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_57
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 681
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_58
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 682
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_59
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 682
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_60
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 513
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_61
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 513
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_62
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 513
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_63
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 513
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_64
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 345
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_65
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 344
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_66
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 345
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_67
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 345
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_68
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 175
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_69
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 175
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_70
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 175
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_71
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 175
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: JackIn_ToC_exe5_72
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 7
+        width: 238
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
