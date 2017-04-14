@@ -33,12 +33,14 @@ public class Navi : TrueSyncBehaviour {
 	public int playerNumber = 1;
 
 	// field
+	[Header("Field Info")]
 	public GameObject field;
 	public int field_space;	// location of navi on field
 	public int row;
 	public int column;
 
 	// buster info
+	[Header("Buster Info")]
 	public float bust_charge = 0.0f;
 	public float max_charge = 2.0f; // time in seconds for full charge
 	bool charging = false;
@@ -48,24 +50,18 @@ public class Navi : TrueSyncBehaviour {
 
 	// HP
 	public int HP = 100;
-	GameObject health_dispA;
-	GameObject health_dispB;
+
 
 	//chips and cust
 	GameObject chip_hand;
-	GameObject held_dispA;
-	GameObject held_dispB;
-	// child(10) is energy # display
-	public GameObject cust_dispA;
-	public GameObject cust_dispB;
-	
+
 	// chipdb/deck/activechip(s)
+	[Header("Chip/Deck Info")]
 	public ChipDatabase chipdatabase;
 	public GameObject deck;
 	public ChipLogic active_chip;
 	public List<ChipLogic> running_chips = new List<ChipLogic>();	// activated chips with effects that need updating
-	public GameObject AC_dispA;
-	public GameObject AC_dispB;
+
 
 	public int combo_color = 0; // color of last chip used
 	public int combo_level = 0;
@@ -73,6 +69,11 @@ public class Navi : TrueSyncBehaviour {
 	public GameObject shot_handler;
 
 	// Animations
+	[Header("Animation Info")]
+
+	public Sprite navi_face;
+	public Sprite navi_icon;
+
 	SpriteRenderer sr;
 	public Sprite idleSprite;
 	public float moveFR = 0.05f;
@@ -103,8 +104,21 @@ public class Navi : TrueSyncBehaviour {
 	public GameObject eff_renderObj;
 
 	// offset vectors for overlyaing chip animations
-	public Vector3 buster_offset = new Vector3(1.1f, 1.25f, 1.0f);
+	[Header("Overlay Offsets")]
+	public Vector3 buster_offset = new Vector3(1.1f, 1.25f, 0.0f);
 	public Vector3 body_offset = new Vector3(0.0f, 0.3f, 0.0f);
+
+	[Header("Displays")]
+	public GameObject AC_dispA;
+	public GameObject AC_dispB;
+	public GameObject cust_dispA;
+	public GameObject cust_dispB;
+	GameObject held_dispA;
+	GameObject held_dispB;
+	GameObject health_dispA;
+	GameObject health_dispB;
+	Image player_face_A;
+	Image player_face_B;
 
 	public void controlledSpriteSet(int frame) {	// method that allows chips to override and control animation
 		if(rate_controlled) {   // only execute logic when chip is controlling animation rate
@@ -284,24 +298,34 @@ public class Navi : TrueSyncBehaviour {
 			field.GetComponent<Field> ().spaces [16].GetComponent<TileStatus> ().owner = 1;
 			field.GetComponent<Field> ().spaces [17].GetComponent<TileStatus> ().owner = 1;
 		}
+
+		//	@@@ Setting UI elements based on player ownership @@@
 		if (localOwner.Id != owner.Id) { // If player DOESN"T own this Navi
 			tsTransform.scale = new TSVector (-tsTransform.scale.x, tsTransform.scale.y, tsTransform.scale.z);
 			health_dispB = GameObject.Find ("HealthB");
 			cust_dispB = GameObject.Find("CustB");
 			AC_dispB = GameObject.Find("ActiveChipB");
 			AC_dispB.SetActive(false);
+			player_face_B = GameObject.Find("PlayerFaceB").GetComponent<Image>();
+			player_face_B.sprite = navi_face;
+			GameObject.Find("End_Panel").GetComponent<End_Panel>().naviB = this;
 			//cust_dispB.GetComponent<Cust>().navi = this;
 			GameObject.Find ("PlayerIDB").GetComponent<Text>().text = owner.Name;
 			gameObject.tag = "Enemy Navi";
+			buster_offset.x *= -1;	// flip x offset values to reflect flipped sprite
 		}
 		if (localOwner.Id == owner.Id || localOwner.Id == null) { // If owner or offline
 			health_dispA = GameObject.Find ("HealthA");
 			cust_dispA = GameObject.Find("CustA");
 			AC_dispA = GameObject.Find("ActiveChipA");
 			AC_dispA.SetActive(false);
+			player_face_A = GameObject.Find("PlayerFaceA").GetComponent<Image>();
+			player_face_A.sprite = navi_face;
+			GameObject.Find("End_Panel").GetComponent<End_Panel>().naviA = this;
 			//cust_dispA.GetComponent<Cust>().navi = this;
 			GameObject.Find ("PlayerIDA").GetComponent<Text>().text = owner.Name;
 			gameObject.tag = "My Navi";
+
 		}
 		
 	}
@@ -578,7 +602,7 @@ public class Navi : TrueSyncBehaviour {
 		else {      // !!!!!! PLACEHOLDER right now a buster shot is the only 0 stun hit, and is the only hit with small_hit_effect
 			eff_renderObj.SetActive(true);
 			// randomize hit effect position
-			eff_renderObj.transform.position += new Vector3(UnityEngine.Random.Range(-0.3f, 0.3f), UnityEngine.Random.Range(-0.4f, 0.6f));
+			eff_renderObj.transform.position += new Vector3(UnityEngine.Random.Range(-0.4f, 0.4f), UnityEngine.Random.Range(-0.2f, 1.4f));
 		}
 	}
 

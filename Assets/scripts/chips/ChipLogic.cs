@@ -26,7 +26,9 @@ public abstract class ChipLogic {
 	public string chipText = "¯\\_(ツ)_/¯";
 
 	public float decay_rate = 1;    // for chips that can become active chips with time limited effects: default to -1dur/sec
-	public bool hit_eff = false;	// for flagging active chips that interact with how a navi is hit/takes damage
+	public bool hit_eff = false;    // for flagging active chips that interact with how a navi is hit/takes damage
+	public int sword_size = 0;      // for flagging chips as swords (when other elems) and noting what size slash
+	//	value: length, negative: wide, 0: not a sword
 
 	public virtual void initColor(int color) {
 		if(color_opt.Contains(color)) {

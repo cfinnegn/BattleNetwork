@@ -13,7 +13,9 @@ public abstract class ChipEffect {
 		throw new NotImplementedException();
 	}
 	public virtual void deactivate(Navi navi, ChipLogic c) {
-		UnityEngine.Object.Destroy(c.chip_renderObj); // removes the chip's sprite
+		if(c.chip_renderObj != null) {
+			UnityEngine.Object.Destroy(c.chip_renderObj); // removes the chip's sprite
+		}
 		navi.running_chips.Remove(c);    // removes self from running chips list to no longer be called on synced update
 	}
 }

@@ -226,15 +226,13 @@ MonoBehaviour:
   bust_dmg: 1
   charge1_dmg: 10
   HP: 100
-  cust_dispA: {fileID: 0}
-  cust_dispB: {fileID: 0}
   chipdatabase: {fileID: 0}
   deck: {fileID: 1233071777399432, guid: 0f934f69ebf6cb045a6427b279fe0124, type: 2}
-  AC_dispA: {fileID: 0}
-  AC_dispB: {fileID: 0}
   combo_color: 0
   combo_level: 0
   shot_handler: {fileID: 0}
+  navi_face: {fileID: 21300000, guid: df5f30f9aeb39504aa450958ceac31d9, type: 3}
+  navi_icon: {fileID: 21300000, guid: 9eaa4ec9b79f2474ca6087bbd62fca47, type: 3}
   idleSprite: {fileID: 21300000, guid: fd10ec169fe1e2044818e29e34088888, type: 3}
   moveFR: 0.05
   moveAnim: 0
@@ -288,6 +286,10 @@ MonoBehaviour:
   eff_renderObj: {fileID: 1632366302618092}
   buster_offset: {x: 1.1, y: 1.25, z: 1}
   body_offset: {x: 0, y: 0.3, z: 0}
+  AC_dispA: {fileID: 0}
+  AC_dispB: {fileID: 0}
+  cust_dispA: {fileID: 0}
+  cust_dispB: {fileID: 0}
 --- !u!114 &114784662204501770
 MonoBehaviour:
   m_ObjectHideFlags: 1

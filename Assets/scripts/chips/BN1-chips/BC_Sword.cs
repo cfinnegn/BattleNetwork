@@ -14,41 +14,28 @@ public class BC_Sword : ChipLogic {
 		this.cost = this.base_cost;
 		this.elem = ChipData.SWORD;
 		this.power = 80;
+		this.sword_size = 1;	// length 1
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Sword");
 	}
 
 
 	public override void activate(Navi navi) {
-		navi.swordAnim = true;
+		navi.running_chips.Add(this);
 
-		// If being activated by me
-		if(navi.localOwner.Id == navi.owner.Id){
-			// new method of grabbing navi reference thorugh shot handler
-			Navi enemyNavi = navi.shot_handler.GetComponent<Shot_Handler>().playerB.GetComponent<Navi>();
-			if (navi.row == enemyNavi.row) {
-				if (enemyNavi.field_space - navi.field_space <= 1) {
-					enemyNavi.hit (power, 2);
-				}
-			}
-		}
+		// Chip uses a generic sword effect
+		this.effect = EffectDB.SWORD;
+		effect.initAnim(navi, this);
+		OnSyncedUpdate(navi);   // starts animation + logic
 
-		// If being activated by enemy
-		if(navi.localOwner.Id != navi.owner.Id){
-			// new method of grabbing navi reference thorugh shot handler
-			Navi myNavi = navi.shot_handler.GetComponent<Shot_Handler>().playerA.GetComponent<Navi>();
-			if (navi.row == myNavi.row) {
-				if (navi.field_space - myNavi.field_space<= 1) {
-					myNavi.hit (power, 2);
-				}
-			}
-		}
 	}
 
 	public override void deactivate(Navi navi) {
-		//throw new NotImplementedException();
+		effect.deactivate(navi, this);
 	}
 
 	public override void OnSyncedUpdate(Navi navi) {
-		//throw new NotImplementedException();
+		if(effect != null) {
+			effect.OnSyncedUpdate(navi, this);
+		}
 	}
 }

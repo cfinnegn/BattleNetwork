@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour {
 
@@ -12,12 +13,12 @@ public class Exit : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKey("escape")) {
-			Application.Quit();
+			SceneManager.LoadScene(0, LoadSceneMode.Single);    // return to menu
 		}
 	}
 
 	public void exit() {
-		Application.Quit();
+		SceneManager.LoadScene(0, LoadSceneMode.Single);    // return to menu
 	}
 
 }

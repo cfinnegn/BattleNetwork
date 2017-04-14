@@ -14,6 +14,7 @@ public class Menu : PunBehaviour {
     private const int TIME_TO_START_MATCH = 3;
 
     public Text infoText;
+	public GameObject background;
 
 	[Header("Main Panel")]
 	public GameObject mainPanel;
@@ -86,7 +87,7 @@ public class Menu : PunBehaviour {
 		if (toStart) {
 			countDown += Time.deltaTime;
 
-			startCountdown.text = string.Format("Match starts in {0}...", TIME_TO_START_MATCH - Mathf.FloorToInt(countDown));
+			startCountdown.text = string.Format("Jacking in: {0}...", TIME_TO_START_MATCH - Mathf.FloorToInt(countDown));
 
 			if (countDown >= TIME_TO_START_MATCH) {
 				PhotonNetwork.LoadLevel (this.levelToLoad);
@@ -368,6 +369,8 @@ public class Menu : PunBehaviour {
         ReplayRecord.replayMode = ReplayMode.NO_REPLAY;
 
         this.toStart = true;
+		background.GetComponent<Animator>().Play("JackIn");
+		background.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.8f);
 
 		this.multiplayerStartMatch.gameObject.SetActive (false);
 		this.startCountdown.gameObject.SetActive (true);
