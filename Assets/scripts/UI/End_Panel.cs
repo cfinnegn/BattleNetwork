@@ -28,8 +28,8 @@ public class End_Panel : TrueSyncBehaviour {
 				splash.SetActive(true);
 				if(training) {
 					if(naviA.HP > 0) { WLD.text = "You Win!"; }
-					if(naviA.HP == 0) { WLD.text = "Draw!"; }
-					else { WLD.text = "You Lose!"; }
+					else if(naviB.HP > 0) { WLD.text = "You Lose"; }
+					else { WLD.text = "Draw!"; }
 				}
 				else {
 					nameA.text = naviA.owner.Name;

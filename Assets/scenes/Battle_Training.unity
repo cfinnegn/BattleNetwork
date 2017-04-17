@@ -778,6 +778,7 @@ MonoBehaviour:
   cust_dispA: {fileID: 0}
   cust_dispB: {fileID: 0}
   move_ready: 0
+  defeated: 0
   health_disp: {fileID: 478883421}
   shot_disp: {fileID: 1266437722992894, guid: e9ac33af588d24e4fb1aed5a89922aa6, type: 2}
 --- !u!1 &209298814
@@ -828,7 +829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2588,7 +2589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4426,7 +4427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -6972,11 +6973,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a21f059c2746a5f499e382ec926b09b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfPlayers: 0
+  ownerIndex: -1
+  owner:
+    id: 0
+    name: 
+  localOwner:
+    id: 0
+    name: 
   naviA: {fileID: 0}
   naviB: {fileID: 200873741}
   training: 1
   splash: {fileID: 2550750}
   WLD: {fileID: 1519216227}
+  iconA: {fileID: 0}
+  iconB: {fileID: 0}
+  nameA: {fileID: 0}
+  nameB: {fileID: 0}
 --- !u!1001 &1314930003
 Prefab:
   m_ObjectHideFlags: 0

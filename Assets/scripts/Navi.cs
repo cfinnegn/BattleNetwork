@@ -602,7 +602,8 @@ public class Navi : TrueSyncBehaviour {
 		else {      // !!!!!! PLACEHOLDER right now a buster shot is the only 0 stun hit, and is the only hit with small_hit_effect
 			eff_renderObj.SetActive(true);
 			// randomize hit effect position
-			eff_renderObj.transform.position += new Vector3(UnityEngine.Random.Range(-0.4f, 0.4f), UnityEngine.Random.Range(-0.2f, 1.4f));
+			eff_renderObj.transform.position = ( transform.position + body_offset +
+				new Vector3(UnityEngine.Random.Range(-0.4f, 0.4f), UnityEngine.Random.Range(-0.4f, 0.8f)));
 		}
 	}
 

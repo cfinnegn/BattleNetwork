@@ -8,6 +8,7 @@ public class NPC_Navi_Rand : Navi {
 	////public GameObject field;
 	////public int field_space;
 	public float move_ready;
+	public bool defeated = false;
 
 	////public int HP = 100;
 	public GameObject health_disp;
@@ -28,37 +29,40 @@ public class NPC_Navi_Rand : Navi {
 
 	// Update is called once per frame
 	public override void OnSyncedUpdate () {
-		UpdateRowColumn();
-		transform.position = field.GetComponent<Field>().spaces[field_space].transform.position;
-		HP = (HP < 0) ? 0 : HP;	// no negative HP
-		health_disp.GetComponent<Text>().text = "[HP:" + HP + "] ";
-		move_ready -= Time.deltaTime;
-		if (move_ready <= 0.0f) {
-			int direction = Random.Range(1, 9);
-			//2up, 4left, 6right, 8down
-			switch(direction) {
-				case 2:
-				moveUp();
-				break;
-				case 4:
-				moveLeft();
-				break;
-				case 6:
-				moveRight();
-				break;
-				case 8:
-				moveDown();
-				break;
-				case 5:
-				break;
-				default:
-				shoot();
-				break;
+		if(!defeated) {
+			UpdateRowColumn();
+			transform.position = field.GetComponent<Field>().spaces[field_space].transform.position;
+			HP = (HP < 0) ? 0 : HP; // no negative HP
+			health_disp.GetComponent<Text>().text = "[HP:" + HP + "] ";
+			move_ready -= Time.deltaTime;
+			if(move_ready <= 0.0f) {
+				int direction = Random.Range(1, 9);
+				//2up, 4left, 6right, 8down
+				switch(direction) {
+					case 2:
+					moveUp();
+					break;
+					case 4:
+					moveLeft();
+					break;
+					case 6:
+					moveRight();
+					break;
+					case 8:
+					moveDown();
+					break;
+					case 5:
+					break;
+					default:
+					shoot();
+					break;
+				}
+				move_ready = 0.5f;
 			}
-			move_ready = 0.5f;
-		}
-		if(eff_renderObj.GetActive()) {
-			eff_renderObj.GetComponent<HitEffectOverlay>().OnSyncedUpdate();
+			if(eff_renderObj.GetActive()) {
+				eff_renderObj.GetComponent<HitEffectOverlay>().OnSyncedUpdate();
+			}
+			if(HP <= 0) { defeated = true; }
 		}
 	}
 

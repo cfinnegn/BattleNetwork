@@ -33,6 +33,10 @@ public class Menu : PunBehaviour {
 	[Header("Multiplayer Panel")]
 	public GameObject multiplayerPanel;
     public Transform[] playerBoxes;
+	public Transform[] naviBoxes;
+	public int selectedNavi;
+	public Button[] readyButtons;
+	public bool ready = false;
     public Button multiplayerStartMatch;
 	public Text startCountdown;
 	public GameObject chatPanel;
@@ -141,8 +145,10 @@ public class Menu : PunBehaviour {
 	}
 
 	// create a new match and go to match menu
-	public void MatchPanel_NewMatchBtn() {		
-		PhotonNetwork.CreateRoom(this.nickname);
+	public void MatchPanel_NewMatchBtn() {
+		RoomOptions roomOptions = new RoomOptions();
+		roomOptions.MaxPlayers = 2;
+		PhotonNetwork.CreateRoom(this.nickname, roomOptions, PhotonNetwork.lobby);
 
 		infoText.text = "Creating match... " + lobbyName;
 		ActivePanel (PanelType.Info);
@@ -308,12 +314,14 @@ public class Menu : PunBehaviour {
 	public override void OnJoinedRoom () {
 		MultiplayerUpdateVisibility ();        
 		ActivePanel (PanelType.Multiplayer);
-
-        UpdatePlayerList();
+		ExitGames.Client.Photon.Hashtable prematch_properties = new ExitGames.Client.Photon.Hashtable() { { "ready", false }, { "navi", 0 } };
+		PhotonNetwork.player.SetCustomProperties(prematch_properties);
+		UpdatePlayerList();
     }
 
     public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer) {
-        UpdatePlayerList();
+		
+		UpdatePlayerList();
     }
 
     public override void OnMasterClientSwitched(PhotonPlayer newMasterClient) {
@@ -340,12 +348,18 @@ public class Menu : PunBehaviour {
 		ClearPlayersGUI ();
 
         for (int index = 0; index < PhotonNetwork.playerList.Length; index++) {
-            Transform playerBox = playerBoxes[index];
+			int side;
+			if(PhotonNetwork.playerList[index].IsLocal) { side = 0; }   // local player on left
+			else { side = 1; }	// opponent on right
+			Transform playerBox = playerBoxes[side];
             playerBox.GetComponent<Image>().enabled = true;
+			naviBoxes[side].gameObject.SetActive(true);
+			readyButtons[side].gameObject.SetActive(true);
 
-            Text playerNameText = playerBox.FindChild("PlayerNameText").GetComponent<Text>();
+			Text playerNameText = playerBox.FindChild("PlayerNameText").GetComponent<Text>();
             playerNameText.text = PhotonNetwork.playerList[index].NickName.Trim();
-        }		
+        }
+
 	}
 
 	private void ClearPlayersGUI() {
@@ -385,6 +399,68 @@ public class Menu : PunBehaviour {
 		this.multiplayerPanel.SetActive (panelType == PanelType.Multiplayer ? true : false);
         this.replayPanel.SetActive(panelType == PanelType.Replay ? true : false);
     }
+
+	public void Online_Ready_clicked() {
+		ready = !ready; // toggle readiness
+		ExitGames.Client.Photon.Hashtable readyhash = new ExitGames.Client.Photon.Hashtable() { { "ready", (bool)ready }};
+		PhotonNetwork.player.SetCustomProperties(readyhash);
+		int indexPlayer = System.Array.IndexOf(PhotonNetwork.playerList, PhotonNetwork.player);
+
+		int side = 0;	// local player always left
+		Text buttonText = readyButtons[side].GetComponentsInChildren<Text>()[0];
+		if(ready) {
+			readyButtons[side].image.color = readyButtons[side].colors.pressedColor;
+			buttonText.text = "Ready!";
+			buttonText.fontStyle = FontStyle.BoldAndItalic;
+			buttonText.color = new Color(0.85f, 0.55f, 0f);
+			buttonText.GetComponent<Outline>().effectColor = Color.black;
+		}
+		else {    // for local player
+			readyButtons[side].image.color = readyButtons[side].colors.normalColor;
+			buttonText.text = "Ready?";
+			buttonText.fontStyle = FontStyle.Bold;
+			buttonText.color = Color.black;
+			buttonText.GetComponent<Outline>().effectColor = readyButtons[side].colors.normalColor;
+		}
+		photonView.RPC("Update_opponent_ready", PhotonTargets.Others, ready);
+		Check_Match_Start();
+	}
+
+	[PunRPC]
+	public void Update_opponent_ready(bool opp_ready) {   // side 0 for local, 1 for opponent									
+		// add navi change when multiple playable navis implemented
+		int side = 1;	// opponent always right
+		Text buttonText = readyButtons[side].GetComponentsInChildren<Text>()[0];
+		if(opp_ready) {
+			readyButtons[side].image.color = readyButtons[side].colors.pressedColor;
+			buttonText.text = "Ready!";
+			buttonText.fontStyle = FontStyle.BoldAndItalic;
+			buttonText.color = new Color(0.85f, 0.55f, 0f);
+			buttonText.GetComponent<Outline>().effectColor = Color.black;
+		}
+		else{    // for opponent
+			readyButtons[side].image.color = readyButtons[side].colors.disabledColor;
+			buttonText.text = "Waiting...";
+			buttonText.fontStyle = FontStyle.Bold;
+			buttonText.color = Color.black;
+			buttonText.GetComponent<Outline>().effectColor = readyButtons[side].colors.disabledColor;
+		}
+		Check_Match_Start();
+	}
+
+	public void Check_Match_Start() {
+		if(PhotonNetwork.isMasterClient) {  // only master client sees match start button
+			if((PhotonNetwork.playerList.Length >= 2) && ((bool)PhotonNetwork.playerList[0].CustomProperties["ready"])
+			  && ((bool)PhotonNetwork.playerList[1].CustomProperties["ready"])) { // both players in and ready
+				multiplayerStartMatch.interactable = true;
+				multiplayerStartMatch.GetComponentsInChildren<Text>()[0].text = "Start Match";
+			}
+			else {
+				multiplayerStartMatch.interactable = false;
+				multiplayerStartMatch.GetComponentsInChildren<Text>()[0].text = "Players not ready...";
+			}
+		}
+	}
 
 	public void Enter_Training() {
 		SceneManager.LoadScene(2, LoadSceneMode.Single);	// Battle_Training is 2 in build order

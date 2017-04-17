@@ -67,8 +67,11 @@ public class PhotonPlayer : IComparable<PhotonPlayer>, IComparable<int>, IEquata
     /// <remarks>Useful for PhotonNetwork.FindFriends and blocking slots in a room for expected players (e.g. in PhotonNetwork.CreateRoom).</remarks>
     public string UserId { get; internal set; }
 
-    /// <summary>Only one player is controlled by each client. Others are not local.</summary>
-    public readonly bool IsLocal = false;
+	public bool ready = false;  //	!!!!!!!!! ADDED FIELD TO AVOID CUSTOM PROPERTIES !!!!!!!!!!!
+	public int selected_navi = 0;  //	!!!!!!!!! ADDED FIELD TO AVOID CUSTOM PROPERTIES !!!!!!!!!!!
+
+	/// <summary>Only one player is controlled by each client. Others are not local.</summary>
+	public readonly bool IsLocal = false;
 
     /// <summary>
     /// True if this player is the Master Client of the current room.

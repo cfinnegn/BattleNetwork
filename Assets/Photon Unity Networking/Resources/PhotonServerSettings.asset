@@ -41,4 +41,6 @@ MonoBehaviour:
   - OnMatchDataChange
   - StartMatch
   - RequestForPickupItems
+  - Update_ready_data
+  - Update_opponent_ready
   DisableAutoOpenWizard: 1
