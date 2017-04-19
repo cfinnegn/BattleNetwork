@@ -67,6 +67,8 @@ public class Menu : PunBehaviour {
 
 	// Connects to photon
 	void Start () {
+		if(PlayerPrefs.HasKey("Nick"))
+			nickInput.text = PlayerPrefs.GetString ("Nick");
         instance = this;
         PhotonNetwork.CrcCheckEnabled = true;
         ReplayUtils.Init();
@@ -93,6 +95,8 @@ public class Menu : PunBehaviour {
 
 			startCountdown.text = string.Format("Jacking in: {0}...", TIME_TO_START_MATCH - Mathf.FloorToInt(countDown));
 
+			if (PhotonNetwork.lobby.Name == "battleB") // KEEP THIS UP TO DATE WITH NEW LOBBIES/SCENES!
+				levelToLoad = "Scenes/battleB";
 			if (countDown >= TIME_TO_START_MATCH) {
 				PhotonNetwork.LoadLevel (this.levelToLoad);
 				toStart = false;
@@ -107,6 +111,8 @@ public class Menu : PunBehaviour {
 
 		this.nickPanel.SetActive (false);
 		this.mainPanel.SetActive (true);
+		PlayerPrefs.SetString ("Nick", this.nickname);
+		PlayerPrefs.Save ();
 	}
 
     public void MainPanel_SetLobby(string config) {
@@ -187,14 +193,16 @@ public class Menu : PunBehaviour {
         ActivePanel(PanelType.Replay);
     }
 
-    public void MultiplayerPanel_BackBtn() {
+	public void MultiplayerPanel_BackBtn() {
+		//Online_Ready_clicked (false);
 		PhotonNetwork.LeaveRoom ();
 		ActivePanel (PanelType.Match);
 	}
 
 	// start a match and send the same command to all other players
 	public void MultiplayerPanel_StartMatchBtn() {
-        PhotonNetwork.room.IsVisible = false;
+		//PhotonNetwork.room.IsVisible = false; // Makes the room not show from the lobby listing
+		PhotonNetwork.room.IsOpen = false; // Closes the room, but still shows in lobby. How a closed room appears is modified in MatchJoiner.cs
 
         int syncWindow = int.Parse(configSyncWindow.text);
         int rollbackWindow = int.Parse(configRollbackWindow.text);
@@ -339,9 +347,14 @@ public class Menu : PunBehaviour {
         multiplayerStartMatch.gameObject.SetActive (PhotonNetwork.isMasterClient);
 	}
 
-    public override void OnPhotonPlayerDisconnected(PhotonPlayer disconnetedPlayer) {        
+    public override void OnPhotonPlayerDisconnected(PhotonPlayer disconnectedPlayer) {        
         UpdatePlayerList();
+		Online_Ready_clicked (false);
+		photonView.RPC("Update_opponent_ready", PhotonTargets.AllBuffered, false);
     }    
+	public void OnLeftRoom(){
+		Online_Ready_clicked (false);
+	}
 
 	// updates players position and plane on gui
 	public void UpdatePlayerList() {
@@ -366,6 +379,12 @@ public class Menu : PunBehaviour {
 		foreach (Transform playerBox in playerBoxes) {
             playerBox.GetComponent<Image>().enabled = false;
             playerBox.FindChild("PlayerNameText").GetComponent<Text>().text = "";
+		}
+		foreach(Transform naviBox in naviBoxes) {
+			naviBox.gameObject.SetActive(false);
+		}
+		foreach(Button readyButton in readyButtons) {
+			readyButton.gameObject.SetActive(false);
 		}
 	}
 
@@ -400,8 +419,10 @@ public class Menu : PunBehaviour {
         this.replayPanel.SetActive(panelType == PanelType.Replay ? true : false);
     }
 
-	public void Online_Ready_clicked() {
+	public void Online_Ready_clicked(bool boolean) {
 		ready = !ready; // toggle readiness
+		if (!boolean)
+			ready = false;
 		ExitGames.Client.Photon.Hashtable readyhash = new ExitGames.Client.Photon.Hashtable() { { "ready", (bool)ready }};
 		PhotonNetwork.player.SetCustomProperties(readyhash);
 		int indexPlayer = System.Array.IndexOf(PhotonNetwork.playerList, PhotonNetwork.player);
@@ -422,7 +443,7 @@ public class Menu : PunBehaviour {
 			buttonText.color = Color.black;
 			buttonText.GetComponent<Outline>().effectColor = readyButtons[side].colors.normalColor;
 		}
-		photonView.RPC("Update_opponent_ready", PhotonTargets.Others, ready);
+		photonView.RPC("Update_opponent_ready", PhotonTargets.OthersBuffered, ready);
 		Check_Match_Start();
 	}
 

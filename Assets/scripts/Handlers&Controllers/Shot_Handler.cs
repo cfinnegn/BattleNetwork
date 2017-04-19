@@ -36,7 +36,6 @@ public class Shot_Handler : MonoBehaviour {
 	public bool check_sword( int dmg, int shooter, int stun, int length, bool wide) {
 		Navi attacker;
 		Navi target;
-		bool targetB;	// is B the target?
 		if(shooter == playerA.GetComponent<Navi>().playerNumber) {  // A is attacking B
 			attacker = playerA.GetComponent<Navi>();
 			target = playerB.GetComponent<Navi>();
@@ -45,7 +44,7 @@ public class Shot_Handler : MonoBehaviour {
 			attacker = playerB.GetComponent<Navi>();
 			target = playerA.GetComponent<Navi>();
 		}
-		// !! TODO: Add recognition of player behind ot handle "stepsword" effects
+		// !! TODO: Add recognition of player behind to handle "stepsword" effects
 		if(System.Math.Abs(target.column - attacker.column) <= length) { // within reach of sword length
 			if(target.row == attacker.row) {    // target in same row as attacker
 				target.hit(dmg, stun);
@@ -58,5 +57,28 @@ public class Shot_Handler : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+	public bool check_position(int dmg, int shooter, int stun, int row, int col) {
+		Navi target;
+		if(shooter == playerA.GetComponent<Navi>().playerNumber) {  // A is attacking B
+			target = playerB.GetComponent<Navi>();
+		}
+		else {
+			target = playerA.GetComponent<Navi>();
+		}
+		if((target.row == row) && (target.column == col)) {
+			target.hit(dmg, stun);
+			return true;
+		}
+		return false;
+	}
+
+	public Navi opponent_ref(Navi mynavi) {
+		if(mynavi.playerNumber == playerA.GetComponent<Navi>().playerNumber) {  // navi is player A
+			return playerB.GetComponent<Navi>();
+		}
+		else {	// navi is player B
+			return playerA.GetComponent<Navi>();
+		}
 	}
 }

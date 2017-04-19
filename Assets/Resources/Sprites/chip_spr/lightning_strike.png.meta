@@ -1,17 +1,14 @@
 fileFormatVersion: 2
-guid: df5f30f9aeb39504aa450958ceac31d9
-timeCreated: 1492537273
+guid: 62c7a9df20a9a0f45bb34198d0636290
+timeCreated: 1492623752
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Face_Megaman
-    21300002: Face_Protoman
-    21300004: Face_Searchman
-    21300006: Face_Napalman
-    21300008: Face_Magnetman
-    21300010: Face_Colonel
-    21300012: Face_Shadowman
-    21300014: Face_Tomohawkman
+    21300000: lightning_strike_0
+    21300002: lightning_strike_2
+    21300004: lightning_strike_3
+    21300006: lightning_strike_1
+    21300008: lightning_strike_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -48,7 +45,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -86,106 +83,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Face_Megaman
+      name: lightning_strike_0
       rect:
         serializedVersion: 2
-        x: 51
-        y: 382
-        width: 35
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 0
+        width: 28
+        height: 222
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Face_Protoman
+      name: lightning_strike_2
       rect:
         serializedVersion: 2
-        x: 73
-        y: 231
-        width: 35
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 27
+        y: 0
+        width: 37
+        height: 222
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Face_Searchman
+      name: lightning_strike_3
       rect:
         serializedVersion: 2
-        x: 73
-        y: 193
-        width: 35
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 65
+        y: 0
+        width: 24
+        height: 222
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Face_Napalman
+      name: lightning_strike_1
       rect:
         serializedVersion: 2
-        x: 73
-        y: 174
-        width: 36
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 88
+        y: 0
+        width: 34
+        height: 222
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Face_Magnetman
+      name: lightning_strike_4
       rect:
         serializedVersion: 2
-        x: 73
-        y: 155
-        width: 35
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Face_Colonel
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 117
-        width: 35
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Face_Shadowman
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 98
-        width: 35
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Face_Tomohawkman
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 60
-        width: 35
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 123
+        y: 0
+        width: 6
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

@@ -13,11 +13,13 @@ public class Exit : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKey("escape")) {
+			PhotonNetwork.LeaveRoom ();
 			SceneManager.LoadScene(0, LoadSceneMode.Single);    // return to menu
 		}
 	}
 
 	public void exit() {
+		PhotonNetwork.LeaveRoom ();
 		SceneManager.LoadScene(0, LoadSceneMode.Single);    // return to menu
 	}
 

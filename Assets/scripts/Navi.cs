@@ -402,7 +402,7 @@ public class Navi : TrueSyncBehaviour {
 		if (sr.sprite == moveSprite [moveSprite.Length - 1] && frameTimer <= 0) { 
 			// Finishes the movement
 			if (pendingMoveUp) {
-				if (row != 1) {
+				if (row != 0) {
 					if (field.GetComponent<Field> ().spaces [field_space - 6].GetComponent<TileStatus> ().owner == playerNumber) {
 						field_space = field_space - 6;
 						UpdateRowColumn ();
@@ -411,7 +411,7 @@ public class Navi : TrueSyncBehaviour {
 				pendingMoveUp = false;
 			}
 			if (pendingMoveDown) {
-				if (row != 3) {
+				if (row != 2) {
 					if (field.GetComponent<Field> ().spaces [field_space + 6].GetComponent<TileStatus> ().owner == playerNumber) {
 						field_space = field_space + 6;
 						UpdateRowColumn ();
@@ -420,7 +420,7 @@ public class Navi : TrueSyncBehaviour {
 				pendingMoveDown = false;
 			}
 			if (pendingMoveLeft) {
-				if (column != 1) {
+				if (column != 0) {
 					if (field.GetComponent<Field> ().spaces [field_space - 1].GetComponent<TileStatus> ().owner == playerNumber) {
 						field_space = field_space - 1;
 						UpdateRowColumn ();
@@ -429,7 +429,7 @@ public class Navi : TrueSyncBehaviour {
 				pendingMoveLeft = false;
 			}
 			if (pendingMoveRight) {
-				if (column != 6) {
+				if (column != 5) {
 					if (field.GetComponent<Field> ().spaces [field_space + 1].GetComponent<TileStatus> ().owner == playerNumber) {
 						field_space = field_space + 1;
 						UpdateRowColumn ();
@@ -517,7 +517,7 @@ public class Navi : TrueSyncBehaviour {
 
 	// Starts the Movement (2)
 	public void StartUp(){
-		if (row != 1) {
+		if (row != 0) {
 			if (field.GetComponent<Field> ().spaces [field_space - 6].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
 				moveAnim = true;
 				pendingMoveUp = true;
@@ -525,7 +525,7 @@ public class Navi : TrueSyncBehaviour {
 		}
 	}
 	public void StartDown(){
-		if (row != 3) {
+		if (row != 2) {
 			if (field.GetComponent<Field> ().spaces [field_space + 6].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
 				moveAnim = true;
 				pendingMoveDown = true;
@@ -534,7 +534,7 @@ public class Navi : TrueSyncBehaviour {
 	}
 	public void StartLeft(){
 		if (localOwner.Id == owner.Id) { // Owner movement
-			if (column != 1) {
+			if (column != 0) {
 				if (field.GetComponent<Field> ().spaces [field_space - 1].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
 					moveAnim = true;
 					pendingMoveLeft = true;
@@ -542,7 +542,7 @@ public class Navi : TrueSyncBehaviour {
 			}
 		}
 		if (localOwner.Id != owner.Id) { //Flip for non-owner
-			if (column != 6) { // If on the right ledge and trying to move right
+			if (column != 5) { // If on the right ledge and trying to move right
 				if (field.GetComponent<Field> ().spaces [field_space + 1].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
 					moveAnim = true;
 					pendingMoveRight = true;
@@ -552,7 +552,7 @@ public class Navi : TrueSyncBehaviour {
 	}
 	public void StartRight(){
 		if (localOwner.Id == owner.Id) { // Owner movement
-			if (column != 6) {
+			if (column != 5) {
 				if (field.GetComponent<Field> ().spaces [field_space + 1].GetComponent<TileStatus> ().owner == playerNumber) { // Checks if player owns that tile
 					moveAnim = true;
 					pendingMoveRight = true;
@@ -561,7 +561,7 @@ public class Navi : TrueSyncBehaviour {
 		}
 
 		if (localOwner.Id != owner.Id) { //Flip for non-owner
-			if (column != 1) {
+			if (column != 0) {
 				if (field.GetComponent<Field> ().spaces [field_space - 1].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
 					moveAnim = true;
 					pendingMoveLeft = true;
@@ -638,6 +638,10 @@ public class Navi : TrueSyncBehaviour {
 				combo_color = chipColor;
 			}
 		}
+	}
+
+	public bool myNavi() {	// abstracted test to see if navi is owned by player
+		return localOwner.Id == owner.Id;
 	}
 
 }

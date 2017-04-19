@@ -6,6 +6,7 @@ using UnityEngine;
 public class CE_Sword : ChipEffect {
 	Sprite[] slash_eff;
 	GameObject slash_renderer;
+	int slash_frame = 0;
 
 	public CE_Sword() {
 		this.effectAnim = Resources.LoadAll<Sprite>("Sprites/Chip_spr/Swords_swoosh");
@@ -37,7 +38,8 @@ public class CE_Sword : ChipEffect {
 		// prepare renderer for slash effect then deactivate until time to render
 		slash_renderer = new GameObject();
 		slash_renderer.AddComponent<SpriteRenderer>();
-		slash_renderer.GetComponent<SpriteRenderer>().sprite = slash_eff[0];
+		slash_frame = 0;
+		slash_renderer.GetComponent<SpriteRenderer>().sprite = slash_eff[slash_frame];
 		slash_renderer.GetComponent<SpriteRenderer>().sortingOrder = 6;	//top layer, hit effect shows above auras
 		slash_renderer.SetActive(false);
 
@@ -58,11 +60,24 @@ public class CE_Sword : ChipEffect {
 				if(c.chip_renderObj != null) { // chip has a sword overlay to display
 					c.chip_renderObj.GetComponent<SpriteRenderer>().sprite = c.chip_sprite[c.chip_anim_frame];
 				}
-				navi.controlledSpriteSet(c.chip_anim_frame);	// sword effects and sword anim have same number of frames
+				navi.controlledSpriteSet(c.chip_anim_frame);    // sword effects and sword anim have same number of frames
+				if(slash_renderer.activeInHierarchy) {  // animate slash effect when active
+					if(slash_frame < slash_eff.Length - 1) {
+						slash_frame++;
+						slash_renderer.GetComponent<SpriteRenderer>().sprite = slash_eff[slash_frame];
+					}
+					else {
+						slash_renderer.SetActive(false);	// deactivate when animation finishes
+					}
+				}
 				if(c.chip_anim_frame == 2) {    // attack takes place on 3rd frame
 					// TODO: add logic for multiple active frames
 					navi.shot_handler.GetComponent<Shot_Handler>().check_sword(
 						c.power, navi.playerNumber, 2, System.Math.Abs(c.sword_size), (c.sword_size < 0));
+					// place slash effect 1 space in front of navi
+					int target_space = (navi.myNavi()) ? navi.field_space + 1 : navi.field_space - 1;
+					slash_renderer.transform.position = navi.field.GetComponent<Field>().spaces[target_space].transform.position;
+					slash_renderer.SetActive(true);
 				}
 			}
 			else {  // animation finished

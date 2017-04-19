@@ -10,24 +10,32 @@ public class BC_Woodtower : ChipLogic {
 		this.chipName = "Wood Tower";
 		this.color_code = 0;
 		this.color_opt = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-		this.base_cost = 3; // setup if statement for setting cost based on color
+		this.base_cost = 4; // setup if statement for setting cost based on color
 		this.cost = this.base_cost;
 		this.elem = ChipData.WOOD;
-		this.power = 60;
+		this.power = 50;
+		this.chipFR = 0.12f;
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Woodtower");
 	}
 
 
 
 	public override void activate(Navi navi) {
-		//throw new NotImplementedException();
+		navi.running_chips.Add(this);
+
+		// Chip uses a generic tower effect
+		this.effect = EffectDB.TOWER;
+		effect.initAnim(navi, this);
+		OnSyncedUpdate(navi);   // starts animation + logic
 	}
 
 	public override void deactivate(Navi navi) {
-		//throw new NotImplementedException();
+		effect.deactivate(navi, this);
 	}
 
 	public override void OnSyncedUpdate(Navi navi) {
-		//throw new NotImplementedException();
+		if(effect != null) {
+			effect.OnSyncedUpdate(navi, this);
+		}
 	}
 }

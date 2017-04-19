@@ -201,8 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 2
-  row: 3
-  column: 4
+  row: 2
+  column: 3
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -365,8 +365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 2
-  row: 2
-  column: 6
+  row: 1
+  column: 5
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -388,8 +388,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 1
-  row: 1
-  column: 1
+  row: 0
+  column: 0
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -503,8 +503,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 1
-  row: 1
-  column: 3
+  row: 0
+  column: 2
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -2124,8 +2124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 1
-  row: 2
-  column: 1
+  row: 1
+  column: 0
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -3352,8 +3352,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 2
-  row: 2
-  column: 5
+  row: 1
+  column: 4
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -5236,8 +5236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 2
-  row: 2
-  column: 4
+  row: 1
+  column: 3
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -5946,8 +5946,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 1
-  row: 3
-  column: 3
+  row: 2
+  column: 2
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -6772,8 +6772,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 2
-  row: 3
-  column: 6
+  row: 2
+  column: 5
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -7550,8 +7550,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 2
-  row: 1
-  column: 6
+  row: 0
+  column: 5
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -7784,8 +7784,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 2
-  row: 1
-  column: 4
+  row: 0
+  column: 3
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -8771,8 +8771,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 1
-  row: 3
-  column: 2
+  row: 2
+  column: 1
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -8794,8 +8794,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 2
-  row: 1
-  column: 5
+  row: 0
+  column: 4
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -9108,8 +9108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 1
-  row: 3
-  column: 1
+  row: 2
+  column: 0
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -10899,8 +10899,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 1
-  row: 1
-  column: 2
+  row: 0
+  column: 1
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -10990,8 +10990,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 1
-  row: 2
-  column: 2
+  row: 1
+  column: 1
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -11488,8 +11488,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 2
-  row: 3
-  column: 5
+  row: 2
+  column: 4
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -12081,7 +12081,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 71.27189, y: 0}
+  m_AnchoredPosition: {x: 70.83951, y: 0}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2019567053
@@ -12540,8 +12540,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 1
-  row: 2
-  column: 3
+  row: 1
+  column: 2
   occupied: 0
   obstructed: 0
   naviOn: {fileID: 0}
@@ -13390,6 +13390,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spaces: []
+  toprow:
+  - {fileID: 106222185}
+  - {fileID: 1881175074}
+  - {fileID: 142606389}
+  - {fileID: 1453667156}
+  - {fileID: 1586828021}
+  - {fileID: 1404399034}
+  midrow:
+  - {fileID: 489192055}
+  - {fileID: 1894714097}
+  - {fileID: 2066661489}
+  - {fileID: 1068380095}
+  - {fileID: 742931551}
+  - {fileID: 95543146}
+  bottomrow:
+  - {fileID: 1617204247}
+  - {fileID: 1583985546}
+  - {fileID: 1145942960}
+  - {fileID: 59557766}
+  - {fileID: 1963550543}
+  - {fileID: 1254760069}
   front_row: 2
 --- !u!1 &2131801629
 GameObject:

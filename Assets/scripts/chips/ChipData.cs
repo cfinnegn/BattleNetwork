@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class ChipData {
 
-	public static int NORMAL = 0;
-	public static int FIRE = 1;
-	public static int WATER = 2;
-	public static int ELEC = 3;
-	public static int WOOD = 4;
-	public static int SWORD = 5;
-	public static int STONE = 6;
-	public static int RECOV = 7;
-	public static int BUFF = 8;
-	public static int BODY = 9;
-	public static int SUMMON = 10;
+	public const int NORMAL = 0;
+	public const  int FIRE = 1;
+	public const int WATER = 2;
+	public const int ELEC = 3;
+	public const int WOOD = 4;
+	public const int SWORD = 5;
+	public const int STONE = 6;
+	public const int RECOV = 7;
+	public const int BUFF = 8;
+	public const int BODY = 9;
+	public const int SUMMON = 10;
 
 	public static Sprite[] elems = {
 		Resources.Load<Sprite>("Sprites/elem/Type_null"),
@@ -31,18 +31,18 @@ public class ChipData {
 		Resources.Load<Sprite>("Sprites/elem/Type_summon")
 	};
 
-	public static int GREY = 0;
-	public static int WHITE = 1;
-	public static int YELLOW = 2;
-	public static int ORANGE = 3;
-	public static int RED = 4;
-	public static int PINK = 5;
-	public static int PURPLE = 6;
-	public static int BLUE = 7;
-	public static int TEAL = 8;
-	public static int GREEN = 9;
-	public static int FORREST = 10;
-	public static int BANANA = 11;
+	public const int GREY = 0;
+	public const int WHITE = 1;
+	public const int YELLOW = 2;
+	public const int ORANGE = 3;
+	public const int RED = 4;
+	public const int PINK = 5;
+	public const int PURPLE = 6;
+	public const int BLUE = 7;
+	public const int TEAL = 8;
+	public const int GREEN = 9;
+	public const int FORREST = 10;
+	public const int BANANA = 11;
 
 	public static Color[] color_codes = {
 		new Color(0.75f, 0.75f, 0.75f),	// grey

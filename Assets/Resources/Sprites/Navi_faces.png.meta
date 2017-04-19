@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 5e7c807a474025547ba00bd214153d36
-timeCreated: 1492189424
+timeCreated: 1492537071
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: face_Megaman
+    21300002: Face_Heatman
+    21300004: Face_Elecman
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -79,15 +81,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: face_Megaman
+      name: Face_Heatman
       rect:
         serializedVersion: 2
-        x: 3
+        x: 39
         y: 243
-        width: 29
+        width: 35
         height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Face_Elecman
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 203
+        width: 35
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
