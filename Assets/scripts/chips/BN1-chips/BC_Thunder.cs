@@ -26,6 +26,8 @@ public class BC_Thunder : ChipLogic {
 		// Chip uses a generic tower effect
 		this.effect = EffectDB.TOWER;
 		effect.initAnim(navi, this);
+		navi.castAnim = true;
+
 		OnSyncedUpdate(navi);   // starts animation + logic
 	}
 

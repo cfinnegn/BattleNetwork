@@ -1,24 +1,21 @@
 fileFormatVersion: 2
-guid: a58c73693503d224da21d4463bb9682b
-timeCreated: 1492026767
+guid: a57ff27e5833a1b41bddebe9e2fadaf6
+timeCreated: 1492799935
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: menu_7
-    21300002: menu_8
-    21300004: menu_9
-    21300006: menu_7
-    21300008: menu_8
-    21300010: menu_9
-    21300012: menu_1
-    21300014: menu_2
-    21300016: menu_3
-    21300018: menu_4
-    21300020: menu_5
-    21300022: menu_6
-    21300024: menu_10
-    21300026: menu_11
-    21300028: menu_0
+    21300000: charge_0
+    21300002: charge_1
+    21300004: charge_2
+    21300006: charge_3
+    21300008: charge_4
+    21300010: charge_5
+    21300012: charge_6
+    21300014: charge_7
+    21300016: charge_8
+    21300018: charge_9
+    21300020: charge_10
+    21300022: charge_11
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -42,7 +39,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -1
     wrapMode: 1
@@ -55,7 +52,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 30
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -89,178 +86,162 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: iPhone
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: menu_7
+      name: charge_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 336
-        width: 240
-        height: 160
+        x: 11
+        y: 123
+        width: 44
+        height: 44
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_8
+      name: charge_1
       rect:
         serializedVersion: 2
-        x: 248
-        y: 336
-        width: 240
-        height: 160
+        x: 61
+        y: 124
+        width: 42
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_9
+      name: charge_2
       rect:
         serializedVersion: 2
-        x: 492
-        y: 336
-        width: 240
-        height: 160
+        x: 112
+        y: 127
+        width: 36
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_10
+      name: charge_3
       rect:
         serializedVersion: 2
-        x: 736
-        y: 336
-        width: 240
-        height: 160
+        x: 156
+        y: 129
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_11
+      name: charge_4
       rect:
         serializedVersion: 2
-        x: 4
-        y: 172
-        width: 240
-        height: 160
+        x: 11
+        y: 67
+        width: 44
+        height: 44
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_0
+      name: charge_5
       rect:
         serializedVersion: 2
-        x: 248
-        y: 172
-        width: 240
-        height: 160
+        x: 61
+        y: 68
+        width: 42
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_1
+      name: charge_6
       rect:
         serializedVersion: 2
-        x: 492
-        y: 172
-        width: 240
-        height: 160
+        x: 112
+        y: 71
+        width: 36
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_2
+      name: charge_7
       rect:
         serializedVersion: 2
-        x: 736
-        y: 172
-        width: 240
-        height: 160
+        x: 156
+        y: 73
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_3
+      name: charge_8
       rect:
         serializedVersion: 2
-        x: 4
-        y: 8
-        width: 240
-        height: 160
+        x: 11
+        y: 11
+        width: 44
+        height: 44
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_4
+      name: charge_9
       rect:
         serializedVersion: 2
-        x: 248
-        y: 8
-        width: 240
-        height: 160
+        x: 61
+        y: 12
+        width: 42
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_5
+      name: charge_10
       rect:
         serializedVersion: 2
-        x: 492
-        y: 8
-        width: 240
-        height: 160
+        x: 112
+        y: 15
+        width: 36
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_6
+      name: charge_11
       rect:
         serializedVersion: 2
-        x: 736
-        y: 8
-        width: 240
-        height: 160
+        x: 156
+        y: 17
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

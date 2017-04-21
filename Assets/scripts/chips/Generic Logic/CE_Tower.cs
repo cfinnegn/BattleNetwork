@@ -69,6 +69,18 @@ public class CE_Tower : ChipEffect {
 			i++;
 		}
 		int b = 0;
+		if(c.elem == ChipData.FIRE) {
+			// flicker once for fire
+			subarray.Add(effectAnim[start + i - 1]);
+			subarray.Add(effectAnim[start + i - 2]);
+			subarray.Add(effectAnim[start + i - 1]);
+			subarray.Add(effectAnim[start + i]);
+			// flicker twice
+			subarray.Add(effectAnim[start + i - 1]);
+			subarray.Add(effectAnim[start + i - 2]);
+			subarray.Add(effectAnim[start + i - 1]);
+			subarray.Add(effectAnim[start + i]);
+		}
 		if(c.elem != ChipData.ELEC) {	// elec tower does not reverse animation
 			while(b < frames) {
 				subarray.Add(effectAnim[start + i - b]);
@@ -78,14 +90,13 @@ public class CE_Tower : ChipEffect {
 		c.chip_sprite = subarray.ToArray(); // load only corresponding tower frames
 		c.chip_anim_frame = 0;
 		c.frametimer = c.chipFR; 
-		navi.castAnim = true;
-
-		int target_column = (navi.myNavi()) ? navi.column + 1 : navi.column - 1;    // moves right if my navi, moves left if opponents
-		nextTower(navi, c, navi.row, target_column);	// generate first tower in navi's row
-		c.frametimer = c.chipFR;
 	}
 
 	public override void OnSyncedUpdate(Navi navi, ChipLogic c) {
+		if(tower_renderers.Count == 0) {    // first update: add first tower
+			int target_column = (navi.myNavi()) ? navi.column + 1 : navi.column - 1;    // moves right if my navi, moves left if opponents
+			nextTower(navi, c, navi.row, target_column);    // generate first tower in navi's row
+		}
 		List<int> trim = new List<int>();   // flag towers in list for destroying
 		bool add_tower = false;	// set to true when a tower hits its trigger frame and needs to create a new tower
 		c.frametimer -= Time.deltaTime;
@@ -131,7 +142,10 @@ public class CE_Tower : ChipEffect {
 		}
 	}
 
-	public void nextTower(Navi navi, ChipLogic c, int row, int col) {
+	public bool nextTower(Navi navi, ChipLogic c, int row, int col) {
+		if(navi.field.GetComponent<Field>().grid[row][col].GetComponent<TileStatus>().state < 0) {	// towers cannot appear on broken tiles
+			return false;
+		}
 		GameObject tower = new GameObject();
 		tower.transform.position = navi.field.GetComponent<Field>().grid[row][col].transform.position;  // position new tower on target tile
 		//tower.transform.localScale = new Vector3(10.0f, 10.0f, 1.0f);
@@ -151,5 +165,6 @@ public class CE_Tower : ChipEffect {
 			next_row = row;
 		}
 		next_col = (navi.myNavi()) ? col + 1 : col - 1;    // moves right if my navi, moves left if opponents
+		return true;	// tower could be made
 	}
 }

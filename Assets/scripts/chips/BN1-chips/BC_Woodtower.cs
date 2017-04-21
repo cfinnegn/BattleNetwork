@@ -13,7 +13,7 @@ public class BC_Woodtower : ChipLogic {
 		this.base_cost = 4; // setup if statement for setting cost based on color
 		this.cost = this.base_cost;
 		this.elem = ChipData.WOOD;
-		this.power = 50;
+		this.power = 60;
 		this.chipFR = 0.12f;
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Woodtower");
 	}
@@ -26,6 +26,8 @@ public class BC_Woodtower : ChipLogic {
 		// Chip uses a generic tower effect
 		this.effect = EffectDB.TOWER;
 		effect.initAnim(navi, this);
+		navi.castAnim = true;
+
 		OnSyncedUpdate(navi);   // starts animation + logic
 	}
 

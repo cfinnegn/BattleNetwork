@@ -9,6 +9,8 @@ public class Field : MonoBehaviour {
 	public GameObject[] midrow;
 	public GameObject[] bottomrow;
 	public int front_row = 2;
+	public Sprite red;
+	public Sprite blue;
 
 	// Use this for initialization
 	void Start () {

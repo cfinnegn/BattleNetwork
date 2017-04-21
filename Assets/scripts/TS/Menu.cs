@@ -127,9 +127,14 @@ public class Menu : PunBehaviour {
 	public void MainPanel_MultilayerBtn() {
 		PhotonNetwork.player.NickName = this.nickname;
         PhotonNetwork.lobby = new TypedLobby(lobbyName, LobbyType.Default);
-        PhotonNetwork.ConnectUsingSettings("v1.0");
 
-        ReplayUtils.replayContext = lobbyName;
+		// #######################	Game Version set for connecting here ##############################
+		// #######################	Game Version set for connecting here ##############################
+		PhotonNetwork.ConnectUsingSettings("v1.0");
+		// #######################	Game Version set for connecting here ##############################
+		// #######################	Game Version set for connecting here ##############################
+
+		ReplayUtils.replayContext = lobbyName;
 
         this.infoText.text = "Connecting...";
 		ActivePanel (PanelType.Info);

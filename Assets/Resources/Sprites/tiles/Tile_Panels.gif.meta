@@ -1,24 +1,21 @@
 fileFormatVersion: 2
-guid: a58c73693503d224da21d4463bb9682b
-timeCreated: 1492026767
+guid: ae148142ec6cdf9438b4da5962a77597
+timeCreated: 1492631236
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: menu_7
-    21300002: menu_8
-    21300004: menu_9
-    21300006: menu_7
-    21300008: menu_8
-    21300010: menu_9
-    21300012: menu_1
-    21300014: menu_2
-    21300016: menu_3
-    21300018: menu_4
-    21300020: menu_5
-    21300022: menu_6
-    21300024: menu_10
-    21300026: menu_11
-    21300028: menu_0
+    21300000: Red
+    21300002: Blue
+    21300004: Danger
+    21300006: AA2_Broken
+    21300008: 1_Cracked
+    21300010: 0_Normal
+    21300012: 3_Ice
+    21300014: 5_Grass
+    21300016: 2_Lava
+    21300018: 4_Water
+    21300020: 6_Poison
+    21300022: 7_Holy
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -109,156 +106,156 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: menu_7
+      name: Red
       rect:
         serializedVersion: 2
-        x: 4
-        y: 336
-        width: 240
-        height: 160
+        x: 242
+        y: 398
+        width: 40
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_8
+      name: Blue
       rect:
         serializedVersion: 2
-        x: 248
-        y: 336
-        width: 240
-        height: 160
+        x: 282
+        y: 398
+        width: 40
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_9
+      name: Danger
       rect:
         serializedVersion: 2
-        x: 492
-        y: 336
-        width: 240
-        height: 160
+        x: 322
+        y: 398
+        width: 40
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.575}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AA2_Broken
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 422
+        width: 40
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_10
+      name: 1_Cracked
       rect:
         serializedVersion: 2
-        x: 736
-        y: 336
-        width: 240
-        height: 160
+        x: 82
+        y: 422
+        width: 40
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_11
+      name: 0_Normal
       rect:
         serializedVersion: 2
-        x: 4
-        y: 172
-        width: 240
-        height: 160
+        x: 2
+        y: 422
+        width: 40
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_0
+      name: 3_Ice
       rect:
         serializedVersion: 2
-        x: 248
-        y: 172
-        width: 240
-        height: 160
+        x: 2
+        y: 339
+        width: 40
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_1
+      name: 5_Grass
       rect:
         serializedVersion: 2
-        x: 492
-        y: 172
-        width: 240
-        height: 160
+        x: 42
+        y: 339
+        width: 40
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_2
+      name: 2_Lava
       rect:
         serializedVersion: 2
-        x: 736
-        y: 172
-        width: 240
-        height: 160
+        x: 162
+        y: 183
+        width: 40
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_3
+      name: 4_Water
       rect:
         serializedVersion: 2
-        x: 4
-        y: 8
-        width: 240
-        height: 160
+        x: 42
+        y: 99
+        width: 40
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_4
+      name: 6_Poison
       rect:
         serializedVersion: 2
-        x: 248
-        y: 8
-        width: 240
-        height: 160
+        x: 162
+        y: 23
+        width: 40
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: menu_5
+      name: 7_Holy
       rect:
         serializedVersion: 2
-        x: 492
-        y: 8
-        width: 240
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: menu_6
-      rect:
-        serializedVersion: 2
-        x: 736
-        y: 8
-        width: 240
-        height: 160
+        x: 2
+        y: 262
+        width: 40
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

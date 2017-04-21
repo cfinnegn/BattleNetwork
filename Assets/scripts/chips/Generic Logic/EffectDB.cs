@@ -8,4 +8,5 @@ public class EffectDB {
 	public static ChipEffect CANNON = new CE_Cannon();
 	public static ChipEffect SWORD = new CE_Sword();
 	public static ChipEffect TOWER = new CE_Tower();
+	public static ChipEffect SURROUND = new CE_Surround();
 }

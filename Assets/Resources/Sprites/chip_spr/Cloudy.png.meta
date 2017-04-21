@@ -1,14 +1,16 @@
 fileFormatVersion: 2
-guid: f75de9b8b008fd447be86f11f0671078
-timeCreated: 1491861990
+guid: 75bf4b53c9c2d3349bc1507e18897c64
+timeCreated: 1492799436
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: MegaThrow_0
-    21300002: MegaThrow_1
-    21300004: MegaThrow_2
-    21300006: MegaThrow_3
-    21300008: MegaThrow_4
+    21300000: Cloudy_0
+    21300002: Cloudy_1
+    21300004: Cloudy_2
+    21300006: Cloudy_3
+    21300008: Cloudy_4
+    21300010: Cloudy_5
+    21300012: Cloudy_6
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -32,7 +34,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -1
     wrapMode: 1
@@ -45,7 +47,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 15
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -79,87 +81,97 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: iPhone
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MegaThrow_0
+      name: Cloudy_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 4
-        width: 38
-        height: 52
+        x: 11
+        y: 7
+        width: 19
+        height: 73
       alignment: 9
-      pivot: {x: 0.55, y: 0.26}
+      pivot: {x: 0.5, y: 0.03}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MegaThrow_1
+      name: Cloudy_1
       rect:
         serializedVersion: 2
-        x: 49
-        y: 4
-        width: 44
-        height: 52
+        x: 43
+        y: 7
+        width: 25
+        height: 74
       alignment: 9
-      pivot: {x: 0.5, y: 0.26}
+      pivot: {x: 0.5, y: 0.03}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MegaThrow_2
+      name: Cloudy_2
       rect:
         serializedVersion: 2
-        x: 100
-        y: 4
-        width: 40
-        height: 52
+        x: 77
+        y: 7
+        width: 27
+        height: 75
       alignment: 9
-      pivot: {x: 0.46, y: 0.26}
+      pivot: {x: 0.5, y: 0.03}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MegaThrow_3
+      name: Cloudy_3
       rect:
         serializedVersion: 2
-        x: 145
-        y: 4
-        width: 54
-        height: 52
+        x: 115
+        y: 7
+        width: 31
+        height: 77
       alignment: 9
-      pivot: {x: 0.35, y: 0.26}
+      pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MegaThrow_4
+      name: Cloudy_4
       rect:
         serializedVersion: 2
-        x: 197
-        y: 4
-        width: 51
-        height: 52
+        x: 157
+        y: 7
+        width: 33
+        height: 78
       alignment: 9
-      pivot: {x: 0.5, y: 0.26}
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cloudy_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 7
+        width: 33
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cloudy_6
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 7
+        width: 33
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

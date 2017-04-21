@@ -7,6 +7,7 @@ public class CE_Sword : ChipEffect {
 	Sprite[] slash_eff;
 	GameObject slash_renderer;
 	int slash_frame = 0;
+	bool hit = false;
 
 	public CE_Sword() {
 		this.effectAnim = Resources.LoadAll<Sprite>("Sprites/Chip_spr/Swords_swoosh");
@@ -40,8 +41,13 @@ public class CE_Sword : ChipEffect {
 		slash_renderer.AddComponent<SpriteRenderer>();
 		slash_frame = 0;
 		slash_renderer.GetComponent<SpriteRenderer>().sprite = slash_eff[slash_frame];
-		slash_renderer.GetComponent<SpriteRenderer>().sortingOrder = 6;	//top layer, hit effect shows above auras
+		slash_renderer.GetComponent<SpriteRenderer>().sortingOrder = 6; //top layer, hit effect shows above auras
+		if(!navi.myNavi()) {	// flip slash effect horizontally when created by opponent
+			slash_renderer.GetComponent<SpriteRenderer>().flipX  = true;
+		}
 		slash_renderer.SetActive(false);
+
+		hit = true;	// reset hit check boolean to true until active frame of attack
 
 		// take control of navi sword animation to sync animations
 		c.chip_anim_frame = 0;
@@ -53,6 +59,9 @@ public class CE_Sword : ChipEffect {
 
 	public override void OnSyncedUpdate(Navi navi, ChipLogic c) {
 		c.frametimer -= Time.deltaTime;
+		if(!hit) {	// try hit
+			hit = navi.shot_handler.GetComponent<Shot_Handler>().check_sword(c.power, navi.playerNumber, 2, System.Math.Abs(c.sword_size), (c.sword_size < 0));
+		}
 		if(c.frametimer <= 0) {
 			c.frametimer = c.chipFR;
 			if(c.chip_anim_frame < navi.swordSprite.Length - 1) {  // advance to next frame if not at end
@@ -71,9 +80,7 @@ public class CE_Sword : ChipEffect {
 					}
 				}
 				if(c.chip_anim_frame == 2) {    // attack takes place on 3rd frame
-					// TODO: add logic for multiple active frames
-					navi.shot_handler.GetComponent<Shot_Handler>().check_sword(
-						c.power, navi.playerNumber, 2, System.Math.Abs(c.sword_size), (c.sword_size < 0));
+					hit = false;	// flag hit as false to start checking for hits
 					// place slash effect 1 space in front of navi
 					int target_space = (navi.myNavi()) ? navi.field_space + 1 : navi.field_space - 1;
 					slash_renderer.transform.position = navi.field.GetComponent<Field>().spaces[target_space].transform.position;

@@ -8,7 +8,7 @@ using System;
 public class Navi : TrueSyncBehaviour {
 	const byte INPUT_DIRECTION = 0;
 	const byte INPUT_BUSTER = 1;
-	const byte INPUT_CUST = 2;
+	const byte INPUT_CHIP = 2;
 	const byte INPUT_ENERGY = 3;
 
 	// netcode values for movement
@@ -43,10 +43,15 @@ public class Navi : TrueSyncBehaviour {
 	[Header("Buster Info")]
 	public float bust_charge = 0.0f;
 	public float max_charge = 2.0f; // time in seconds for full charge
+	public float[] charge_levels = { 2.0f, 1.75f, 1.5f };
 	bool charging = false;
 	public GameObject charge_ring;
+	public Image[] charge_disp_multi;
 	public int bust_dmg = 1;
 	public int charge1_dmg = 10;
+	public int[] charge_dmg = { 10, 20, 30 };
+	public GameObject charge_overlay;
+	public GameObject next_charge;
 
 	// HP
 	public int HP = 100;
@@ -332,7 +337,7 @@ public class Navi : TrueSyncBehaviour {
 	public override void OnSyncedInput() {
 		TrueSyncInput.SetInt (INPUT_DIRECTION, requestDirection);
 		TrueSyncInput.SetInt (INPUT_BUSTER, requestBuster);
-		TrueSyncInput.SetInt(INPUT_CUST, requestChip);
+		TrueSyncInput.SetInt(INPUT_CHIP, requestChip);
 		TrueSyncInput.SetInt(INPUT_ENERGY, requestEnergy);
 	}
 
@@ -373,7 +378,7 @@ public class Navi : TrueSyncBehaviour {
 		// Recieved Inputs
 		int pulledDir = TrueSyncInput.GetInt (INPUT_DIRECTION);
 		int pulledBuster = TrueSyncInput.GetInt (INPUT_BUSTER);
-		int pulledChipId = TrueSyncInput.GetInt (INPUT_CUST);
+		int pulledChipId = TrueSyncInput.GetInt (INPUT_CHIP);
 		int pulledCost = TrueSyncInput.GetInt(INPUT_ENERGY);
 
 		// set position to field tile position
