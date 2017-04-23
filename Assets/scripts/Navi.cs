@@ -10,6 +10,7 @@ public class Navi : TrueSyncBehaviour {
 	const byte INPUT_BUSTER = 1;
 	const byte INPUT_CHIP = 2;
 	const byte INPUT_ENERGY = 3;
+	const byte INPUT_CHARGE = 4;
 
 	// netcode values for movement
 	int requestDirection;
@@ -21,6 +22,7 @@ public class Navi : TrueSyncBehaviour {
 
 	// netcode values for buster
 	int requestBuster = 0;
+	int requestCharge = 0;
 	float busterQueueWindow = 0.15f;
 	bool pendingBuster = false;
 
@@ -35,23 +37,21 @@ public class Navi : TrueSyncBehaviour {
 	// field
 	[Header("Field Info")]
 	public GameObject field;
-	public int field_space;	// location of navi on field
+	public int field_space; // location of navi on field
 	public int row;
 	public int column;
 
 	// buster info
 	[Header("Buster Info")]
 	public float bust_charge = 0.0f;
-	public float max_charge = 2.0f; // time in seconds for full charge
-	public float[] charge_levels = { 2.0f, 1.75f, 1.5f };
+	public float[] charge_levels = { 2.0f, 1.75f, 1.5f }; // time in seconds for each additional charge level
+	//public float max_charge = (charge_levels[0] + charge_levels[1] + charge_levels[2]); 
 	bool charging = false;
-	public GameObject charge_ring;
-	public Image[] charge_disp_multi;
 	public int bust_dmg = 1;
-	public int charge1_dmg = 10;
 	public int[] charge_dmg = { 10, 20, 30 };
 	public GameObject charge_overlay;
-	public GameObject next_charge;
+	public GameObject full_charge_overlay;
+	public Sprite[] chargesprite;
 
 	// HP
 	public int HP = 100;
@@ -79,7 +79,7 @@ public class Navi : TrueSyncBehaviour {
 	public Sprite navi_face;
 	public Sprite navi_icon;
 
-	SpriteRenderer sr;
+	protected SpriteRenderer sr;
 	public Sprite idleSprite;
 	public float moveFR = 0.05f;
 	public bool moveAnim = false;
@@ -100,8 +100,8 @@ public class Navi : TrueSyncBehaviour {
 	public bool castAnim = false;
 	public Sprite[] castSprite;
 
-	int currentFrame;
-	FP frameTimer;
+	public int currentFrame;
+	protected FP frameTimer;
 	public bool rate_controlled = false;// set to true in ChipLogic if chip's animation controls changing of Navi sprite frames
 
 	public bool isIdle = true; // If no animations are playing
@@ -248,9 +248,8 @@ public class Navi : TrueSyncBehaviour {
 			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
 			chip_hand = GameObject.Find("Chip Bay");
 			chip_hand.GetComponent<Chip_Hand>().init();
-			charge_ring = GameObject.Find ("charge ring");
 			GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
-			GameObject.Find ("Buster Button").GetComponent<Buster> ().Navi = this;
+			GameObject.Find ("Buster Button").GetComponent<Buster> ().navi = this;
 		}
 		// Setting the player's number for easy acess
 		if (owner.Id <= 1) {
@@ -339,6 +338,7 @@ public class Navi : TrueSyncBehaviour {
 		TrueSyncInput.SetInt (INPUT_BUSTER, requestBuster);
 		TrueSyncInput.SetInt(INPUT_CHIP, requestChip);
 		TrueSyncInput.SetInt(INPUT_ENERGY, requestEnergy);
+		TrueSyncInput.SetInt(INPUT_CHARGE, requestCharge);
 	}
 
 
@@ -350,14 +350,7 @@ public class Navi : TrueSyncBehaviour {
 				GameObject.Find ("Buttons").GetComponent<Tapper> ().Navi = this;
 		}
 
-		if(charging) {
-			bust_charge += Time.deltaTime;
-			if(bust_charge > max_charge) { bust_charge = max_charge; }	// no over charging
-		}
-
 		// Update View
-		if(charge_ring != null)
-			charge_ring.GetComponent<Image>().fillAmount = bust_charge / max_charge;
 		if(health_dispA != null)
 			health_dispA.GetComponent<Text>().text = "[HP:" + HP + "] ";
 		if(health_dispB != null)
@@ -380,6 +373,7 @@ public class Navi : TrueSyncBehaviour {
 		int pulledBuster = TrueSyncInput.GetInt (INPUT_BUSTER);
 		int pulledChipId = TrueSyncInput.GetInt (INPUT_CHIP);
 		int pulledCost = TrueSyncInput.GetInt(INPUT_ENERGY);
+		int pulledCharge = TrueSyncInput.GetInt(INPUT_CHARGE);
 
 		// set position to field tile position
 		if (field != null) {
@@ -387,6 +381,7 @@ public class Navi : TrueSyncBehaviour {
 		}
 
 		UpdateRowColumn ();
+
 
 		// active chip
 		if(active_chip != null) {
@@ -455,6 +450,8 @@ public class Navi : TrueSyncBehaviour {
 				StartRight ();
 		}
 
+		//	!!!!!!!! THIS WILL NEED TO BE AN ABSTRACTED METHOD WHEN MULTIPLE NAVIS ARE IMPLEMENTD !!!!!!!!!
+
 		// buster shot
 		if (pulledBuster > 0) {
 			if (pendingMoveUp == false && pendingMoveDown == false && pendingMoveLeft == false && pendingMoveRight == false) {
@@ -462,16 +459,34 @@ public class Navi : TrueSyncBehaviour {
 					shootAnim = true;
 					if (pulledBuster == 1) {	// uncharged shot
 						shot_handler.GetComponent<Shot_Handler> ().check_bust (bust_dmg, playerNumber, 0);
-					} else if (pulledBuster == 2) {	// charged shot
-						shot_handler.GetComponent<Shot_Handler> ().check_bust (charge1_dmg, playerNumber, 1);
+					} else if (pulledBuster >= 2) {	// charged shot
+						shot_handler.GetComponent<Shot_Handler> ().check_bust (charge_dmg[pulledBuster-2], playerNumber, 1);
 					}
 					GetComponent<AudioSource> ().PlayOneShot (Resources.Load<AudioClip> ("Audio/xbustertrim"));
 				}
 			}
 		}
 
+		// charging
+
+		if(!myNavi()) {	// own navi "charing" bool handled locally to fix Charge_Ring holdover lag bug
+			charging = (pulledCharge == 1); // charging is true when pulled charge is not 0
+											// charging stopped so reset charge level
+			if(pulledCharge == -1) {    // pulledCharge=0 reserved for skills that modify charge, so charge level isn't always reset to 0
+				bust_charge = 0.0f;
+			}
+		}
+		if(charging) {
+			bust_charge += Time.deltaTime;
+			if(bust_charge > (charge_levels[0] + charge_levels[1] + charge_levels[2])) {
+				bust_charge = (charge_levels[0] + charge_levels[1] + charge_levels[2]); // no over charging
+			}  
+		}
+		chargeAnim();
+
+
 		// using or drawing chips
-		if (pulledChipId != 0 && chipGCD <= 0f && isIdle) {
+		if(pulledChipId != 0 && chipGCD <= 0f && isIdle) {
 			int cost;
 			if(pulledChipId == -1) {	// drawing chip
 				cost = 2;                       // !!!!!! DRAW COST HARDCODED HERE !!!!!!
@@ -577,14 +592,24 @@ public class Navi : TrueSyncBehaviour {
 
 	public void bust_shot() {
 		charging = true;
+		requestCharge = 1;
 		requestBuster = 1;
 		busterQueueWindow = 0.15f;
 	}
 
 	public void charge_release() {
 		charging = false;
-		if(bust_charge == max_charge) {
+		requestCharge = -1;
+		if(bust_charge >= charge_levels[0]) {	// level1 charge
 			requestBuster = 2;
+			busterQueueWindow = 0.15f;
+		}
+		if(bust_charge >= (charge_levels[0] + charge_levels[1])) {	// level2 charge
+			requestBuster = 3;
+			busterQueueWindow = 0.15f;
+		}
+		if(bust_charge >= (charge_levels[0] + charge_levels[1] + charge_levels[2])) {	// level3 charge
+			requestBuster = 4;
 			busterQueueWindow = 0.15f;
 		}
 		bust_charge = 0.0f;
@@ -647,6 +672,51 @@ public class Navi : TrueSyncBehaviour {
 
 	public bool myNavi() {	// abstracted test to see if navi is owned by player
 		return localOwner.Id == owner.Id;
+	}
+
+	public void chargeAnim() {
+		// activating spirtes
+		full_charge_overlay.SetActive(bust_charge > charge_levels[0]);
+		charge_overlay.SetActive((bust_charge > 0) && (bust_charge < (charge_levels[0] + charge_levels[1] + charge_levels[2])));
+
+		// rotating sprites
+		if(charging) {
+			charge_overlay.transform.Rotate(new Vector3(0f, 0f, -2f));
+			full_charge_overlay.transform.Rotate(new Vector3(0f, 0f, -2f));
+		}
+
+		// changing sprites
+		// charge
+		if(bust_charge < charge_levels[0] / 2) {
+			charge_overlay.GetComponent<SpriteRenderer>().sprite = chargesprite[0];
+		}
+		else if(bust_charge < charge_levels[1]) {
+			charge_overlay.GetComponent<SpriteRenderer>().sprite = chargesprite[1];
+		}
+		else if(bust_charge < (charge_levels[0] + (charge_levels[1] / 2))) {
+			charge_overlay.GetComponent<SpriteRenderer>().sprite = chargesprite[4];
+		}
+		else if(bust_charge < (charge_levels[0] + charge_levels[1])) {
+			charge_overlay.GetComponent<SpriteRenderer>().sprite = chargesprite[5];
+		}
+		else if(bust_charge < (charge_levels[0] + charge_levels[1] + (charge_levels[2] / 2))) {
+			charge_overlay.GetComponent<SpriteRenderer>().sprite = chargesprite[8];
+		}
+		else {
+			charge_overlay.GetComponent<SpriteRenderer>().sprite = chargesprite[9];
+		}
+		// full charge
+		if(full_charge_overlay.activeInHierarchy) {
+			if(bust_charge < (charge_levels[0] + charge_levels[1])) {
+				full_charge_overlay.GetComponent<Animator>().Play("charge1");
+			}
+			else if(bust_charge < (charge_levels[0] + charge_levels[1] + charge_levels[2])) {
+				full_charge_overlay.GetComponent<Animator>().Play("charge2");
+			}
+			else {
+				full_charge_overlay.GetComponent<Animator>().Play("charge3");
+			}
+		}
 	}
 
 }

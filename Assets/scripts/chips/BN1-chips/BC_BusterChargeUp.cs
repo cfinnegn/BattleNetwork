@@ -6,7 +6,6 @@ using UnityEngine;
 public class BC_BusterChargeUp : ChipLogic {
 	GameObject AC_dispObj;      // The active chip display using this chip
 	ActiveChipDisplay AC_disp;  // reduces need for GetCompnent<>() calls for efficiency
-	float old_charge_speed;
 
 	public BC_BusterChargeUp() {
 		this.ID = 9;
@@ -43,12 +42,19 @@ public class BC_BusterChargeUp : ChipLogic {
 		AC_disp.power_text.text = "" + Math.Ceiling(AC_disp.duration);
 		AC_disp.duration_ring.fillAmount = AC_disp.duration / AC_disp.max_duration;
 		//	*****	Buster Charge Up	******
-		old_charge_speed = navi.max_charge;
-		navi.max_charge *= 0.75f;	// reduce time for full charge by 25%
+		int i = 0;
+		while(i < navi.charge_levels.Length) {
+			navi.charge_levels[i] *= 0.75f;	// reduce time for full charge by 25%
+			i++;
+		}
 	}
 
 	public override void deactivate(Navi navi) {
-		navi.max_charge /= 0.75f;	// revert charge speed to original
+		int i = 0;
+		while(i < navi.charge_levels.Length) {
+			navi.charge_levels[i] /= 0.75f; // reduce time for full charge by 25%
+			i++;
+		}
 		if(navi.localOwner.Id == navi.owner.Id) {
 			navi.AC_dispA.SetActive(false);
 			navi.active_chip = null;

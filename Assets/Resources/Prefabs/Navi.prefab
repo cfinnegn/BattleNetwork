@@ -20,8 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4043827052088534}
   - component: {fileID: 212177308240148218}
+  - component: {fileID: 95522286094088096}
   m_Layer: 0
-  m_Name: next_charge
+  m_Name: full_charge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277639234672924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.181244, y: -3.6514497, z: 0}
+  m_LocalPosition: {x: -4.074056, y: 1.6721174, z: 0}
   m_LocalScale: {x: 2.25, y: 2.25, z: 1}
   m_Children:
   - {fileID: 224037904496995044}
@@ -219,6 +220,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95522286094088096
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1167799139796858}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 99f626655dd193145803bf50625f2c29, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114529438050079602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,9 +250,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _position:
     x:
-      _serializedValue: 5073404416
+      _serializedValue: -17497937920
     y:
-      _serializedValue: -15682856960
+      _serializedValue: 7181689344
     z:
       _serializedValue: 0
   _rotation:
@@ -281,18 +299,27 @@ MonoBehaviour:
   row: 0
   column: 0
   bust_charge: 0
-  max_charge: 1.5
   charge_levels:
   - 2
-  - 3.75
-  - 5.25
-  charge_ring: {fileID: 0}
-  charge_ring_multi: []
+  - 1.75
+  - 1.5
   bust_dmg: 1
-  charge1_dmg: 10
   charge_dmg: 0a000000140000001e000000
   charge_overlay: {fileID: 1189813215223960}
-  next_charge: {fileID: 1167799139796858}
+  full_charge_overlay: {fileID: 1167799139796858}
+  chargesprite:
+  - {fileID: 21300000, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
+  - {fileID: 21300002, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
+  - {fileID: 21300004, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
+  - {fileID: 21300006, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
+  - {fileID: 21300008, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
+  - {fileID: 21300010, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
+  - {fileID: 21300012, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
+  - {fileID: 21300014, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
+  - {fileID: 21300016, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
+  - {fileID: 21300018, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
+  - {fileID: 21300020, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
+  - {fileID: 21300022, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
   HP: 100
   chipdatabase: {fileID: 0}
   deck: {fileID: 1233071777399432, guid: 0f934f69ebf6cb045a6427b279fe0124, type: 2}
@@ -490,7 +517,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300008, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
