@@ -52,7 +52,7 @@ public class CE_Cannon : ChipEffect {
 					navi.controlledSpriteSet(c.chip_anim_frame - 1);
 				}
 				if(c.chip_anim_frame == 2) {
-					navi.shot_handler.GetComponent<Shot_Handler>().check_bust(c.power, navi.playerNumber, 2); // shot fired on 3rd frame
+					navi.shot_handler.GetComponent<Shot_Handler>().check_bust(c.power, navi.playerNumber, 2, c.elem); // shot fired on 3rd frame
 				}
 			}
 			else {  // animation finished

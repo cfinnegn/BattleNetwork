@@ -20,7 +20,7 @@ public class Chip_Hand : MonoBehaviour {
 	}
 	public void init() {
 		while(held < 3) { // loop until holding target number
-			chip_added();
+			chip_added(navi.GetComponent<Navi>().deck.GetComponent<Deck>().Draw_chip());
 		}
 	}
 	
@@ -49,11 +49,11 @@ public class Chip_Hand : MonoBehaviour {
 		}
 	}
 
-	public bool chip_added() {
+	public bool chip_added(DeckSlot chdata) {
 		if(held < 6) {  // not full hand
 			chips[held] = Instantiate(chip_obj, transform, true);    // adds chip into next open position
 			chips[held].GetComponent<Transform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
-			DeckSlot chdata = navi.GetComponent<Navi>().deck.GetComponent<Deck>().Draw_chip();
+			//DeckSlot chdata = navi.GetComponent<Navi>().deck.GetComponent<Deck>().Draw_chip();
 			chips[held].GetComponent<BattleChip>().RecieveData(chdata);
 			chips[held].GetComponent<BattleChip>().index = held;
 			held++;

@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277639234672924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.074056, y: 1.6721174, z: 0}
+  m_LocalPosition: {x: -999, y: 0, z: 0}
   m_LocalScale: {x: 2.25, y: 2.25, z: 1}
   m_Children:
   - {fileID: 224037904496995044}
@@ -294,6 +294,8 @@ MonoBehaviour:
     id: 0
     name: 
   playerNumber: 2
+  HP: 100
+  dodge: 0
   field: {fileID: 0}
   field_space: 0
   row: 0
@@ -320,9 +322,13 @@ MonoBehaviour:
   - {fileID: 21300018, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
   - {fileID: 21300020, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
   - {fileID: 21300022, guid: 200f3d5402e1b9a4c908559c5cf12610, type: 3}
-  HP: 100
+  NPcost: 3
+  NPcolorcode: 0
+  NPimage: {fileID: 21300000, guid: 74e151642c4c8d042b1514f1aa78aa1c, type: 3}
+  NPtext: "Weapon\r\n\r\nGet!"
   chipdatabase: {fileID: 0}
   deck: {fileID: 1233071777399432, guid: 0f934f69ebf6cb045a6427b279fe0124, type: 2}
+  used_chips: 
   combo_color: 0
   combo_level: 0
   shot_handler: {fileID: 0}
@@ -376,6 +382,7 @@ MonoBehaviour:
   - {fileID: 21300002, guid: 9ea55d4751503f54aaf01abb0d60bdee, type: 3}
   - {fileID: 21300004, guid: 9ea55d4751503f54aaf01abb0d60bdee, type: 3}
   - {fileID: 21300006, guid: 9ea55d4751503f54aaf01abb0d60bdee, type: 3}
+  currentFrame: 0
   rate_controlled: 0
   isIdle: 1
   eff_renderObj: {fileID: 1632366302618092}

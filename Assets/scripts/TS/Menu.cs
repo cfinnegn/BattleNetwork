@@ -63,8 +63,15 @@ public class Menu : PunBehaviour {
     private string lobbyName;
     private string levelToLoad;
 
-    public static Menu instance;
+	public static Menu instance;
 
+	public float[] playerPing;
+	public float sendPingTimer = 0f;
+	public bool display_ping;
+
+	void Awake(){
+		playerPing = new float[9];
+	}
 	// Connects to photon
 	void Start () {
 		if(PlayerPrefs.HasKey("Nick"))
@@ -86,6 +93,21 @@ public class Menu : PunBehaviour {
 	}
 
 	void Update() {
+		// Update players' pings in room
+		if (PhotonNetwork.connected) {
+			if (PhotonNetwork.player.ID > 0) {
+				sendPingTimer -= Time.deltaTime;
+				float myPing = PhotonNetwork.GetPing ();
+				if (sendPingTimer <= 0) {
+					ExitGames.Client.Photon.Hashtable playerProps = new ExitGames.Client.Photon.Hashtable ();
+					playerProps.Add("hisPing",myPing);
+					PhotonNetwork.player.SetCustomProperties(playerProps);
+					sendPingTimer = 2f;
+				}
+				UpdatePlayerList ();
+			}
+		}
+
 		if (chatPanel.activeSelf && Input.GetKeyDown(KeyCode.Return)) {
 			MultiplayerPanel_ChatSend ();
 		}
@@ -375,7 +397,8 @@ public class Menu : PunBehaviour {
 			readyButtons[side].gameObject.SetActive(true);
 
 			Text playerNameText = playerBox.FindChild("PlayerNameText").GetComponent<Text>();
-            playerNameText.text = PhotonNetwork.playerList[index].NickName.Trim();
+			playerNameText.text = PhotonNetwork.playerList[index].NickName.Trim();
+			if(display_ping) { playerNameText.text += "  :  (" + PhotonNetwork.playerList[index].CustomProperties["hisPing"] + ")"; } // Shows player name + ping
         }
 
 	}
@@ -490,6 +513,10 @@ public class Menu : PunBehaviour {
 
 	public void Enter_Training() {
 		SceneManager.LoadScene(2, LoadSceneMode.Single);	// Battle_Training is 2 in build order
+	}
+
+	public void Toggle_Display_Ping() {
+		display_ping = !display_ping;
 	}
 
 }

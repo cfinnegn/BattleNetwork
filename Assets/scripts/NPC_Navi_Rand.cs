@@ -6,16 +6,13 @@ using UnityEngine.UI;
 
 public class NPC_Navi_Rand : Navi {
 
-	////public GameObject field;
-	////public int field_space;
+	[Header("NPC specific")]
 	public float move_ready;
 	public int dir_to_move;
 	public int next_space;
 	public bool defeated = false;
 
-	////public int HP = 100;
 	public GameObject health_disp;
-	////public GameObject shot_handler;
 	public GameObject shot_disp;
 
 	new void Awake() {
@@ -79,7 +76,6 @@ public class NPC_Navi_Rand : Navi {
 			}
 			if(HP <= 0) { defeated = true; }
 		}
-		Debug.Log("animate npc");
 		frameTimer -= TrueSyncManager.DeltaTime;
 		PlayAnimation(currentFrame);
 	}
@@ -116,7 +112,7 @@ public class NPC_Navi_Rand : Navi {
 			pew.transform.localScale = new Vector3(1, 1, 1);
 			pew.transform.position = new Vector3(transform.position.x - 1.3f, transform.position.y + 3.3f, transform.position.z);
 			Destroy(pew, 0.5f);
-			shot_handler.GetComponent<Shot_Handler>().check_bust(5, 2, 0);
+			shot_handler.GetComponent<Shot_Handler>().check_bust(5, 2, 0, ChipData.NORMAL);
 		}
 	}
 

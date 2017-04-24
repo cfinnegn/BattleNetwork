@@ -105,7 +105,7 @@ public class CE_Tower : ChipEffect {
 			if(!tower.hit) { // no hit from tower yet, so check for hit
 				// tests for hit and set to true if there is one so it won't check again
 				tower.hit = (navi.shot_handler.GetComponent<Shot_Handler>().check_position(
-					c.power, navi.playerNumber, 2/*hardcoded stun*/, tower.row, tower.col));
+					c.power, navi.playerNumber, 2/*hardcoded stun*/, tower.row, tower.col, c.elem));
 			}
 			if(c.frametimer <= 0) {
 				if(tower.frame < c.chip_sprite.Length - 1) {  // advance to next frame if not at end

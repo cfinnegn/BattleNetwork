@@ -11,6 +11,7 @@ public class Navi : TrueSyncBehaviour {
 	const byte INPUT_CHIP = 2;
 	const byte INPUT_ENERGY = 3;
 	const byte INPUT_CHARGE = 4;
+	const byte INPUT_HELD = 5;
 
 	// netcode values for movement
 	int requestDirection;
@@ -34,6 +35,10 @@ public class Navi : TrueSyncBehaviour {
 
 	public int playerNumber = 1;
 
+	// HP
+	public int HP = 100;
+	public bool dodge = false;	// navi is in an invulnerable state when true
+	
 	// field
 	[Header("Field Info")]
 	public GameObject field;
@@ -45,7 +50,6 @@ public class Navi : TrueSyncBehaviour {
 	[Header("Buster Info")]
 	public float bust_charge = 0.0f;
 	public float[] charge_levels = { 2.0f, 1.75f, 1.5f }; // time in seconds for each additional charge level
-	//public float max_charge = (charge_levels[0] + charge_levels[1] + charge_levels[2]); 
 	bool charging = false;
 	public int bust_dmg = 1;
 	public int[] charge_dmg = { 10, 20, 30 };
@@ -53,9 +57,14 @@ public class Navi : TrueSyncBehaviour {
 	public GameObject full_charge_overlay;
 	public Sprite[] chargesprite;
 
-	// HP
-	public int HP = 100;
-
+	// Navi Power Info
+	[Header("Navi Power Info")]
+	NaviPower NPbutton;
+	public int NPcost = 3;
+	public int NPcolorcode = ChipData.GREY;
+	public Sprite NPimage;
+	public string NPtext = "Weapon" + Environment.NewLine + Environment.NewLine + "Get!";
+	public int weaponGet = 0;	//MM only!!
 
 	//chips and cust
 	GameObject chip_hand;
@@ -65,8 +74,8 @@ public class Navi : TrueSyncBehaviour {
 	public ChipDatabase chipdatabase;
 	public GameObject deck;
 	public ChipLogic active_chip;
-	public List<ChipLogic> running_chips = new List<ChipLogic>();	// activated chips with effects that need updating
-
+	public List<ChipLogic> running_chips = new List<ChipLogic>();   // activated chips with effects that need updating
+	public List<int> used_chips = new List<int>();	// stores the IDs of the last 3 chips used
 
 	public int combo_color = 0; // color of last chip used
 	public int combo_level = 0;
@@ -250,6 +259,9 @@ public class Navi : TrueSyncBehaviour {
 			chip_hand.GetComponent<Chip_Hand>().init();
 			GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
 			GameObject.Find ("Buster Button").GetComponent<Buster> ().navi = this;
+			GameObject.Find("Draw Button").GetComponent<Draw_Button>().navi = this;
+			NPbutton = GameObject.Find("NaviPower Button").GetComponent<NaviPower>();
+			NPbutton.Init(this);
 		}
 		// Setting the player's number for easy acess
 		if (owner.Id <= 1) {
@@ -310,6 +322,7 @@ public class Navi : TrueSyncBehaviour {
 			cust_dispB = GameObject.Find("CustB");
 			AC_dispB = GameObject.Find("ActiveChipB");
 			AC_dispB.SetActive(false);
+			held_dispB = GameObject.Find("ChipCountB");
 			player_face_B = GameObject.Find("PlayerFaceB").GetComponent<Image>();
 			player_face_B.sprite = navi_face;
 			GameObject.Find("End_Panel").GetComponent<End_Panel>().naviB = this;
@@ -339,6 +352,9 @@ public class Navi : TrueSyncBehaviour {
 		TrueSyncInput.SetInt(INPUT_CHIP, requestChip);
 		TrueSyncInput.SetInt(INPUT_ENERGY, requestEnergy);
 		TrueSyncInput.SetInt(INPUT_CHARGE, requestCharge);
+		if(chip_hand != null) {
+			TrueSyncInput.SetInt(INPUT_HELD, chip_hand.GetComponent<Chip_Hand>().held);
+		}
 	}
 
 
@@ -356,15 +372,26 @@ public class Navi : TrueSyncBehaviour {
 		if(health_dispB != null)
 			health_dispB.GetComponent<Text>().text = "[HP:" + HP + "] ";
 
+
+		// buffer queue decrements
 		moveQueueWindow -= Time.deltaTime;
 		if (moveQueueWindow <= 0f)
 			requestDirection = 0;
 		busterQueueWindow -= Time.deltaTime;
 		if (busterQueueWindow <= 0f)
 			requestBuster = 0;
-		//custQueueWindow -= Time.deltaTime;
-		//if(custQueueWindow <= 0f)
-		//	requestCust = 0;
+
+		//MM specific NP updates
+		if(NPbutton != null) {
+			if(weaponGet <= 0) {    // no enemy chip data to grab
+				NPbutton.image.sprite = NPimage;
+				NPbutton.text.transform.gameObject.SetActive(false);
+			}
+			else {
+				NPbutton.image.sprite = chipdatabase.chipDB[weaponGet].chipimg;
+				NPbutton.text.transform.gameObject.SetActive(true);
+			}
+		}
 	}
 
 	public override void OnSyncedUpdate () { // Update every synced frame
@@ -374,9 +401,11 @@ public class Navi : TrueSyncBehaviour {
 		int pulledChipId = TrueSyncInput.GetInt (INPUT_CHIP);
 		int pulledCost = TrueSyncInput.GetInt(INPUT_ENERGY);
 		int pulledCharge = TrueSyncInput.GetInt(INPUT_CHARGE);
+		int pulledHeld = TrueSyncInput.GetInt(INPUT_HELD);
+
 
 		// set position to field tile position
-		if (field != null) {
+		if(field != null) {
 			tsTransform.position = new TSVector (field.GetComponent<Field> ().spaces [field_space].transform.position.x, field.GetComponent<Field> ().spaces [field_space].transform.position.y + 0.1f, field.GetComponent<Field> ().spaces [field_space].transform.position.z);
 		}
 
@@ -458,9 +487,9 @@ public class Navi : TrueSyncBehaviour {
 				if (isIdle) {
 					shootAnim = true;
 					if (pulledBuster == 1) {	// uncharged shot
-						shot_handler.GetComponent<Shot_Handler> ().check_bust (bust_dmg, playerNumber, 0);
+						shot_handler.GetComponent<Shot_Handler> ().check_bust (bust_dmg, playerNumber, 0, ChipData.NORMAL);
 					} else if (pulledBuster >= 2) {	// charged shot
-						shot_handler.GetComponent<Shot_Handler> ().check_bust (charge_dmg[pulledBuster-2], playerNumber, 1);
+						shot_handler.GetComponent<Shot_Handler> ().check_bust (charge_dmg[pulledBuster-2], playerNumber, 1, ChipData.NORMAL);
 					}
 					GetComponent<AudioSource> ().PlayOneShot (Resources.Load<AudioClip> ("Audio/xbustertrim"));
 				}
@@ -484,23 +513,35 @@ public class Navi : TrueSyncBehaviour {
 		}
 		chargeAnim();
 
+		if(!myNavi()) {	// only need to set held chip number for opponent, ChipHand sets own value
+			held_dispB.GetComponent<Text>().text = "x" + pulledHeld;
+		}
+
 
 		// using or drawing chips
 		if(pulledChipId != 0 && chipGCD <= 0f && isIdle) {
 			int cost;
 			if(pulledChipId == -1) {	// drawing chip
 				cost = 2;                       // !!!!!! DRAW COST HARDCODED HERE !!!!!!
-			} 
-			else {	// retrieve cost and activate chip
-				print ("" + pulledChipId);
+			}
+			else if(pulledChipId == -2) {	// Navi Power
+				cost = NPcost;		// Not all Navi Powers will apply cost at this stage, will be handled by overrides when multiple Navis implemented
+				NPactivate();
+			}
+			else {  // retrieve cost and activate chip
+				print("" + pulledChipId);
 				cost = pulledCost;
-				chipdatabase.chipDB [pulledChipId].activate (this);
+				chipdatabase.chipDB[pulledChipId].activate(this);
+				used_chips.Add(pulledChipId);
+				if(used_chips.Count > 3) {
+					used_chips.RemoveAt(0); // pops oldest used chip out of queue when more than 3 stored
+				}
 				Debug.Log("Playing Chip: " + chipdatabase.chipDB[pulledChipId].chipName);
 			}
 			if(localOwner.Id == owner.Id){	// update my custom gauge 
 				cust_dispA.GetComponent<Cust> ().gauge -= cost;
 				if(pulledChipId == -1) {
-					chip_hand.GetComponent<Chip_Hand>().chip_added();
+					chip_hand.GetComponent<Chip_Hand>().chip_added(deck.GetComponent<Deck>().Draw_chip());
 				}
 			}
 			if(localOwner.Id != owner.Id){	// update opponent custom gauge
@@ -509,6 +550,12 @@ public class Navi : TrueSyncBehaviour {
 			chipGCD = 0.25f;
 			pulledChipId = 0;
 			requestChip = 0;
+		}
+
+		// !!!! MEGAMAN ONLY UPDATE FOR NAVI POWER !!!!
+		Navi opponent = shot_handler.GetComponent<Shot_Handler>().opponent_ref(this);
+		if(opponent.used_chips.Count > 0) {	// opponent has used a chip, so there is a chip to grab
+			weaponGet = opponent.used_chips[opponent.used_chips.Count - 1];
 		}
 	}
 
@@ -614,49 +661,74 @@ public class Navi : TrueSyncBehaviour {
 		}
 		bust_charge = 0.0f;
 	}
-	public void hit(int dmg, int stun) {
-		// stun: 0 = none, 1 = light_stagger, 2 = stagger, 3 = stun, 4 = sp_stun
-		if((active_chip != null) && (active_chip.hit_eff)) {
-			try {
-				active_chip.onHit(this, dmg, stun);
-				return;	// hit handling passed off to active chip
-			}
-			catch (NotImplementedException){
-				Debug.Log("Chip: " + active_chip.chipName + " flagged with hit_eff, but has no onHit() method");
+
+	// input sent for navi power button (wait for synced frame)
+	public virtual void NaviPowerInput() {
+		if(weaponGet > 0) {	// there must be a chip to grab to use navi power
+			if(chip_hand.GetComponent<Chip_Hand>().held < 6) { // can only use MM navi power when hand not full
+				useChip(-2, NPcolorcode);
 			}
 		}
-		HP -= dmg;
-		if(stun >= 1) {	//	!!!!!!! PLACEHOLDER MAKING ALL STUN LIGHT STAGGER, CHANGE WHEN HIGHER STUN IMPLEMENTED !!!!!!
-			stunAnim = true;
+	}
+
+	// method for logic of individual navi power
+	public virtual void NPactivate() {
+		if(chip_hand != null) {
+			// add a WHITE code copy of the last chip played by your opponent to your hand
+			chip_hand.GetComponent<Chip_Hand>().chip_added(new DeckSlot(weaponGet, ChipData.WHITE));
 		}
-		else {      // !!!!!! PLACEHOLDER right now a buster shot is the only 0 stun hit, and is the only hit with small_hit_effect
-			eff_renderObj.SetActive(true);
-			// randomize hit effect position
-			eff_renderObj.transform.position = ( transform.position + body_offset +
-				new Vector3(UnityEngine.Random.Range(-0.4f, 0.4f), UnityEngine.Random.Range(-0.4f, 0.8f)));
+	}
+
+
+	public void hit(int dmg, int stun, int elem /*to be used later for effectiveness multipliers*/) {
+		if(!dodge) {
+			// stun: 0 = none, 1 = light_stagger, 2 = stagger, 3 = stun, 4 = sp_stun
+			if((active_chip != null) && (active_chip.hit_eff)) {
+				try {
+					active_chip.onHit(this, dmg, stun);
+					return; // hit handling passed off to active chip
+				}
+				catch(NotImplementedException) {
+					Debug.Log("Chip: " + active_chip.chipName + " flagged with hit_eff, but has no onHit() method");
+				}
+			}
+			HP -= dmg;
+			if(stun >= 1) { //	!!!!!!! PLACEHOLDER MAKING ALL STUN LIGHT STAGGER, CHANGE WHEN HIGHER STUN IMPLEMENTED !!!!!!
+				stunAnim = true;
+			}
+			else {      // !!!!!! PLACEHOLDER right now a buster shot is the only 0 stun hit, and is the only hit with small_hit_effect
+				eff_renderObj.SetActive(true);
+				// randomize hit effect position
+				eff_renderObj.transform.position = (transform.position + body_offset +
+					new Vector3(UnityEngine.Random.Range(-0.4f, 0.4f), UnityEngine.Random.Range(-0.4f, 0.8f)));
+			}
 		}
 	}
 
 	public void useChip(int chipId, int chipColor) {
-		Debug.Log("in useChip");
+		// cost calculation
 		int cost;
-		if(chipId == -1) {	// chip drawn
+		if(chipId == -1) {  // chip drawn
 			cost = 2;           // !!!!!! DRAW COST HARDCODED HERE !!!!!!
-			if(chip_hand.GetComponent<Chip_Hand>().held >= 6) {	// cannot draw if holding 6 chips
-				chipId = 0;		// chipId 0 will not execute chipuse netcode
+			if(chip_hand.GetComponent<Chip_Hand>().held >= 6) { // cannot draw if holding 6 chips
+				chipId = 0;     // chipId 0 will not execute chipuse netcode
 			}
+		}
+		else if(chipId == -2) { // Navi Power Used
+			cost = NPcost;
 		}
 		else {
 			cost = chipdatabase.chipDB[chipId].cost;
 			if((chipColor == combo_color) && (combo_color != ChipData.GREY)) {  // chip of combo color, not grey
 				if(combo_level > 2) { // after 3rd chip in combo, discount become 2
-					cost = (cost - 2 >= 0)? cost-2 : 0;	// no negative cost
+					cost = (cost - 2 >= 0) ? cost - 2 : 0;  // no negative cost
 				}
-				else{  
+				else {
 					cost = (cost - 1 >= 0) ? cost - 1 : 0;  // no negative cost
 				}
 			}
 		}
+		// apply cost and update combo
 		if(cust_dispA.GetComponent<Cust>().gauge >= cost) {
 			requestChip = chipId;
 			requestEnergy = cost;

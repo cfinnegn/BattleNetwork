@@ -58,7 +58,7 @@ public class CE_Surround : ChipEffect {
 				if(!affectedArea[i].hit) {// no hit from space yet, so check for hit
 					 // tests for hit and set to true if there is one so it won't check again
 					affectedArea[i].hit = navi.shot_handler.GetComponent<Shot_Handler>()
-						.check_position(c.power, navi.playerNumber, 2, affectedArea[i].row, affectedArea[i].col);
+						.check_position(c.power, navi.playerNumber, 2, affectedArea[i].row, affectedArea[i].col, c.elem);
 				}
 				i++;
 			}

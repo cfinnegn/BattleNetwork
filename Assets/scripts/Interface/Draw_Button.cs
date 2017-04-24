@@ -14,13 +14,15 @@ public class Draw_Button : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(GameObject.FindGameObjectWithTag("My Navi")!= null)
-			navi = GameObject.FindGameObjectWithTag("My Navi").GetComponent<Navi>();
+		//if(GameObject.FindGameObjectWithTag("My Navi")!= null)
+		//	navi = GameObject.FindGameObjectWithTag("My Navi").GetComponent<Navi>();
 	}
 
 	public void Draw_Chip() {
-		if(Cust.GetComponent<Cust>().energy >= 2) { // have at least 2 energy to draw
-			navi.useChip(-1, 0);	// -1 is a non-chip-code that represents draw, 0 is grey
+		if(navi != null) {
+			if(Cust.GetComponent<Cust>().energy >= 2) { // have at least 2 energy to draw
+				navi.useChip(-1, 0);    // -1 is a non-chip-code that represents draw, 0 is grey
+			}
 		}
 	}
 
