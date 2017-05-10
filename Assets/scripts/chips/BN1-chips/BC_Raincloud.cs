@@ -13,21 +13,31 @@ public class BC_Raincloud : ChipLogic {
 		this.base_cost = 5; // setup if statement for setting cost based on color
 		this.cost = this.base_cost;
 		this.elem = ChipData.WATER;
-		this.power = 120;
+		this.power = 30;
+		this.chipFR = 0.1f;
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Raincloud");
 	}
 
 
 
-	public override void activate(Navi n) {
-		//throw new NotImplementedException();
+	public override void activate(Navi navi) {
+		navi.running_chips.Add(this);
+
+		// Chip uses a generic tower effect
+		this.effect = EffectDB.PENDULUM;
+		effect.initAnim(navi, this);
+		navi.castAnim = true;
+
+		OnSyncedUpdate(navi);   // starts animation + logic	
 	}
 
-	public override void deactivate(Navi n) {
-		//throw new NotImplementedException();
+	public override void deactivate(Navi navi) {
+		effect.deactivate(navi, this);
 	}
 
 	public override void OnSyncedUpdate(Navi navi) {
-		//throw new NotImplementedException();
+		if(effect != null) {
+			effect.OnSyncedUpdate(navi, this);
+		}
 	}
 }

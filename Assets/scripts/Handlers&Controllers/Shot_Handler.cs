@@ -59,6 +59,7 @@ public class Shot_Handler : MonoBehaviour {
 		return false;
 	}
 	public bool check_position(int dmg, int shooter, int stun, int row, int col, int elem) {
+		//field.grid[row][col].GetComponent<TileStatus>().indanger = true;
 		Navi target;
 		if(shooter == playerA.GetComponent<Navi>().playerNumber) {  // A is attacking B
 			target = playerB.GetComponent<Navi>();

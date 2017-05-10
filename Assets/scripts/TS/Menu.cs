@@ -205,6 +205,7 @@ public class Menu : PunBehaviour {
             GameObject newReplayBtn = Instantiate(replayPrefabBtn);
             newReplayBtn.transform.SetParent(this.replayListContent, false);
 
+			//Display info about the replay
             newReplayBtn.transform.Find("DateText").GetComponent<Text>().text = replayRecord.creationDate.ToString("yyyy-MM-dd");
             newReplayBtn.transform.Find("TimeText").GetComponent<Text>().text = replayRecord.creationDate.ToString("HH:mm");
             newReplayBtn.transform.Find("PlayersText").GetComponent<Text>().text = "Players: " + replayRecord.numberOfPlayers;
@@ -427,7 +428,7 @@ public class Menu : PunBehaviour {
             TrueSyncManager.TrueSyncCustomConfig.panicWindow = panicWindow;
         }
 
-        ReplayRecord.replayMode = ReplayMode.NO_REPLAY;
+		ReplayRecord.replayMode = ReplayMode.RECORD_REPLAY;
 
         this.toStart = true;
 		background.GetComponent<Animator>().Play("JackIn");
@@ -513,6 +514,10 @@ public class Menu : PunBehaviour {
 
 	public void Enter_Training() {
 		SceneManager.LoadScene(2, LoadSceneMode.Single);	// Battle_Training is 2 in build order
+	}
+
+	public void Enter_Library() {
+		SceneManager.LoadScene(3, LoadSceneMode.Single);    // Chip Library is 3 in build order
 	}
 
 	public void Toggle_Display_Ping() {

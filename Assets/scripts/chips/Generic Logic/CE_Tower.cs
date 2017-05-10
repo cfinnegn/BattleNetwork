@@ -132,7 +132,7 @@ public class CE_Tower : ChipEffect {
 		}
 
 		if(add_tower) {	// trigger frame hit while iterating, so a new tower must be made
-			if((next_col > 0) && (next_col < 6)) {	// tower hasn't reached field's edge
+			if((next_col >= 0) && (next_col <= 5)) {	// tower hasn't reached field's edge
 				nextTower(navi, c, next_row, next_col);
 			}
 		}

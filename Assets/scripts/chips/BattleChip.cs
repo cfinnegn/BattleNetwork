@@ -65,6 +65,11 @@ public class BattleChip : TrueSyncBehaviour {
 		navi.useChip(chip_logic.ID, color_code);
 	}
 
+	public void Library_clicked() { // method to be called by event for minichips in Library view
+		GameObject info_panel = GameObject.Find("Info Panel");
+		info_panel.GetComponent<Chip_InfoPanel>().set_info(chip_logic);
+	}
+
 	public void activate() {	// stub method for individual chips to implement
 	}
 

@@ -1,22 +1,30 @@
-﻿using TrueSync;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TrueSync;
 
 public class SimulationPanelScript : MonoBehaviour {
-    
-    public void Update() {
-        gameObject.SetActive(!PhotonNetwork.connected || PhotonNetwork.isMasterClient);
-    }
 
-    public void BtnRun() {
-        TrueSyncManager.RunSimulation();
-    }
+	public void Update() {
+		if(ReplayRecord.replayMode == ReplayMode.LOAD_REPLAY)
+			gameObject.SetActive(true);
+		else
+			gameObject.SetActive(false);
+	}
 
-    public void BtnPause() {
-        TrueSyncManager.PauseSimulation();
-    }
+	public void BtnRun() {
+		TrueSyncManager.RunSimulation();
+	}
 
-    public void BtnEnd() {
-        TrueSyncManager.EndSimulation();
-    }
+	public void BtnPause() {
+		TrueSyncManager.PauseSimulation();
+	}
+
+	public void BtnEnd() {
+		TrueSyncManager.EndSimulation ();
+		PhotonNetwork.LeaveRoom ();
+		SceneManager.LoadScene ("Menu");
+	}
 
 }

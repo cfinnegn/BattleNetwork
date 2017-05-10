@@ -31,7 +31,7 @@ public class ReplayUtils {
 
         #if !UNITY_WEBPLAYER
         try {
-            File.WriteAllBytes(string.Format("{0}/replay_{1}_{2}.tsr", folderPath, DateTime.Now.Ticks, numberOfPlayers), replayRecord);
+			File.WriteAllBytes(string.Format("{0}/replay_{1}_{2}_{3}_.tsr", folderPath, DateTime.Now.Ticks, numberOfPlayers, GetContextRecords().Count), replayRecord);
         } catch (Exception) {
         }
         #endif
@@ -127,6 +127,8 @@ public class ReplayRecordInfo : IComparable<ReplayRecordInfo> {
      **/
     public int numberOfPlayers = 1;
 
+	public int replayNumber = 0;
+
     public ReplayRecordInfo(FileInfo fileInfo) {
         #if !UNITY_WEBPLAYER
         this.creationDate = fileInfo.CreationTime;
@@ -137,6 +139,7 @@ public class ReplayRecordInfo : IComparable<ReplayRecordInfo> {
         if (nameSplited.Length >= 3) {
             numberOfPlayers = int.Parse(nameSplited[2].Split('.')[0]);
         }
+		replayNumber = int.Parse(nameSplited [3])-1;
     }
 
     /**

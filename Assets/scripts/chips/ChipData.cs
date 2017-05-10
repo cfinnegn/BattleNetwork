@@ -41,8 +41,6 @@ public class ChipData {
 	public const int BLUE = 7;
 	public const int TEAL = 8;
 	public const int GREEN = 9;
-	public const int FORREST = 10;
-	public const int BANANA = 11;
 
 	public static Color[] color_codes = {
 		new Color(0.75f, 0.75f, 0.75f),	// grey
@@ -54,9 +52,7 @@ public class ChipData {
 		new Color(0.6f, 0.0f, 0.75f),	// purple
 		new Color(0.0f, 0.0f, 1.0f),	// blue
 		new Color(0.0f, 0.7f, 0.7f),	// teal
-		new Color(0.0f, 1.0f, 0.0f),	// green
-		new Color(0.0f, 0.5f, 0.0f),	// deep green
-		new Color(0.75f, 0.75f, 0.0f)	// banana
+		new Color(0.0f, 0.5f, 0.0f),	// green
 	};
 
 	// Use this for initialization

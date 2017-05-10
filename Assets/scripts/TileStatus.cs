@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class TileStatus : MonoBehaviour {
 	public GameObject stateDisp;
 	public Sprite[] stateSprites;
+	public GameObject danger_overlay;
+	public bool indanger = false;
+	//public float danger_time = 0.1f;
 	public int owner = 1;
 	public int row = 1;
 	public int column = 1;
@@ -40,5 +43,11 @@ public class TileStatus : MonoBehaviour {
 		int stateSP = (state < 0) ? 8 : state;  // negative state means broken
 		stateSP = (stateSP > 8) ? 0 : stateSP;	// out of range states set to normal
 		stateDisp.GetComponent<Image>().sprite = stateSprites[stateSP];
+		danger_overlay.SetActive(indanger);
+		//danger_time -= Time.deltaTime;
+		//if(danger_time < 0) {
+			//danger_time = 0.1f;
+			//indanger = false;
+		//}
 	}
 }
