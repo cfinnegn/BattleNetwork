@@ -104,8 +104,7 @@ public class CE_Tower : ChipEffect {
 			Tower tower = tower_data[i];
 			if(!tower.hit) { // no hit from tower yet, so check for hit
 				// tests for hit and set to true if there is one so it won't check again
-				tower.hit = (navi.shot_handler.GetComponent<Shot_Handler>().check_position(
-					c.power, navi.playerNumber, 2/*hardcoded stun*/, tower.row, tower.col, c.elem));
+				tower.hit = (navi.shot_handler.check_position(c.power, navi.playerNumber, 2/*hardcoded stun*/, tower.row, tower.col, c.elem));
 			}
 			if(c.frametimer <= 0) {
 				if(tower.frame < c.chip_sprite.Length - 1) {  // advance to next frame if not at end
@@ -143,11 +142,11 @@ public class CE_Tower : ChipEffect {
 	}
 
 	public bool nextTower(Navi navi, ChipLogic c, int row, int col) {
-		if(navi.field.GetComponent<Field>().grid[row][col].GetComponent<TileStatus>().state < 0) {	// towers cannot appear on broken tiles
+		if(navi.field.grid[row][col].state < 0) {	// towers cannot appear on broken tiles
 			return false;
 		}
 		GameObject tower = new GameObject();
-		tower.transform.position = navi.field.GetComponent<Field>().grid[row][col].transform.position;  // position new tower on target tile
+		tower.transform.position = navi.field.grid[row][col].transform.position;  // position new tower on target tile
 		//tower.transform.localScale = new Vector3(10.0f, 10.0f, 1.0f);
 		tower.AddComponent<SpriteRenderer>();
 		tower.GetComponent<SpriteRenderer>().sprite = c.chip_sprite[0];
@@ -155,10 +154,10 @@ public class CE_Tower : ChipEffect {
 		tower_renderers.Add(tower);
 		tower_data.Add(new Tower(row, col, 0, false));
 		// next tower will appear above/below/in line with this tower based on opponent's position
-		if(row > navi.shot_handler.GetComponent<Shot_Handler>().opponent_ref(navi).row) {
+		if(row > navi.shot_handler.opponent_ref(navi).row) {
 			next_row = row - 1;
 		}
-		else if(row < navi.shot_handler.GetComponent<Shot_Handler>().opponent_ref(navi).row) {
+		else if(row < navi.shot_handler.opponent_ref(navi).row) {
 			next_row = row + 1;
 		}
 		else {

@@ -35,7 +35,7 @@ public class NPC_Navi_Rand : Navi {
 				field_space = next_space;
 			}
 			UpdateRowColumn();
-			transform.position = field.GetComponent<Field>().spaces[field_space].transform.position;
+			transform.position = field.spaces[field_space].transform.position;
 			HP = (HP < 0) ? 0 : HP; // no negative HP
 			health_disp.GetComponent<Text>().text = "[HP:" + HP + "] ";
 			move_ready -= Time.deltaTime;
@@ -81,38 +81,51 @@ public class NPC_Navi_Rand : Navi {
 	}
 
 	public new bool moveUp() {
-		next_space = (field_space < 6) ? field_space : field_space - 6;
+		if ((row > 0) && (field.grid[row-1][column].state >= 0) && (field.grid[row-1][column].owner == 2)){
+			next_space = field_space - 6;
+		}
+		//next_space = (field_space < 6) ? field_space : field_space - 6;
 		moveAnim = next_space != field_space;
 		return moveAnim;
 	}
 	public new bool moveDown() {
-		next_space = (field_space > 11) ? field_space : field_space + 6;
+		if((row < 2) && (field.grid[row + 1][column].state >= 0) && (field.grid[row + 1][column].owner == 2)) {
+			next_space = field_space + 6;
+		}
+		//next_space = (field_space > 11) ? field_space : field_space + 6;
 		moveAnim = next_space != field_space;
 		return moveAnim;
 	}
 	public new bool moveLeft() {
+		
+		if((column > 0) && (field.grid[row][column-1].state >= 0) && (field.grid[row][column-1].owner == 2)) {
+			next_space = field_space - 1;
+		}
 		// use mod to check if 1 forward of Player front row
-		next_space = (field_space % 6 == field.GetComponent<Field>().front_row + 1) ? field_space : field_space - 1;
+		//next_space = (field_space % 6 == field.front_row + 1) ? field_space : field_space - 1;
 		moveAnim = next_space != field_space;
 		return moveAnim;
 	}
 	public new bool moveRight() {
+		if((column < 5) && (field.grid[row][column+1].state >= 0) && (field.grid[row][column+1].owner == 2)) {
+			next_space = field_space + 1;
+		}
 		// use mod to check for back row
-		next_space = (field_space % 6 == 5) ? field_space : field_space + 1;
+		//next_space = (field_space % 6 == 5) ? field_space : field_space + 1;
 		moveAnim = next_space != field_space;
 		return moveAnim;
 	}
 	public void shoot() {
-		if(shot_handler.GetComponent<Shot_Handler>().playerA != null) { // ensure the player is loaded before shooting
+		if(shot_handler.playerA != null) { // ensure the player is loaded before shooting
 
 			shootAnim = true;
 			currentFrame = 0;
 
-			GameObject pew = Instantiate(shot_disp, transform);
-			pew.transform.localScale = new Vector3(1, 1, 1);
-			pew.transform.position = new Vector3(transform.position.x - 1.3f, transform.position.y + 3.3f, transform.position.z);
-			Destroy(pew, 0.5f);
-			shot_handler.GetComponent<Shot_Handler>().check_bust(5, 2, 0, ChipData.NORMAL);
+			//GameObject pew = Instantiate(shot_disp, transform);
+			//pew.transform.localScale = new Vector3(1, 1, 1);
+			//pew.transform.position = new Vector3(transform.position.x - 1.3f, transform.position.y + 3.3f, transform.position.z);
+			//Destroy(pew, 0.5f);
+			shot_handler.check_bust(5, 2, 0, ChipData.NORMAL);
 		}
 	}
 

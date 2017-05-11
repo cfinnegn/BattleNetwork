@@ -20,14 +20,31 @@ public class BC_Wrecker : ChipLogic {
 
 
 	public override void activate(Navi navi) {
-		//throw new NotImplementedException();
+		navi.running_chips.Add(this);
+		// setup sprite renderer for animation
+		chip_renderObj = new GameObject();
+		chip_renderObj.transform.SetParent(navi.transform, false);
+		chip_renderObj.AddComponent<SpriteRenderer>();
+
+		this.effect = EffectDB.BOMB;
+		effect.initAnim(navi, this);
+		chip_renderObj.GetComponent<SpriteRenderer>().sprite = chip_sprite[0];
+		chip_renderObj.GetComponent<SpriteRenderer>().sortingOrder = 1;
+		OnSyncedUpdate(navi);
 	}
 
 	public override void deactivate(Navi navi) {
-		//throw new NotImplementedException();
+		// !!! PLACEHOLDER FOR HANDLING PANEL CRACKING BEFORE ARCING CODE IN WRITTEN !!!
+		int col_offset = (navi.myNavi()) ? 3 : -3;
+		if(navi.column + col_offset >= 0 && navi.column + col_offset <= 5) { 
+			navi.field.grid[navi.row][navi.column + col_offset].state = (navi.field.grid[navi.row][navi.column + col_offset].occupied) ? 1 : -1;
+		}
+		effect.deactivate(navi, this);
 	}
 
 	public override void OnSyncedUpdate(Navi navi) {
-		//throw new NotImplementedException();
+		if(effect != null) {
+			effect.OnSyncedUpdate(navi, this);
+		}
 	}
 }

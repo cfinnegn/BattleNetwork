@@ -60,8 +60,7 @@ public class CE_Sword : ChipEffect {
 	public override void OnSyncedUpdate(Navi navi, ChipLogic c) {
 		c.frametimer -= Time.deltaTime;
 		if(!hit) {	// try hit
-			hit = navi.shot_handler.GetComponent<Shot_Handler>()
-				.check_sword(c.power, navi.playerNumber, 2, System.Math.Abs(c.sword_size), (c.sword_size < 0), c.elem);
+			hit = navi.shot_handler.check_sword(c.power, navi.playerNumber, 2, System.Math.Abs(c.sword_size), (c.sword_size < 0), c.elem);
 		}
 		if(c.frametimer <= 0) {
 			c.frametimer = c.chipFR;
@@ -84,7 +83,7 @@ public class CE_Sword : ChipEffect {
 					hit = false;	// flag hit as false to start checking for hits
 					// place slash effect 1 space in front of navi
 					int target_space = (navi.myNavi()) ? navi.field_space + 1 : navi.field_space - 1;
-					slash_renderer.transform.position = navi.field.GetComponent<Field>().spaces[target_space].transform.position;
+					slash_renderer.transform.position = navi.field.spaces[target_space].transform.position;
 					slash_renderer.SetActive(true);
 				}
 			}

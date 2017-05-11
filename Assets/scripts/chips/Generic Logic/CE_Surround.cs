@@ -35,7 +35,7 @@ public class CE_Surround : ChipEffect {
 					if((navi.row + r <= 2) && (navi.row + r >= 0)) {    // do not try to spawn off board
 						if((col != 0) || (r != 0)) {  // do not spawn on navi
 							GameObject attack_render = new GameObject();
-							attack_render.transform.position = navi.field.GetComponent<Field>().grid[navi.row + r][navi.column + col].transform.position;
+							attack_render.transform.position = navi.field.grid[navi.row + r][navi.column + col].transform.position;
 							attack_render.AddComponent<SpriteRenderer>();
 							attack_render.GetComponent<SpriteRenderer>().sprite = c.chip_sprite[c.chip_anim_frame];
 							attack_render.GetComponent<SpriteRenderer>().sortingOrder = 1;
@@ -57,8 +57,7 @@ public class CE_Surround : ChipEffect {
 			while(i < affectedArea.Count) {
 				if(!affectedArea[i].hit) {// no hit from space yet, so check for hit
 					 // tests for hit and set to true if there is one so it won't check again
-					affectedArea[i].hit = navi.shot_handler.GetComponent<Shot_Handler>()
-						.check_position(c.power, navi.playerNumber, 2, affectedArea[i].row, affectedArea[i].col, c.elem);
+					affectedArea[i].hit = navi.shot_handler.check_position(c.power, navi.playerNumber, 2, affectedArea[i].row, affectedArea[i].col, c.elem);
 				}
 				i++;
 			}

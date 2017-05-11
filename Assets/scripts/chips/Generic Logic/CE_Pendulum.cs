@@ -29,12 +29,12 @@ public class CE_Pendulum : ChipEffect {
 		target_column = (navi.myNavi()) ? navi.column + 3 : navi.column - 3;    // moves right if my navi, moves left if opponents
 		target_column = (target_column < 0) ? 0 : target_column;
 		target_column = (target_column > 5) ? 5 : target_column;
-		target_top = navi.field.GetComponent<Field>().grid[0][target_column].gameObject.transform;
-		target_bottom = navi.field.GetComponent<Field>().grid[2][target_column].gameObject.transform;
+		target_top = navi.field.grid[0][target_column].gameObject.transform;
+		target_bottom = navi.field.grid[2][target_column].gameObject.transform;
 
 		//create the render object and set its position forward 3 rows
 		c.chip_renderObj = new GameObject();
-		c.chip_renderObj.transform.position = navi.field.GetComponent<Field>().grid[current_row][target_column].gameObject.transform.position;
+		c.chip_renderObj.transform.position = navi.field.grid[current_row][target_column].gameObject.transform.position;
 		c.chip_renderObj.AddComponent<SpriteRenderer>();
 		c.chip_renderObj.GetComponent<SpriteRenderer>().sortingOrder = 3; //!!!!!! NEED TO FIND SOME WAY OF ORGANIZING THESE SORTING LAYERS!!!!!!
 		c.chip_renderObj.GetComponent<SpriteRenderer>().sprite = c.chip_sprite[c.chip_anim_frame];
@@ -52,8 +52,8 @@ public class CE_Pendulum : ChipEffect {
 		if(duration > 0) {
 			if(c.chip_anim_frame >= hit_frame) {    // attack is active so check for hit and update duration
 				if(!hit_row) {
-					navi.field.GetComponent<Field>().grid[current_row][target_column].GetComponent<TileStatus>().indanger = true;
-					hit_row = (navi.shot_handler.GetComponent<Shot_Handler>().check_position(
+					navi.field.grid[current_row][target_column].indanger = true;
+					hit_row = (navi.shot_handler.check_position(
 						c.power, navi.playerNumber, 1/*hardcoded stun*/, current_row, target_column, c.elem));
 				}
 				duration -= TrueSyncManager.DeltaTime;
@@ -100,12 +100,12 @@ public class CE_Pendulum : ChipEffect {
 					current_row = 1;
 				if(oldrow != current_row) { // row changed so check for new hit
 					hit_row = false;
-					navi.field.GetComponent<Field>().grid[oldrow][target_column].GetComponent<TileStatus>().indanger = false;
+					navi.field.grid[oldrow][target_column].indanger = false;
 				}
 			}
 		}
 		else {  // attack of chip finished
-			navi.field.GetComponent<Field>().grid[current_row][target_column].GetComponent<TileStatus>().indanger = false;
+			navi.field.grid[current_row][target_column].indanger = false;
 			if(c.frametimer <= 0) {
 				c.frametimer = c.chipFR;
 				if(c.chip_anim_frame > 0) {  // rewind anim to begining

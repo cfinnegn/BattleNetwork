@@ -41,7 +41,7 @@ public class Navi : TrueSyncBehaviour {
 	
 	// field
 	[Header("Field Info")]
-	public GameObject field;
+	public Field field;
 	public int field_space; // location of navi on field
 	public int row;
 	public int column;
@@ -67,7 +67,7 @@ public class Navi : TrueSyncBehaviour {
 	public int weaponGet = 0;	//MM only!!
 
 	//chips and cust
-	GameObject chip_hand;
+	Chip_Hand chip_hand;
 
 	// chipdb/deck/activechip(s)
 	[Header("Chip/Deck Info")]
@@ -80,7 +80,7 @@ public class Navi : TrueSyncBehaviour {
 	public int combo_color = 0; // color of last chip used
 	public int combo_level = 0;
 
-	public GameObject shot_handler;
+	public Shot_Handler shot_handler;
 
 	// Animations
 	[Header("Animation Info")]
@@ -121,6 +121,7 @@ public class Navi : TrueSyncBehaviour {
 	[Header("Overlay Offsets")]
 	public Vector3 buster_offset = new Vector3(1.1f, 1.25f, 0.0f);
 	public Vector3 body_offset = new Vector3(0.0f, 0.3f, 0.0f);
+	public Vector3[] throw_offset = new Vector3[] { new Vector3(-0.7f, 0.4f, 0.0f), new Vector3(-0.45f, 0.8f, 0.0f), new Vector3(-0.18f, 1.18f, 0.0f) };
 
 	[Header("Displays")]
 	public GameObject AC_dispA;
@@ -242,8 +243,8 @@ public class Navi : TrueSyncBehaviour {
 
 	void Awake(){
 		sr = GetComponent<SpriteRenderer> ();
-		shot_handler = GameObject.Find("Shot Handler");
-		field = GameObject.Find ("Field");
+		shot_handler = GameObject.Find("Shot Handler").GetComponent<Shot_Handler>();
+		field = GameObject.Find ("Field").GetComponent<Field>();
 		chipdatabase = GameObject.Find ("Chip Database").GetComponent<ChipDatabase>();
 		deck = Instantiate(deck);
 		deck.GetComponent<Deck>().Build_FileIn();
@@ -255,8 +256,8 @@ public class Navi : TrueSyncBehaviour {
 	public override void OnSyncedStart() {		// ???? Should this be called for both Navis???
 		if (localOwner.Id == owner.Id) { // If player owns this Navi
 			GameObject.Find ("Chip Bay").GetComponent<Chip_Hand> ().navi = this.gameObject;
-			chip_hand = GameObject.Find("Chip Bay");
-			chip_hand.GetComponent<Chip_Hand>().init();
+			chip_hand = GameObject.Find("Chip Bay").GetComponent<Chip_Hand>();
+			chip_hand.init();
 			GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
 			GameObject.Find ("Buster Button").GetComponent<Buster> ().navi = this;
 			GameObject.Find("Draw Button").GetComponent<Draw_Button>().navi = this;
@@ -273,46 +274,37 @@ public class Navi : TrueSyncBehaviour {
 
 		if (localOwner.Id <= 1) { // If I'm Player 1, Set these spawnpoints (LOCAL ONLY!)
 			if (playerNumber == 1) {
-				shot_handler.GetComponent<Shot_Handler> ().playerA = this.transform.gameObject; // Also invert shot_handler's player refs
+				shot_handler.playerA = this; // Also invert shot_handler's player refs
 				field_space = 7;
 				UpdateRowColumn ();
 
 			}
 			if (playerNumber == 2) {
 				field_space = 10;
-				shot_handler.GetComponent<Shot_Handler> ().playerB = this.transform.gameObject;
+				shot_handler.playerB = this;
 				UpdateRowColumn ();
 			}
 		}
 		if (localOwner.Id == 2) { // If I'm Player 2, Switch these spawnpoints (LOCAL ONLY!)
 			if (playerNumber == 1) {
-				shot_handler.GetComponent<Shot_Handler> ().playerB = this.transform.gameObject;
+				shot_handler.playerB = this;
 				field_space = 10;
 				UpdateRowColumn ();
 			}
 			if (playerNumber == 2) {
-				shot_handler.GetComponent<Shot_Handler> ().playerA = this.transform.gameObject;
+				shot_handler.playerA = this;
 				field_space = 7;
 				UpdateRowColumn ();
 			} // If I'm Player 2, Switch tile ownership (LOCAL ONLY!)
-			field.GetComponent<Field> ().spaces [0].GetComponent<TileStatus> ().owner = 2;
-			field.GetComponent<Field> ().spaces [1].GetComponent<TileStatus> ().owner = 2;
-			field.GetComponent<Field> ().spaces [2].GetComponent<TileStatus> ().owner = 2;
-			field.GetComponent<Field> ().spaces [3].GetComponent<TileStatus> ().owner = 1;
-			field.GetComponent<Field> ().spaces [4].GetComponent<TileStatus> ().owner = 1;
-			field.GetComponent<Field> ().spaces [5].GetComponent<TileStatus> ().owner = 1;
-			field.GetComponent<Field> ().spaces [6].GetComponent<TileStatus> ().owner = 2;
-			field.GetComponent<Field> ().spaces [7].GetComponent<TileStatus> ().owner = 2;
-			field.GetComponent<Field> ().spaces [8].GetComponent<TileStatus> ().owner = 2;
-			field.GetComponent<Field> ().spaces [9].GetComponent<TileStatus> ().owner = 1;
-			field.GetComponent<Field> ().spaces [10].GetComponent<TileStatus> ().owner = 1;
-			field.GetComponent<Field> ().spaces [11].GetComponent<TileStatus> ().owner = 1;
-			field.GetComponent<Field> ().spaces [12].GetComponent<TileStatus> ().owner = 2;
-			field.GetComponent<Field> ().spaces [13].GetComponent<TileStatus> ().owner = 2;
-			field.GetComponent<Field> ().spaces [14].GetComponent<TileStatus> ().owner = 2;
-			field.GetComponent<Field> ().spaces [15].GetComponent<TileStatus> ().owner = 1;
-			field.GetComponent<Field> ().spaces [16].GetComponent<TileStatus> ().owner = 1;
-			field.GetComponent<Field> ().spaces [17].GetComponent<TileStatus> ().owner = 1;
+			//row1
+			field.spaces [0].owner = 2;field.spaces [1].owner = 2;field.spaces [2].owner = 2;
+			field.spaces [3].owner = 1;field.spaces [4].owner = 1;field.spaces [5].owner = 1;
+			//row2
+			field.spaces [6].owner = 2;field.spaces [7].owner = 2;field.spaces [8].owner = 2;
+			field.spaces [9].owner = 1;field.spaces [10].owner = 1;field.spaces [11].owner = 1;
+			//row3
+			field.spaces [12].owner = 2;field.spaces [13].owner = 2;field.spaces [14].owner = 2;
+			field.spaces [15].owner = 1;field.spaces [16].owner = 1;field.spaces [17].owner = 1;
 		}
 
 		//	@@@ Setting UI elements based on player ownership @@@
@@ -353,7 +345,7 @@ public class Navi : TrueSyncBehaviour {
 		TrueSyncInput.SetInt(INPUT_ENERGY, requestEnergy);
 		TrueSyncInput.SetInt(INPUT_CHARGE, requestCharge);
 		if(chip_hand != null) {
-			TrueSyncInput.SetInt(INPUT_HELD, chip_hand.GetComponent<Chip_Hand>().held);
+			TrueSyncInput.SetInt(INPUT_HELD, chip_hand.held);
 		}
 	}
 
@@ -406,7 +398,7 @@ public class Navi : TrueSyncBehaviour {
 
 		// set position to field tile position
 		if(field != null) {
-			tsTransform.position = new TSVector (field.GetComponent<Field> ().spaces [field_space].transform.position.x, field.GetComponent<Field> ().spaces [field_space].transform.position.y + 0.1f, field.GetComponent<Field> ().spaces [field_space].transform.position.z);
+			tsTransform.position = new TSVector (field.spaces [field_space].transform.position.x, field.spaces [field_space].transform.position.y + 0.1f, field.spaces [field_space].transform.position.z);
 		}
 
 		UpdateRowColumn ();
@@ -430,9 +422,10 @@ public class Navi : TrueSyncBehaviour {
 		// movement
 		if (sr.sprite == moveSprite [moveSprite.Length - 1] && frameTimer <= 0) { 
 			// Finishes the movement
+			// ?? POSSIBLY CHANGE TO USE GRID IN THE FUTURE ??
 			if (pendingMoveUp) {
 				if (row != 0) {
-					if (field.GetComponent<Field> ().spaces [field_space - 6].GetComponent<TileStatus> ().owner == playerNumber) {
+					if ((field.spaces [field_space - 6].owner == playerNumber) && (field.spaces[field_space - 6].state >= 0)) {
 						field_space = field_space - 6;
 						UpdateRowColumn ();
 					}
@@ -441,7 +434,7 @@ public class Navi : TrueSyncBehaviour {
 			}
 			if (pendingMoveDown) {
 				if (row != 2) {
-					if (field.GetComponent<Field> ().spaces [field_space + 6].GetComponent<TileStatus> ().owner == playerNumber) {
+					if ((field.spaces [field_space + 6].owner == playerNumber) && (field.spaces[field_space + 6].state >= 0)) {
 						field_space = field_space + 6;
 						UpdateRowColumn ();
 					}
@@ -450,7 +443,7 @@ public class Navi : TrueSyncBehaviour {
 			}
 			if (pendingMoveLeft) {
 				if (column != 0) {
-					if (field.GetComponent<Field> ().spaces [field_space - 1].GetComponent<TileStatus> ().owner == playerNumber) {
+					if ((field.spaces [field_space - 1].owner == playerNumber) && (field.spaces[field_space - 1].state >= 0)) {
 						field_space = field_space - 1;
 						UpdateRowColumn ();
 					}
@@ -459,7 +452,7 @@ public class Navi : TrueSyncBehaviour {
 			}
 			if (pendingMoveRight) {
 				if (column != 5) {
-					if (field.GetComponent<Field> ().spaces [field_space + 1].GetComponent<TileStatus> ().owner == playerNumber) {
+					if ((field.spaces [field_space + 1].owner == playerNumber) && (field.spaces[field_space + 1].state >= 0)) {
 						field_space = field_space + 1;
 						UpdateRowColumn ();
 					}
@@ -487,9 +480,9 @@ public class Navi : TrueSyncBehaviour {
 				if (isIdle) {
 					shootAnim = true;
 					if (pulledBuster == 1) {	// uncharged shot
-						shot_handler.GetComponent<Shot_Handler> ().check_bust (bust_dmg, playerNumber, 0, ChipData.NORMAL);
+						shot_handler.check_bust (bust_dmg, playerNumber, 0, ChipData.NORMAL);
 					} else if (pulledBuster >= 2) {	// charged shot
-						shot_handler.GetComponent<Shot_Handler> ().check_bust (charge_dmg[pulledBuster-2], playerNumber, 1, ChipData.NORMAL);
+						shot_handler.check_bust (charge_dmg[pulledBuster-2], playerNumber, 1, ChipData.NORMAL);
 					}
 					GetComponent<AudioSource> ().PlayOneShot (Resources.Load<AudioClip> ("Audio/xbustertrim"));
 				}
@@ -541,7 +534,7 @@ public class Navi : TrueSyncBehaviour {
 			if(localOwner.Id == owner.Id){	// update my custom gauge 
 				cust_dispA.GetComponent<Cust> ().gauge -= cost;
 				if(pulledChipId == -1) {
-					chip_hand.GetComponent<Chip_Hand>().chip_added(deck.GetComponent<Deck>().Draw_chip());
+					chip_hand.chip_added(deck.GetComponent<Deck>().Draw_chip());
 				}
 			}
 			if(localOwner.Id != owner.Id){	// update opponent custom gauge
@@ -553,7 +546,7 @@ public class Navi : TrueSyncBehaviour {
 		}
 
 		// !!!! MEGAMAN ONLY UPDATE FOR NAVI POWER !!!!
-		Navi opponent = shot_handler.GetComponent<Shot_Handler>().opponent_ref(this);
+		Navi opponent = shot_handler.opponent_ref(this);
 		if(opponent.used_chips.Count > 0) {	// opponent has used a chip, so there is a chip to grab
 			weaponGet = opponent.used_chips[opponent.used_chips.Count - 1];
 		}
@@ -578,14 +571,14 @@ public class Navi : TrueSyncBehaviour {
 	}
 
 	public void UpdateRowColumn(){
-		row = field.GetComponent<Field> ().spaces [field_space].GetComponent<TileStatus> ().row;
-		column = field.GetComponent<Field> ().spaces [field_space].GetComponent<TileStatus> ().column;
+		row = field.spaces [field_space].row;
+		column = field.spaces [field_space].column;
 	}
 
 	// Starts the Movement (2)
 	public void StartUp(){
 		if (row != 0) {
-			if (field.GetComponent<Field> ().spaces [field_space - 6].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
+			if ((field.spaces [field_space - 6].owner == playerNumber) && (field.spaces[field_space-6].state >= 0)) {// Checks if player owns that tile and its not broken
 				moveAnim = true;
 				pendingMoveUp = true;
 			}
@@ -593,7 +586,7 @@ public class Navi : TrueSyncBehaviour {
 	}
 	public void StartDown(){
 		if (row != 2) {
-			if (field.GetComponent<Field> ().spaces [field_space + 6].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
+			if ((field.spaces [field_space + 6].owner == playerNumber) && (field.spaces[field_space + 6].state >= 0)) {// Checks if player owns that tile and its not broken
 				moveAnim = true;
 				pendingMoveDown = true;
 			}
@@ -602,7 +595,7 @@ public class Navi : TrueSyncBehaviour {
 	public void StartLeft(){
 		if (localOwner.Id == owner.Id) { // Owner movement
 			if (column != 0) {
-				if (field.GetComponent<Field> ().spaces [field_space - 1].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
+				if ((field.spaces [field_space - 1].owner == playerNumber) && (field.spaces[field_space - 1].state >= 0)) {// Checks if player owns that tile and its not broken
 					moveAnim = true;
 					pendingMoveLeft = true;
 				}
@@ -610,7 +603,7 @@ public class Navi : TrueSyncBehaviour {
 		}
 		if (localOwner.Id != owner.Id) { //Flip for non-owner
 			if (column != 5) { // If on the right ledge and trying to move right
-				if (field.GetComponent<Field> ().spaces [field_space + 1].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
+				if ((field.spaces [field_space + 1].owner == playerNumber) && (field.spaces[field_space + 1].state >= 0)) {// Checks if player owns that tile and its not broken
 					moveAnim = true;
 					pendingMoveRight = true;
 				}
@@ -620,7 +613,7 @@ public class Navi : TrueSyncBehaviour {
 	public void StartRight(){
 		if (localOwner.Id == owner.Id) { // Owner movement
 			if (column != 5) {
-				if (field.GetComponent<Field> ().spaces [field_space + 1].GetComponent<TileStatus> ().owner == playerNumber) { // Checks if player owns that tile
+				if ((field.spaces [field_space + 1].owner == playerNumber) && (field.spaces[field_space + 1].state >= 0)) { // Checks if player owns that tile and its not broken
 					moveAnim = true;
 					pendingMoveRight = true;
 				}
@@ -629,7 +622,7 @@ public class Navi : TrueSyncBehaviour {
 
 		if (localOwner.Id != owner.Id) { //Flip for non-owner
 			if (column != 0) {
-				if (field.GetComponent<Field> ().spaces [field_space - 1].GetComponent<TileStatus> ().owner == playerNumber) {// Checks if player owns that tile
+				if ((field.spaces [field_space - 1].owner == playerNumber) && (field.spaces[field_space - 1].state >= 0)) {// Checks if player owns that tile and its not broken
 					moveAnim = true;
 					pendingMoveLeft = true;
 				}
@@ -665,7 +658,7 @@ public class Navi : TrueSyncBehaviour {
 	// input sent for navi power button (wait for synced frame)
 	public virtual void NaviPowerInput() {
 		if(weaponGet > 0) {	// there must be a chip to grab to use navi power
-			if(chip_hand.GetComponent<Chip_Hand>().held < 6) { // can only use MM navi power when hand not full
+			if(chip_hand.held < 6) { // can only use MM navi power when hand not full
 				useChip(-2, NPcolorcode);
 			}
 		}
@@ -675,7 +668,7 @@ public class Navi : TrueSyncBehaviour {
 	public virtual void NPactivate() {
 		if(chip_hand != null) {
 			// add a WHITE code copy of the last chip played by your opponent to your hand
-			chip_hand.GetComponent<Chip_Hand>().chip_added(new DeckSlot(weaponGet, ChipData.WHITE));
+			chip_hand.chip_added(new DeckSlot(weaponGet, ChipData.WHITE));
 		}
 	}
 
@@ -710,7 +703,7 @@ public class Navi : TrueSyncBehaviour {
 		int cost;
 		if(chipId == -1) {  // chip drawn
 			cost = 2;           // !!!!!! DRAW COST HARDCODED HERE !!!!!!
-			if(chip_hand.GetComponent<Chip_Hand>().held >= 6) { // cannot draw if holding 6 chips
+			if(chip_hand.held >= 6) { // cannot draw if holding 6 chips
 				chipId = 0;     // chipId 0 will not execute chipuse netcode
 			}
 		}

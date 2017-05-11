@@ -440,6 +440,7 @@
     <Compile Include="Assets\scripts\chips\ChipDatabase.cs" />
     <Compile Include="Assets\scripts\chips\ChipLogic.cs" />
     <Compile Include="Assets\scripts\chips\Deck.cs" />
+    <Compile Include="Assets\scripts\chips\Generic Logic\CE_Bomb.cs" />
     <Compile Include="Assets\scripts\chips\Generic Logic\CE_Cannon.cs" />
     <Compile Include="Assets\scripts\chips\Generic Logic\CE_Pendulum.cs" />
     <Compile Include="Assets\scripts\chips\Generic Logic\CE_Recover.cs" />

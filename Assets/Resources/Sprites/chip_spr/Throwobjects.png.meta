@@ -1,9 +1,28 @@
 fileFormatVersion: 2
 guid: bcbb5e6e82377c946b5b38fa46b7048e
-timeCreated: 1492799060
+timeCreated: 1494531722
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Throwobjects_0
+    21300002: Throwobjects_1
+    21300004: Throwobjects_2
+    21300006: Throwobjects_3
+    21300008: Throwobjects_4
+    21300010: Throwobjects_5
+    21300012: Throwobjects_6
+    21300014: Throwobjects_7
+    21300016: Wrecker
+    21300018: Throwobjects_9
+    21300020: Throwobjects_10
+    21300022: Throwobjects_11
+    21300024: Throwobjects_12
+    21300026: Throwobjects_13
+    21300028: Throwobjects_14
+    21300030: Throwobjects_15
+    21300032: Throwobjects_16
+    21300034: Throwobjects_17
+    21300036: Throwobjects_18
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,13 +53,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -58,9 +77,233 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Throwobjects_0
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 180
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 167
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_2
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 159
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_3
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 159
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_4
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 159
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_5
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 159
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_6
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 159
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_7
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 156
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wrecker
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 125
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_12
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 20
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_13
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 29
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_14
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_15
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_16
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_17
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 16
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Throwobjects_18
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 6
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
