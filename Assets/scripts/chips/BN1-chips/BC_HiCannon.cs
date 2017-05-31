@@ -28,7 +28,7 @@ public class BC_HiCannon : ChipLogic {
 		chip_renderObj.AddComponent<SpriteRenderer>();
 
 		// Chip uses a generic cannon effect
-		this.effect = EffectDB.CANNON;
+		this.effect = EffectDB.CANNON.clone();
 		effect.initAnim(navi, this);
 		OnSyncedUpdate(navi);   // starts animation + logic
 	}

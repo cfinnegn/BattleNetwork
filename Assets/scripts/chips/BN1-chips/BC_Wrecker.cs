@@ -26,10 +26,10 @@ public class BC_Wrecker : ChipLogic {
 		chip_renderObj.transform.SetParent(navi.transform, false);
 		chip_renderObj.AddComponent<SpriteRenderer>();
 
-		this.effect = EffectDB.BOMB;
+		this.effect = EffectDB.BOMB.clone();
 		effect.initAnim(navi, this);
 		chip_renderObj.GetComponent<SpriteRenderer>().sprite = chip_sprite[0];
-		chip_renderObj.GetComponent<SpriteRenderer>().sortingOrder = 1;
+		chip_renderObj.GetComponent<SpriteRenderer>().sortingOrder = 2;
 		OnSyncedUpdate(navi);
 	}
 

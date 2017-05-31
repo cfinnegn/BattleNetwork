@@ -51,14 +51,14 @@ public class TileStatus : MonoBehaviour {
 		// danger
 		danger_overlay.SetActive(indanger);
 
-		bool crack_step = (occupied && state == 1);	// a Navi is standing on a cracked panel
+		bool crack_step = (occupied && state == TileStatus.CRACK);	// a Navi is standing on a cracked panel
 		// check if occupied by navi
 		Navi A = field.shot_handler.playerA;
 		Navi B = field.shot_handler.playerB;
 		if(A != null && A.row == row && A.column == column) { occupied = true; }
 		else if(B != null && B.row == row && B.column == column) { occupied = true; }
 		else { occupied = false; }
-		if(crack_step && !occupied) { state = -1; } // Navi stepped off of cracked panel this frame, so panel breaks
+		if(crack_step && !occupied) { state = TileStatus.BREAK; } // Navi stepped off of cracked panel this frame, so panel breaks
 
 		// broken panel
 		if(state < 0) {

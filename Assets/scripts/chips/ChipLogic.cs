@@ -39,6 +39,10 @@ public abstract class ChipLogic {
 		}
 	}
 
+	public virtual ChipLogic clone() {
+		return (ChipLogic)this.MemberwiseClone();
+	}
+
 	public abstract void activate(Navi navi);
 
 	public abstract void OnSyncedUpdate(Navi navi);

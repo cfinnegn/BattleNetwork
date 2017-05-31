@@ -48,7 +48,7 @@ public class CE_Pendulum : ChipEffect {
 	}
 
 	public override void OnSyncedUpdate(Navi navi, ChipLogic c) {
-		c.frametimer -= Time.deltaTime;
+		c.frametimer -= TrueSyncManager.DeltaTime.AsFloat();
 		if(duration > 0) {
 			if(c.chip_anim_frame >= hit_frame) {    // attack is active so check for hit and update duration
 				if(!hit_row) {
@@ -78,11 +78,11 @@ public class CE_Pendulum : ChipEffect {
 			if(c.chip_anim_frame >= hit_frame) {    // Sprite moves while attack active
 				if(move_up) {
 					c.chip_renderObj.transform.position = Vector3.MoveTowards(c.chip_renderObj.transform.position,
-						target_top.position, move_speed * Time.deltaTime);
+						target_top.position, move_speed * TrueSyncManager.DeltaTime.AsFloat());
 				}
 				else {
 					c.chip_renderObj.transform.position = Vector3.MoveTowards(c.chip_renderObj.transform.position,
-						target_bottom.position, move_speed * Time.deltaTime);
+						target_bottom.position, move_speed * TrueSyncManager.DeltaTime.AsFloat());
 				}
 				if(c.chip_renderObj.transform.position == target_top.position)
 					move_up = false;

@@ -294,7 +294,7 @@ MonoBehaviour:
     id: 0
     name: 
   playerNumber: 2
-  HP: 100
+  HP: 1000
   dodge: 0
   field: {fileID: 0}
   field_space: 0
@@ -326,6 +326,7 @@ MonoBehaviour:
   NPcolorcode: 0
   NPimage: {fileID: 21300000, guid: 74e151642c4c8d042b1514f1aa78aa1c, type: 3}
   NPtext: "Weapon\r\n\r\nGet!"
+  weaponGet: 0
   chipdatabase: {fileID: 0}
   deck: {fileID: 1233071777399432, guid: 0f934f69ebf6cb045a6427b279fe0124, type: 2}
   used_chips: 
@@ -388,6 +389,10 @@ MonoBehaviour:
   eff_renderObj: {fileID: 1632366302618092}
   buster_offset: {x: 1.1, y: 1.25, z: 1}
   body_offset: {x: 0, y: 0.3, z: 0}
+  throw_offset:
+  - {x: -0.7, y: 0.4, z: 0}
+  - {x: -0.45, y: 0.8, z: 0}
+  - {x: -0.18, y: 1.18, z: 0}
   AC_dispA: {fileID: 0}
   AC_dispB: {fileID: 0}
   cust_dispA: {fileID: 0}

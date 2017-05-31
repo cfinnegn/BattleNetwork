@@ -25,7 +25,7 @@ public class BC_Bodyburn : ChipLogic {
 		navi.running_chips.Add(this);
 
 		// Chip uses a generic surround effect
-		this.effect = EffectDB.SURROUND;
+		this.effect = EffectDB.SURROUND.clone();
 		effect.initAnim(navi, this);
 
 		OnSyncedUpdate(navi);   // starts animation + logic

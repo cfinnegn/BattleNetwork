@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Key_Listener : MonoBehaviour {
 	public GameObject Chip_hand;
-	public GameObject Navi;
+	public Navi Navi;
 	public GameObject DrawButton;
 
 
@@ -16,22 +16,22 @@ public class Key_Listener : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown("w")) { // movement
-			Navi.GetComponent<Navi>().moveUp();
+			Navi.moveUp();
 		}
 		if(Input.GetKeyDown("a")) {
-			Navi.GetComponent<Navi>().moveLeft();
+			Navi.moveLeft();
 		}
 		if(Input.GetKeyDown("s")) {
-			Navi.GetComponent<Navi>().moveDown();
+			Navi.moveDown();
 		}
 		if(Input.GetKeyDown("d")) {
-			Navi.GetComponent<Navi>().moveRight();
+			Navi.moveRight();
 		}
 		if(Input.GetKeyDown("space")) { // Buster Press
-			Navi.GetComponent<Navi>().bust_shot();
+			Navi.bust_shot();
 		}
 		if(Input.GetKeyUp("space")) {   // Buster Release
-			Navi.GetComponent<Navi>().charge_release();
+			Navi.charge_release();
 		}
 		if(Input.GetKeyDown("+") || Input.GetKeyDown("=")) {	// Draw Chip Button
 			DrawButton.GetComponent<Draw_Button>().Draw_Chip();

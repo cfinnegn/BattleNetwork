@@ -1,0 +1,3 @@
+- Occasional bug where comboed chips remain in hand after use still pops up now and then
+- Trainingmode deck not shuffling
+- Resolution locked to 16:9 (changing this will create desync errors/ sizing issues)

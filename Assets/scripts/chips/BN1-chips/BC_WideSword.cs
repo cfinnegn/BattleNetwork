@@ -22,7 +22,7 @@ public class BC_WideSword : ChipLogic {
 		navi.running_chips.Add(this);
 
 		// Chip uses a generic sword effect
-		this.effect = EffectDB.SWORD;
+		this.effect = EffectDB.SWORD.clone();
 		effect.initAnim(navi, this);
 		OnSyncedUpdate(navi);   // starts animation + logic
 	}

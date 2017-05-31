@@ -36,7 +36,7 @@ public class Navi : TrueSyncBehaviour {
 	public int playerNumber = 1;
 
 	// HP
-	public int HP = 100;
+	public int HP = 1000;
 	public bool dodge = false;	// navi is in an invulnerable state when true
 	
 	// field
@@ -213,6 +213,7 @@ public class Navi : TrueSyncBehaviour {
 			}
 			// Throw Animation
 			if(throwAnim) {
+				Debug.Log("navi");
 				if(frame < throwSprite.Length) {
 					sr.sprite = throwSprite[frame];
 					frameTimer = throwFR; // time between frames
@@ -259,6 +260,8 @@ public class Navi : TrueSyncBehaviour {
 			chip_hand = GameObject.Find("Chip Bay").GetComponent<Chip_Hand>();
 			chip_hand.init();
 			GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
+			field.Tapref.Navi = this;   // field is holding reference to tapper/keylistener to allow disabled
+			field.KeyListenref.Navi = this;
 			GameObject.Find ("Buster Button").GetComponent<Buster> ().navi = this;
 			GameObject.Find("Draw Button").GetComponent<Draw_Button>().navi = this;
 			NPbutton = GameObject.Find("NaviPower Button").GetComponent<NaviPower>();
@@ -352,10 +355,10 @@ public class Navi : TrueSyncBehaviour {
 
 	void Update(){ // Update every game frame
 		if (localOwner.Id == owner.Id) { // If player owns this GO
-			if(GameObject.Find ("Key Overlay") != null)
-				GameObject.Find ("Key Overlay").GetComponent<Key_Listener> ().Navi = this.gameObject;
-			if(GameObject.Find ("Buttons") != null)
-				GameObject.Find ("Buttons").GetComponent<Tapper> ().Navi = this;
+			//if(GameObject.Find ("Key Overlay") != null)
+			//	GameObject.Find ("Key Overlay").GetComponent<Key_Listener> ().Navi = this.gameObject;
+			//if(GameObject.Find ("Buttons") != null)
+			//	GameObject.Find ("Buttons").GetComponent<Tapper> ().Navi = this;
 		}
 
 		// Update View
@@ -524,7 +527,7 @@ public class Navi : TrueSyncBehaviour {
 			else {  // retrieve cost and activate chip
 				print("" + pulledChipId);
 				cost = pulledCost;
-				chipdatabase.chipDB[pulledChipId].activate(this);
+				chipdatabase.chipDB[pulledChipId].clone().activate(this);
 				used_chips.Add(pulledChipId);
 				if(used_chips.Count > 3) {
 					used_chips.RemoveAt(0); // pops oldest used chip out of queue when more than 3 stored

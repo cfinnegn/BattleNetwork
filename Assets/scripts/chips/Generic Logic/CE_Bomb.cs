@@ -17,8 +17,9 @@ public class CE_Bomb : ChipEffect {
 	}
 
 	public override void OnSyncedUpdate(Navi navi, ChipLogic c) {
+		Debug.Log("chip");
 		if(navi.currentFrame < navi.throw_offset.Length) {
-			c.chip_renderObj.transform.position = navi.transform.position + navi.throw_offset[navi.currentFrame];
+			c.chip_renderObj.transform.position = navi.transform.position + (navi.throw_offset[navi.currentFrame]*navi.transform.localScale.x);
 		}
 		else {
 			c.deactivate(navi);

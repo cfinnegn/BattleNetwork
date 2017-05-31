@@ -6,6 +6,10 @@ using UnityEngine;
 public abstract class ChipEffect {
 	public Sprite[] effectAnim;
 
+	public virtual ChipEffect clone() {
+		return (ChipEffect)this.MemberwiseClone();
+	}
+
 	public abstract void initAnim(Navi navi, ChipLogic c);
 	public abstract void OnSyncedUpdate(Navi navi, ChipLogic c);
 

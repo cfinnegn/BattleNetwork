@@ -29,7 +29,7 @@ public class BC_Recover30 : ChipLogic {
 		chip_renderObj.AddComponent<SpriteRenderer>();
 
 		// Chip uses a generic recover effect
-		this.effect = new CE_Recover();
+		this.effect = EffectDB.RECOV.clone();
 		effect.initAnim(navi, this);
 		OnSyncedUpdate(navi);   // starts healing immediately
 	}

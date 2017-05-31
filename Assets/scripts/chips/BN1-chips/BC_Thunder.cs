@@ -24,7 +24,7 @@ public class BC_Thunder : ChipLogic {
 		navi.running_chips.Add(this);
 
 		// Chip uses a generic tower effect
-		this.effect = EffectDB.TOWER;
+		this.effect = EffectDB.TOWER.clone();
 		effect.initAnim(navi, this);
 		navi.castAnim = true;
 

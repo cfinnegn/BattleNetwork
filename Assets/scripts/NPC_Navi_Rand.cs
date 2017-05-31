@@ -24,7 +24,7 @@ public class NPC_Navi_Rand : Navi {
 		field_space = 10;
 		next_space = 10;
 		move_ready = 0.5f;
-		HP = 100;
+		HP = 1000;
 		eff_renderObj.GetComponent<HitEffectOverlay>().init(transform);
 	}
 

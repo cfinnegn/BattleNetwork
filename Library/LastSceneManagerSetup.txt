@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scenes/Battle_Training.unity
+- path: Assets/scenes/Menu.unity
   isLoaded: 1
   isActive: 1

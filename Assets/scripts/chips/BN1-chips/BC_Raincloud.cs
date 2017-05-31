@@ -24,7 +24,7 @@ public class BC_Raincloud : ChipLogic {
 		navi.running_chips.Add(this);
 
 		// Chip uses a generic tower effect
-		this.effect = EffectDB.PENDULUM;
+		this.effect = EffectDB.PENDULUM.clone();
 		effect.initAnim(navi, this);
 		navi.castAnim = true;
 

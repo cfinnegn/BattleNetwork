@@ -10,6 +10,9 @@ public class Field : MonoBehaviour {
 	public Sprite red;
 	public Sprite blue;
 
+	public Tapper Tapref;
+	public Key_Listener KeyListenref;
+
 	// Use this for initialization
 	void Start () {
 		spaces = new TileStatus[18];
