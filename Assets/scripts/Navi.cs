@@ -36,7 +36,7 @@ public class Navi : TrueSyncBehaviour {
 	public int playerNumber = 1;
 
 	// HP
-	public int HP = 1000;
+	public int HP = 750;
 	public bool dodge = false;	// navi is in an invulnerable state when true
 	
 	// field
@@ -213,7 +213,6 @@ public class Navi : TrueSyncBehaviour {
 			}
 			// Throw Animation
 			if(throwAnim) {
-				Debug.Log("navi");
 				if(frame < throwSprite.Length) {
 					sr.sprite = throwSprite[frame];
 					frameTimer = throwFR; // time between frames
@@ -324,7 +323,12 @@ public class Navi : TrueSyncBehaviour {
 			//cust_dispB.GetComponent<Cust>().navi = this;
 			GameObject.Find ("PlayerIDB").GetComponent<Text>().text = owner.Name;
 			gameObject.tag = "Enemy Navi";
-			buster_offset.x *= -1;	// flip x offset values to reflect flipped sprite
+			buster_offset.x *= -1;  // flip x offset values to reflect flipped sprite
+			int i = 0;
+			while(i < throw_offset.Length) {
+				throw_offset[i].y *= -1;
+				i++;
+			}
 		}
 		if (localOwner.Id == owner.Id || localOwner.Id == null) { // If owner or offline
 			health_dispA = GameObject.Find ("HealthA");
@@ -689,6 +693,8 @@ public class Navi : TrueSyncBehaviour {
 				}
 			}
 			HP -= dmg;
+			HP = (HP < 0) ? 0 : HP; // no negative HP
+			HP = (HP > 750) ? 750 : HP; // capped max HP
 			if(stun >= 1) { //	!!!!!!! PLACEHOLDER MAKING ALL STUN LIGHT STAGGER, CHANGE WHEN HIGHER STUN IMPLEMENTED !!!!!!
 				stunAnim = true;
 			}

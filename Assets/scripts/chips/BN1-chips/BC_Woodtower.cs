@@ -16,6 +16,7 @@ public class BC_Woodtower : ChipLogic {
 		this.power = 60;
 		this.chipFR = 0.12f;
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Woodtower");
+		this.chipText = "Send a chain of wooden spikes at your opponent.";
 	}
 
 

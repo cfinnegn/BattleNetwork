@@ -16,6 +16,7 @@ public class BC_WideSword : ChipLogic {
 		this.power = 80;
 		this.sword_size = -1;	// length 1 wide
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Widesword");
+		this.chipText = "Swing a sword in a wide arc.";
 	}
 
 	public override void activate(Navi navi) {

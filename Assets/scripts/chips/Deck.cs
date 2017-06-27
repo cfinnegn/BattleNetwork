@@ -84,7 +84,7 @@ public class Deck : MonoBehaviour {
 	}
 
 	public void Shuffle() {
-		if (ReplayRecord.replayMode == ReplayMode.RECORD_REPLAY) {
+		if (ReplayRecord.replayMode == ReplayMode.RECORD_REPLAY || ReplayRecord.replayMode == ReplayMode.NO_REPLAY) {
 		
 			int i = deck_chips.Count;
 			while (i > 1) {
@@ -94,7 +94,9 @@ public class Deck : MonoBehaviour {
 				deck_chips [n] = deck_chips [i];
 				deck_chips [i] = swap;
 			}
-			SaveDeck ();
+			print ("SHUFFLED");
+			if (ReplayRecord.replayMode == ReplayMode.RECORD_REPLAY)
+				SaveDeck ();
 		}
 
 		if (ReplayRecord.replayMode == ReplayMode.LOAD_REPLAY) {

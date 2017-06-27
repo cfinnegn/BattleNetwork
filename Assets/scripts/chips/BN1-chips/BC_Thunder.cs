@@ -16,6 +16,7 @@ public class BC_Thunder : ChipLogic {
 		this.power = 40;
 		this.chipFR = 0.08f;
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Thunder");
+		this.chipText = "Send a chain of lightning strikes at your opponent.";
 	}
 
 

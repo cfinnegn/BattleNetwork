@@ -24,7 +24,7 @@ public class NPC_Navi_Rand : Navi {
 		field_space = 10;
 		next_space = 10;
 		move_ready = 0.5f;
-		HP = 1000;
+		HP = 750;
 		eff_renderObj.GetComponent<HitEffectOverlay>().init(transform);
 	}
 
@@ -37,6 +37,7 @@ public class NPC_Navi_Rand : Navi {
 			UpdateRowColumn();
 			transform.position = field.spaces[field_space].transform.position;
 			HP = (HP < 0) ? 0 : HP; // no negative HP
+			HP = (HP > 750) ? 750 : HP;	// capped max HP
 			health_disp.GetComponent<Text>().text = "[HP:" + HP + "] ";
 			move_ready -= Time.deltaTime;
 			if((move_ready <= 0.0f) && isIdle) {

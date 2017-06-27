@@ -16,6 +16,7 @@ public class BC_Cannon : ChipLogic {
 		this.power = 40;
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Cannon");
 		this.chipFR = 0.08f;
+		this.chipText = "Fire a straight forward cannon shot.";
 	}
 
 

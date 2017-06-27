@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BC_Wrecker : ChipLogic {
 
+	int row;
+	int col;
+
 	public BC_Wrecker() {
 		this.ID = 10;
 		this.chipName = "Wrecker";
@@ -15,11 +18,15 @@ public class BC_Wrecker : ChipLogic {
 		this.elem = ChipData.STONE;
 		this.power = 120;
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Wrecker");
+		this.chipText = "Hurl a heavy steel ball that breaks panels.";
 	}
 
 
 
 	public override void activate(Navi navi) {
+		this.row = navi.row;
+		this.col = navi.column;
+
 		navi.running_chips.Add(this);
 		// setup sprite renderer for animation
 		chip_renderObj = new GameObject();
@@ -36,8 +43,9 @@ public class BC_Wrecker : ChipLogic {
 	public override void deactivate(Navi navi) {
 		// !!! PLACEHOLDER FOR HANDLING PANEL CRACKING BEFORE ARCING CODE IN WRITTEN !!!
 		int col_offset = (navi.myNavi()) ? 3 : -3;
-		if(navi.column + col_offset >= 0 && navi.column + col_offset <= 5) { 
-			navi.field.grid[navi.row][navi.column + col_offset].state = (navi.field.grid[navi.row][navi.column + col_offset].occupied) ? 1 : -1;
+		if(col+ col_offset >= 0 && col + col_offset <= 5) {
+			navi.shot_handler.check_position(power, navi.ownerIndex, 2, row, col + col_offset, elem);
+			navi.field.grid[row][col + col_offset].state = (navi.field.grid[row][col + col_offset].occupied) ? 1 : -1;
 		}
 		effect.deactivate(navi, this);
 	}

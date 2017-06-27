@@ -30,6 +30,8 @@ public abstract class ChipLogic {
 	public int sword_size = 0;      // for flagging chips as swords (when other elems) and noting what size slash
 	//	value: length, negative: wide, 0: not a sword
 
+	public bool interrupt = false;	// getting stunned while interrupt is true deactivates a chip
+
 	public virtual void initColor(int color) {
 		if(color_opt.Contains(color)) {
 			this.color_code = color;

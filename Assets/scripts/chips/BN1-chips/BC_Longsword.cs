@@ -16,6 +16,7 @@ public class BC_Longsword : ChipLogic {
 		this.power = 80;
 		this.sword_size = 2;	// length 2
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Longsword");
+		this.chipText = "Swing a sword with extended reach.";
 	}
 
 

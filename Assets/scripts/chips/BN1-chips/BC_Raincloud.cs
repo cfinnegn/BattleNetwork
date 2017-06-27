@@ -16,6 +16,7 @@ public class BC_Raincloud : ChipLogic {
 		this.power = 30;
 		this.chipFR = 0.1f;
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Raincloud");
+		this.chipText = "Summon a shifting rain storm 3 tiles ahead.";
 	}
 
 

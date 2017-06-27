@@ -16,6 +16,7 @@ public class BC_Sword : ChipLogic {
 		this.power = 80;
 		this.sword_size = 1;	// length 1
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Sword");
+		this.chipText = "Slash with a standard sword.";
 	}
 
 
