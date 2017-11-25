@@ -1,0 +1,6 @@
+Trim silence at start for better sync:
+ - Cannon HQ
+ - Barrier HQ
+ - Thunder HQ
+ - PanelReturn HQ
+ 

@@ -66,6 +66,7 @@ public class TileStatus : MonoBehaviour {
 			if(repair_timer <= 0) {
 				repair_timer = 8.0f;
 				state = 0;
+				//GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Audio/PanelReturn HQ"));
 			}
 		}
 		else { repair_timer = 8.0f; }	// ensures full repair timer on non-broken panels;

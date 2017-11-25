@@ -54,7 +54,7 @@ public class CE_Pendulum : ChipEffect {
 				if(!hit_row) {
 					navi.field.grid[current_row][target_column].indanger = true;
 					hit_row = (navi.shot_handler.check_position(
-						c.power, navi.playerNumber, 1/*hardcoded stun*/, current_row, target_column, c.elem));
+						c.power, navi.playerNumber, c.stun, current_row, target_column, c.elem));
 				}
 				duration -= TrueSyncManager.DeltaTime;
 			}

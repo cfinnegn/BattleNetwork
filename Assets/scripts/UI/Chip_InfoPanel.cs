@@ -7,9 +7,10 @@ public class Chip_InfoPanel : MonoBehaviour {
 
 	public GameObject info_comp;
 
+	public int chip_ID;
 	public int cost;
 	public int base_cost;
-	//public int color_code;
+	public int color_code;
 	public GameObject cost_icon;
 
 	public int power;
@@ -35,6 +36,8 @@ public class Chip_InfoPanel : MonoBehaviour {
 
 		info_comp.SetActive(true);
 
+		this.chip_ID = chip_logic.ID;
+
 		//set name and image
 		chip_name.text = chip_logic.chipName;
 		chip_text.text = chip_logic.chipText;
@@ -42,6 +45,7 @@ public class Chip_InfoPanel : MonoBehaviour {
 		// set cost and color code
 		base_cost = chip_logic.base_cost;
 		cost_icon.transform.GetChild(0).GetComponent<Text>().text = "" + base_cost;
+		this.color_code = chip_logic.color_code;
 		cost_icon.GetComponent<Image>().color = ChipData.color_codes[chip_logic.color_code];
 		// set power and element
 		elem = chip_logic.elem;

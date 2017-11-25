@@ -23,6 +23,7 @@ public class Menu : PunBehaviour {
 	public GameObject nickPanel;
 	public Text nickWelcomeText;
 	public InputField nickInput;
+	public Toggle dontAnnoyMeToggle;
 
 	[Header("Match Panel")]
 	public GameObject matchPanel;
@@ -110,8 +111,6 @@ public class Menu : PunBehaviour {
 	}
 	// Connects to photon
 	void Start () {
-		if(PlayerPrefs.HasKey("Nick"))
-			nickInput.text = PlayerPrefs.GetString ("Nick");
         instance = this;
         PhotonNetwork.CrcCheckEnabled = true;
         ReplayUtils.Init();
@@ -149,19 +148,37 @@ public class Menu : PunBehaviour {
 		text_array[4][1] = "Battlechips can be recognized by their image and name. The icon in the top right shows how much Custom Energy a chip needs to activate, as well as its color code (more on color codes and what they mean in the 'Chip Combos' section).";
 		text_array[4][2] = "At the bottom left of a Battlechip you can see its element and a number representing its power. This number shows how much damage or healing a chip will do, or sometimes represents the potency or duration of its effect.";
 		text_array[4][3] = "You can activate any chip from your hand by clicking on it, so long as you have enough energy in your Custom Gauge.";
-		text_array[4][4] = "Some chips (Such as Barrier), apply a temporary effect to your character. The 'Active Chip Display' in the top corners of the screen show when a chip's effect is active, and how much longer it will last. Activating another chip with a lasting effect will overwrite any currently active chips displayed here.";
+		text_array[4][4] = "Some chips (Such as Barrier), apply a temporary effect to your character. The 'Active Chip Display' in the top corners of the screen show when a chip's effect is active, and how much longer it will last. Activating another chip with a lasting effect will replace any currently active chips displayed here.";
 		text_array[5] = new string[5]; //chip combos
 		text_array[5][0] = "The cost display on a Battlechip can be 1 of 8 different colors, as well as white and grey. This color represents the chip's color code. When chips with the same color code are activated consecutively, you activate a color combo.";
 		text_array[5][1] = "Color combos reduce the activation cost of same-colored chips in your hand. If you activate a Battlechip, then follow it up with another chip of the same color, the second chip will cost 1 less than it normally would.";
-		text_array[5][2] = "You can recognize that a color combo is active when a Battlechip's cost icon has bold outline. Color combos can be extended by activating more chips of the same color. When you activate a chip of another color, your old combo ends, and a new one can start.";
+		text_array[5][2] = "You can recognize that a color combo is active when a Battlechip's cost icon has a bold outline. Color combos can be extended by activating more chips of the same color. When you activate a chip of another color, your old combo ends, and a new one can start.";
 		text_array[5][3] = "Chips with white and grey color codes interact with combos in special ways. White code chips cannot combo with each other, but can be activated in the middle of another color combo without interrupting or resetting it.";
 		text_array[5][4] = "Grey code chips also cannot combo with each other, but they will interrupt active color combos. The 'Add Chip' button, as well as some Navi Powers will also interrupt color combos.";
 		text_array[6] = new string[3]; //terrain
 		text_array[6][0] = "At the start of every game, all 18 tiles that make up the playing field will be plain, but a variety of effects can be applied to these tiles through the use of certain abilities.";
 		text_array[6][1] = "You cannot stand on broken tiles, and certain attacks will be stopped by them. If you step on a cracked tile, it will break when you step off of it. Broken tiles automatically repair themselves after a short time.";
 		text_array[6][2] = "Standing on a volcano, water, or grass tile will affect the power of certain elemental attacks that you use and that hit you. Standing on a poison tile will slowly damage you, ice tiles will cause you to continue sliding when you step on one, and sanctuary tiles will slowly heal you.";
-
-		ActivePanel(PanelType.Nick);
+		
+		// If the player specified a username already, load it.
+		if(PlayerPrefs.HasKey("Nick")) {
+			nickname = PlayerPrefs.GetString("Nick");
+			nickInput.text = PlayerPrefs.GetString("Nick");
+		}
+		if(!PlayerPrefs.HasKey("Nick"))
+			nickInput.text = "Player";
+		// If the player asked previously to skip this, skip it. Otherwise, show nickname screen.
+		// Sets values on the main and nick screens.
+		int dontAnnoyMe = PlayerPrefs.GetInt("DontAnnoyMe", 0);
+		if (dontAnnoyMe == 1) {
+			dontAnnoyMeToggle.isOn = true;
+			nickWelcomeText.text = "Welcome " + nickname;
+			ActivePanel(PanelType.Main);
+		}
+		if (dontAnnoyMe == 0) {
+			dontAnnoyMeToggle.isOn = false;
+			ActivePanel(PanelType.Nick);
+		}
 	}
 
 	void Update() {
@@ -200,13 +217,27 @@ public class Menu : PunBehaviour {
 
 	// aftert the user put his username and hit ok the main planel is shown
 	public void NickPanel_OkBtn() {
+		// If there are no other variables/fields/arrays with the same name from inheritance, you do not need the 'this' keyword. It is utterly unnecessary.
+		// One example of proper use is this.name referring to the name of a character or anything, while base,name (alias of GameObject.name, which is an alias of Object.name) is the name of the object; displayed in hierachy.
+		// Not saying it's wrong, it just saves space, for the same reason why you don't put 'global::' in front of every class reference to something in the global namespace (has no namespace).
+		// -Tim
 		this.nickname = nickInput.text;
 		this.nickWelcomeText.text = string.Format ("Welcome {0}", this.nickname);
 
 		this.nickPanel.SetActive (false);
 		this.mainPanel.SetActive (true);
+		
+		if (dontAnnoyMeToggle.isOn)
+			PlayerPrefs.SetInt("DontAnnoyMe", 1);
+		if (!dontAnnoyMeToggle.isOn)
+			PlayerPrefs.SetInt("DontAnnoyMe", 0);
 		PlayerPrefs.SetString ("Nick", this.nickname);
 		PlayerPrefs.Save ();
+	}
+	
+	// when the user presses his name in the main menu...
+	public void OnMainMenuNamePress () {
+		ActivePanel(PanelType.Nick);
 	}
 
     public void MainPanel_SetLobby(string config) {
@@ -311,7 +342,15 @@ public class Menu : PunBehaviour {
 
 
 	public void MainPanel_ExitBtn() {
+#if UNITY_EDITOR
+		// You can't quit the Unity Editor application like that.
+		// That code in the '#elif !UNITY_EDITOR' will run if you compile it.
+		// It runs below instead if you're playing it through the editor :)
+		// -tim
+		UnityEditor.EditorApplication.isPlaying = false;
+#elif !UNITY_EDITOR
 		Application.Quit ();
+#endif
 	}
 
 	// go back from main menu to username menu

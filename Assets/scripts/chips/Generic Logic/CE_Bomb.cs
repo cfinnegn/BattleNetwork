@@ -23,6 +23,8 @@ public class CE_Bomb : ChipEffect {
 
 		this.row = navi.row;
 		this.col = navi.column;
+
+		c.interrupt = true;	// thrown attacks can be interrupted up until the point when the object is actually thrown
 	}
 
 	public override void OnSyncedUpdate(Navi navi, ChipLogic c) {
@@ -42,6 +44,7 @@ public class CE_Bomb : ChipEffect {
 			}
 		}
 		if(c.chip_anim_frame >= navi.throw_offset.Length) { // trajectory calculation
+			c.interrupt = false;	// object has left the hand, can no longer be interrupted
 			c.chip_renderObj.transform.SetParent(navi.field.grid[row][col].transform);	
 
 			//!!! WARNING BAD MATH AHEAD !!!

@@ -12,7 +12,8 @@ public class BC_Wrecker : ChipLogic {
 		this.ID = 10;
 		this.chipName = "Wrecker";
 		this.color_code = 0;
-		this.color_opt = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+		this.stun = 2;
+		this.color_opt = new List<int>() { ChipData.GREY, ChipData.PURPLE };
 		this.base_cost = 3; // setup if statement for setting cost based on color
 		this.cost = this.base_cost;
 		this.elem = ChipData.STONE;
@@ -44,7 +45,7 @@ public class BC_Wrecker : ChipLogic {
 		// !!! PLACEHOLDER FOR HANDLING PANEL CRACKING BEFORE ARCING CODE IN WRITTEN !!!
 		int col_offset = (navi.myNavi()) ? 3 : -3;
 		if(col+ col_offset >= 0 && col + col_offset <= 5) {
-			navi.shot_handler.check_position(power, navi.ownerIndex, 2, row, col + col_offset, elem);
+			navi.shot_handler.check_position(power, navi.ownerIndex, stun, row, col + col_offset, elem);
 			navi.field.grid[row][col + col_offset].state = (navi.field.grid[row][col + col_offset].occupied) ? 1 : -1;
 		}
 		effect.deactivate(navi, this);

@@ -9,11 +9,12 @@ public class BC_Longsword : ChipLogic {
 		this.ID = 6;
 		this.chipName = "Longsword";
 		this.color_code = 0;
-		this.color_opt = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+		this.color_opt = new List<int>() { ChipData.RED, ChipData.PINK, ChipData.BLUE, ChipData.TEAL, ChipData.GREEN };
 		this.base_cost = 3; // setup if statement for setting cost based on color
 		this.cost = this.base_cost;
 		this.elem = ChipData.SWORD;
 		this.power = 80;
+		this.stun = 2;
 		this.sword_size = 2;	// length 2
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Longsword");
 		this.chipText = "Swing a sword with extended reach.";

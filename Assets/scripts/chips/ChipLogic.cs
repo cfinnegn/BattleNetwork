@@ -16,6 +16,7 @@ public abstract class ChipLogic {
 	public List<int> color_opt = new List<int>() { 0 };
 
 	public int power;
+	public int stun = 0;
 	public int elem;
 	public float chipFR = 0.075f;   // rate at which frames of a chips animation change
 	public float frametimer = 0;

@@ -296,6 +296,8 @@ MonoBehaviour:
   playerNumber: 2
   HP: 1000
   dodge: 0
+  stunned: 0
+  spstunned: 0
   field: {fileID: 0}
   field_space: 0
   row: 0
@@ -384,6 +386,9 @@ MonoBehaviour:
   - {fileID: 21300004, guid: 9ea55d4751503f54aaf01abb0d60bdee, type: 3}
   - {fileID: 21300006, guid: 9ea55d4751503f54aaf01abb0d60bdee, type: 3}
   currentFrame: 0
+  alpha_wobble: 0
+  wobbleFrame:
+    _serializedValue: 0
   rate_controlled: 0
   isIdle: 1
   eff_renderObj: {fileID: 1632366302618092}

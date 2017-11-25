@@ -9,11 +9,12 @@ public class BC_Raincloud : ChipLogic {
 		this.ID = 14;
 		this.chipName = "Raincloud";
 		this.color_code = 0;
-		this.color_opt = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+		this.color_opt = new List<int>() { ChipData.ORANGE, ChipData.PURPLE, ChipData.BLUE, ChipData.TEAL };
 		this.base_cost = 5; // setup if statement for setting cost based on color
 		this.cost = this.base_cost;
 		this.elem = ChipData.WATER;
 		this.power = 30;
+		this.stun = 1;
 		this.chipFR = 0.1f;
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Raincloud");
 		this.chipText = "Summon a shifting rain storm 3 tiles ahead.";

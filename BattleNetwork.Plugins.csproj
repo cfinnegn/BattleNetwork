@@ -90,6 +90,32 @@
     <Compile Include="Assets\Plugins\WebSocket\WebSocket.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Colorblind Effect\Assets\Shaders\Colorblind.shader" />
+    <None Include="Assets\Colorblind Effect\Documentation\ReadMe.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\base.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\case.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\catch.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\class.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\do.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\else.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\enum.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\finally.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\for.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\foreach.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\get.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\if.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\interface.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\log.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\namespace.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\nn.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\set.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\struct.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\switch.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\try.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\while.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\EditorResources\Fonts\SourceCodePro-Legal.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\SI Changes.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\_readme.txt" />
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
     <None Include="Assets\Photon Unity Networking\link.xml" />
     <None Include="Assets\Photon Unity Networking\readme.txt" />

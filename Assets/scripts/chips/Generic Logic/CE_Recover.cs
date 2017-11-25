@@ -19,6 +19,9 @@ public class CE_Recover : ChipEffect {
 		c.chip_renderObj.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.9f);
 		c.frametimer = c.chipFR;
 		recov_amount = c.power;
+		
+		//audio
+		navi.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Audio/Recover HQ"));
 	}
 
 	public override void OnSyncedUpdate(Navi navi, ChipLogic c) {

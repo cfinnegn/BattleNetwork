@@ -11,7 +11,7 @@ public class Debug_Chip_Adder : MonoBehaviour {
 	public Chip_Hand chip_bay;
 	public Text textfield;
 	public int id;
-	public ChipDatabase cdb;
+	//public ChipDatabase cdb;
 
 
 	// Use this for initialization
@@ -27,8 +27,10 @@ public class Debug_Chip_Adder : MonoBehaviour {
 		else
 			id = -1;
 
-		if(cdb.chipDB.ContainsKey(id))
-			image.sprite = cdb.chipDB[id].chipimg;
+		//if(cdb.chipDB.ContainsKey(id))
+		//	image.sprite = cdb.chipDB[id].chipimg;
+		if(ChipDatabase.chipDB.ContainsKey(id))
+			image.sprite = ChipDatabase.chipDB[id].chipimg;
 		else
 			image.sprite = no_data;
 	}

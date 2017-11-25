@@ -31,8 +31,9 @@ public class BattleChip : TrueSyncBehaviour {
 	}
 
 	public void RecieveData(DeckSlot d) {
-		ChipDatabase chipDataBase = GameObject.Find("Chip Database").GetComponent<ChipDatabase>();
-		chip_logic = chipDataBase.chipDB[d.cardID];
+		//ChipDatabase chipDataBase = GameObject.Find("Chip Database").GetComponent<ChipDatabase>();
+		//chip_logic = chipDataBase.chipDB[d.cardID];
+		chip_logic = ChipDatabase.chipDB[d.cardID];
 		chip_logic.initColor(d.color_code);
 		Debug.Log(chip_logic.chipName);
 

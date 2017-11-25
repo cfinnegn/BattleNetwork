@@ -37,7 +37,9 @@ public class Navi : TrueSyncBehaviour {
 
 	// HP
 	public int HP = 750;
-	public bool dodge = false;	// navi is in an invulnerable state when true
+	public bool dodge = false;  // navi is in an invulnerable state when true
+	public bool stunned = false;
+	public bool spstunned = false;
 	
 	// field
 	[Header("Field Info")]
@@ -71,7 +73,7 @@ public class Navi : TrueSyncBehaviour {
 
 	// chipdb/deck/activechip(s)
 	[Header("Chip/Deck Info")]
-	public ChipDatabase chipdatabase;
+	//public ChipDatabase chipdatabase;
 	public GameObject deck;
 	public ChipLogic active_chip;
 	public List<ChipLogic> running_chips = new List<ChipLogic>();   // activated chips with effects that need updating
@@ -110,6 +112,8 @@ public class Navi : TrueSyncBehaviour {
 	public Sprite[] castSprite;
 
 	public int currentFrame;
+	public bool alpha_wobble = false;	// fade-flash for hitstun on/off
+	public FP wobbleFrame;	// for tracking wobble effect of stun anim
 	protected FP frameTimer;
 	public bool rate_controlled = false;// set to true in ChipLogic if chip's animation controls changing of Navi sprite frames
 
@@ -161,7 +165,18 @@ public class Navi : TrueSyncBehaviour {
 			isIdle = true;
 		} else
 			isIdle = false;
-		
+
+		if((alpha_wobble) && (frameTimer <= wobbleFrame)){ // shift wobble state
+			wobbleFrame = frameTimer - 0.05f;
+			if(stunned) {
+				if(sr.color.a == 0.5f) { sr.color = new Color(1f, 1f, 1f, 0.7f); }
+				else { sr.color = new Color(1f, 1f, 1f, 0.5f); } 
+			}
+			else if(spstunned) {
+				if(sr.color.a == 0.7f) { sr.color = new Color(1f, 1f, 1f, 0.9f); }
+				else { sr.color = new Color(1f, 1f, 1f, 0.7f); }
+			}
+		}
 		
 		if ((frameTimer <= 0) && !rate_controlled) {	// time to advance animation, not controlled by chip
 			// Move Animation
@@ -180,10 +195,31 @@ public class Navi : TrueSyncBehaviour {
 				if(frame < stunSprite.Length) {
 					sr.sprite = stunSprite[frame];
 					frameTimer = stunFR; // time between frames
+					if(frame == 1) {    //pass off to stun handling when at freezeframe
+						if(stunned) {
+							frameTimer = 0.5f;
+							alpha_wobble = true;
+							wobbleFrame = frameTimer - 0.05f;
+							sr.color = new Color(1f, 1f, 1f, 0.5f);
+						}
+						else if(spstunned) {
+							frameTimer = 1.0f;
+							alpha_wobble = true;
+							wobbleFrame = frameTimer - 0.05f;
+							sr.color = new Color(1f, 1f, 1f, 0.7f);
+
+						}
+					}
 					currentFrame += 1;
 				}
 				else {
 					currentFrame = 0;
+					sr.color = new Color(1f, 1f, 1f, 1f);
+					stunned = false;
+					spstunned = false;
+					alpha_wobble = false;
+					dodge = false;		// !!! WARNING: if "dodge" state is enabled by a chip effect and the stun animation plays
+											// for a reason other than being hit, this will need to change
 					stunAnim = false;
 				}
 			}
@@ -241,11 +277,21 @@ public class Navi : TrueSyncBehaviour {
 		}
 	}
 
+	void stun_handler(bool special) {
+		if (frameTimer <= 0) {	// freezeframe stage over, enter dodge state for recovery frames
+			frameTimer = stunFR;
+			stunned = false;
+			spstunned = false;
+			dodge = true;
+		}
+		
+	}
+
 	void Awake(){
 		sr = GetComponent<SpriteRenderer> ();
 		shot_handler = GameObject.Find("Shot Handler").GetComponent<Shot_Handler>();
 		field = GameObject.Find ("Field").GetComponent<Field>();
-		chipdatabase = GameObject.Find ("Chip Database").GetComponent<ChipDatabase>();
+		//chipdatabase = GameObject.Find ("Chip Database").GetComponent<ChipDatabase>();
 		deck = Instantiate(deck);
 		deck.GetComponent<Deck>().Build_FileIn();
 		deck.GetComponent<Deck>().init();
@@ -387,7 +433,8 @@ public class Navi : TrueSyncBehaviour {
 				NPbutton.text.transform.gameObject.SetActive(false);
 			}
 			else {
-				NPbutton.image.sprite = chipdatabase.chipDB[weaponGet].chipimg;
+				//NPbutton.image.sprite = chipdatabase.chipDB[weaponGet].chipimg;
+				NPbutton.image.sprite = ChipDatabase.chipDB[weaponGet].chipimg;
 				NPbutton.text.transform.gameObject.SetActive(true);
 			}
 		}
@@ -416,7 +463,7 @@ public class Navi : TrueSyncBehaviour {
 			active_chip.OnSyncedUpdate(this);
 		}
 		// activated chips in need of updating
-		foreach(ChipLogic c in running_chips.ToArray()) {	// use toArray() to make a copy of the list to avoid enumeration edit errorb
+		foreach(ChipLogic c in running_chips.ToArray()) {	// use toArray() to make a copy of the list to avoid enumeration edit error
 			c.OnSyncedUpdate(this);
 		}
 
@@ -498,7 +545,7 @@ public class Navi : TrueSyncBehaviour {
 
 		// charging
 
-		if(!myNavi()) {	// own navi "charing" bool handled locally to fix Charge_Ring holdover lag bug
+		if(!myNavi()) {	// own navi "charging" bool handled locally to fix Charge_Ring holdover lag bug
 			charging = (pulledCharge == 1); // charging is true when pulled charge is not 0
 											// charging stopped so reset charge level
 			if(pulledCharge == -1) {    // pulledCharge=0 reserved for skills that modify charge, so charge level isn't always reset to 0
@@ -531,12 +578,13 @@ public class Navi : TrueSyncBehaviour {
 			else {  // retrieve cost and activate chip
 				print("" + pulledChipId);
 				cost = pulledCost;
-				chipdatabase.chipDB[pulledChipId].clone().activate(this);
+				//chipdatabase.chipDB[pulledChipId].clone().activate(this);
+				ChipDatabase.chipDB[pulledChipId].clone().activate(this);
 				used_chips.Add(pulledChipId);
 				if(used_chips.Count > 3) {
 					used_chips.RemoveAt(0); // pops oldest used chip out of queue when more than 3 stored
 				}
-				Debug.Log("Playing Chip: " + chipdatabase.chipDB[pulledChipId].chipName);
+				//Debug.Log("Playing Chip: " + chipdatabase.chipDB[pulledChipId].chipName);
 			}
 			if(localOwner.Id == owner.Id){	// update my custom gauge 
 				cust_dispA.GetComponent<Cust> ().gauge -= cost;
@@ -682,7 +730,7 @@ public class Navi : TrueSyncBehaviour {
 
 	public void hit(int dmg, int stun, int elem /*to be used later for effectiveness multipliers*/) {
 		if(!dodge) {
-			// stun: 0 = none, 1 = light_stagger, 2 = stagger, 3 = stun, 4 = sp_stun
+			// stun: 0 = none, 1 = stagger, 2 = stun, 3 = sp_stun
 			if((active_chip != null) && (active_chip.hit_eff)) {
 				try {
 					active_chip.onHit(this, dmg, stun);
@@ -695,9 +743,26 @@ public class Navi : TrueSyncBehaviour {
 			HP -= dmg;
 			HP = (HP < 0) ? 0 : HP; // no negative HP
 			HP = (HP > 750) ? 750 : HP; // capped max HP
-			if(stun >= 1) { //	!!!!!!! PLACEHOLDER MAKING ALL STUN LIGHT STAGGER, CHANGE WHEN HIGHER STUN IMPLEMENTED !!!!!!
+			if(stun == 1) { //	Light stagger
+				interrupt();
 				stunAnim = true;
+				if(!spstunned) { currentFrame = 0; }
+				//GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Audio/Hurt HQ"));
 			}
+			else if(stun == 2) { // regular stun (invulnerable)
+				interrupt();
+				dodge = true;
+				stunned = true;
+				spstunned = false;	// getting hit by regular stun in spstun clears spstun status and restarts anim
+				currentFrame = 0;
+			}
+
+			else if (stun > 2) { // special stun (longer and vulnerable)
+				interrupt();
+				if(!spstunned) { currentFrame = 0; }
+				spstunned = true;
+			}
+
 			else {      // !!!!!! PLACEHOLDER right now a buster shot is the only 0 stun hit, and is the only hit with small_hit_effect
 				eff_renderObj.SetActive(true);
 				// randomize hit effect position
@@ -706,6 +771,18 @@ public class Navi : TrueSyncBehaviour {
 			}
 		}
 	}
+
+	public void interrupt() {	// when stunned/staggered, deactivate any active chips that are on interruptable frames
+		foreach(ChipLogic c in running_chips.ToArray()) {   // use toArray() to make a copy of the list to avoid enumeration edit error
+			if(c.interrupt) {	// able to be interrupted
+				c.deactivate(this);
+			}
+		}
+	}
+
+	//public void stunned(int stun) {
+
+	//}
 
 	public void useChip(int chipId, int chipColor) {
 		// cost calculation
@@ -720,7 +797,8 @@ public class Navi : TrueSyncBehaviour {
 			cost = NPcost;
 		}
 		else {
-			cost = chipdatabase.chipDB[chipId].cost;
+			//cost = chipdatabase.chipDB[chipId].cost;
+			cost = ChipDatabase.chipDB[chipId].cost;
 			if((chipColor == combo_color) && (combo_color != ChipData.GREY)) {  // chip of combo color, not grey
 				if(combo_level > 2) { // after 3rd chip in combo, discount become 2
 					cost = (cost - 2 >= 0) ? cost - 2 : 0;  // no negative cost

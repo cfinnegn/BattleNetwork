@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Pallette : MonoBehaviour {
-	public int? color_code;
+	public int? color_code = null;
 	public int colorinsp;
 	public Image[] color_dots = new Image[10];
 

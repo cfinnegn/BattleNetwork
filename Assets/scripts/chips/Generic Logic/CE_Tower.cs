@@ -104,7 +104,7 @@ public class CE_Tower : ChipEffect {
 			Tower tower = tower_data[i];
 			if(!tower.hit) { // no hit from tower yet, so check for hit
 				// tests for hit and set to true if there is one so it won't check again
-				tower.hit = (navi.shot_handler.check_position(c.power, navi.playerNumber, 2/*hardcoded stun*/, tower.row, tower.col, c.elem));
+				tower.hit = (navi.shot_handler.check_position(c.power, navi.playerNumber, c.stun, tower.row, tower.col, c.elem));
 			}
 			if(c.frametimer <= 0) {
 				if(tower.frame < c.chip_sprite.Length - 1) {  // advance to next frame if not at end
@@ -164,6 +164,12 @@ public class CE_Tower : ChipEffect {
 			next_row = row;
 		}
 		next_col = (navi.myNavi()) ? col + 1 : col - 1;    // moves right if my navi, moves left if opponents
+
+		// audio currently only available for thunder
+		if(c.elem == ChipData.ELEC) {
+			//navi.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Audio/Thunder HQ"));
+		}
+
 		return true;	// tower could be made
 	}
 }

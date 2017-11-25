@@ -55,12 +55,18 @@ public class CE_Sword : ChipEffect {
 		navi.rate_controlled = true;
 		navi.swordAnim = true;
 		navi.controlledSpriteSet(0);
+
+		//sound
+		navi.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Audio/s_sword"));
+
+		c.interrupt = true;	//sword attacks can be interrupted at any time
 	}
 
 	public override void OnSyncedUpdate(Navi navi, ChipLogic c) {
 		c.frametimer -= Time.deltaTime;
 		if(!hit) {	// try hit
-			hit = navi.shot_handler.check_sword(c.power, navi.playerNumber, 2, System.Math.Abs(c.sword_size), (c.sword_size < 0), c.elem);
+			hit = navi.shot_handler.check_sword(c.power, navi.playerNumber, c.stun
+				, System.Math.Abs(c.sword_size), (c.sword_size < 0), c.elem);
 		}
 		if(c.frametimer <= 0) {
 			c.frametimer = c.chipFR;

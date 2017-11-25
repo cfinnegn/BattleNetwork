@@ -14,7 +14,7 @@ public class BC_Barrier : ChipLogic {
 		this.ID = 16;
 		this.chipName = "Barrier";
 		this.color_code = 0;
-		this.color_opt = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+		this.color_opt = new List<int>() { ChipData.RED, ChipData.PINK, ChipData.PURPLE, ChipData.BLUE, ChipData.TEAL };
 		this.base_cost = 2; // setup if statement for setting cost based on color
 		this.cost = this.base_cost;
 		this.elem = ChipData.BODY;
@@ -50,6 +50,9 @@ public class BC_Barrier : ChipLogic {
 		AC_disp.duration = power;
 		AC_disp.power_text.text = "" + Math.Ceiling(AC_disp.duration);
 		AC_disp.duration_ring.fillAmount = AC_disp.duration/AC_disp.max_duration;
+
+		//audio
+		navi.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Audio/Barrier HQ"));
 
 		// Setup sprite renderer for chip's sprite
 		chip_renderObj = new GameObject();

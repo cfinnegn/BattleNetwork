@@ -109,8 +109,17 @@
     <Reference Include="UnityEditor.Android.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WebGL.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.LinuxStandalone.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.OSXStandalone.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.OSXStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
@@ -139,6 +148,44 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Editor\ScriptInspector3\CodeSnippets\GenerateOverrideMethod.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\CodeSnippets\GeneratePropertyForField.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\CodeSnippets\GenerateUnityMagicMethod.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\AboutScriptInspector.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\BooParser.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\CodeSnippets.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\CsGrammar.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\CsParser.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGCodeWindow.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGConsole.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGDefaultAssetInspector.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGFindInFiles.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGGrammar.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGKeyboardHook.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGListPopup.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGParser.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGPopupWindow.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGTextBuffer.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGTextBufferManager.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGTextEditor.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGTextInspector.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGTooltip.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FGTypeSystem.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FindReplaceWindow.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\FindResultsWindow.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\GoToLineWindow.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\JsParser.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\SISettings.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\ScriptInspector.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\ShaderInspector.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\ShaderParser.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\TabSwitcher.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\TangoColors.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Scripts\UnitySymbols.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Si3 Extensions\Si3 Immediate Window.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Si3 Extensions\Si3 Open Any File.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Si3 Extensions\Si3 Open File.cs" />
+    <Compile Include="Assets\Editor\ScriptInspector3\Si3 Extensions\Si3 UnityEventDrawer.cs" />
     <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\AccountService.cs" />
     <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\CullAreaEditor.cs" />
     <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\PhotonConverter.cs" />
@@ -164,6 +211,32 @@
     <Compile Include="Assets\TrueSync\Unity\Editor\TrueSyncConfigEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Colorblind Effect\Assets\Shaders\Colorblind.shader" />
+    <None Include="Assets\Colorblind Effect\Documentation\ReadMe.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\base.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\case.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\catch.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\class.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\do.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\else.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\enum.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\finally.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\for.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\foreach.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\get.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\if.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\interface.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\log.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\namespace.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\nn.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\set.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\struct.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\switch.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\try.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\CodeSnippets\while.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\EditorResources\Fonts\SourceCodePro-Legal.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\SI Changes.txt" />
+    <None Include="Assets\Editor\ScriptInspector3\_readme.txt" />
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
     <None Include="Assets\Photon Unity Networking\link.xml" />
     <None Include="Assets\Photon Unity Networking\readme.txt" />

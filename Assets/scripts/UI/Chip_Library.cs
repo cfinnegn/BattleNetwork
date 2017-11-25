@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Chip_Library : MonoBehaviour {
 
-	public ChipDatabase cdb;
+	//public ChipDatabase cdb;
 	public List<int> cdb_keys;
 	//public int chip_sorter = 0;
 
@@ -34,7 +35,8 @@ public class Chip_Library : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		cdb_keys = new List<int>(cdb.chipDB.Keys);
+		//cdb_keys = new List<int>(cdb.chipDB.Keys);
+		cdb_keys = new List<int>(ChipDatabase.chipDB.Keys);
 		Debug.Log(cdb_keys.Count);
 	}
 	
@@ -48,15 +50,20 @@ public class Chip_Library : MonoBehaviour {
 
 		if(!view_set) {
 			foreach(int id in cdb_keys) {
-				if(type_filters[cdb.chipDB[id].elem].isOn) {    // chip is of type that matches an active type filter
-					if(!cost_filter || ((cost_min <= cdb.chipDB[id].base_cost) && (cdb.chipDB[id].base_cost <= cost_max))) {
-						// TODO: add condition for color filter based on color options of chip
-						if(!searchfilter || cdb.chipDB[id].chipName.Contains(searchstring) || cdb.chipDB[id].chipText.Contains(searchstring)) {
-							GameObject mc = Instantiate(libChip);
-							mc.transform.SetParent(scroll_content.transform);
-							mc.transform.localScale = new Vector3(1, 1, 1);
-							mc.GetComponent<BattleChip>().RecieveData(new DeckSlot(id, selected_color ?? 0));
-							mc.GetComponent<BattleChip>().chip_logic.initColor(selected_color ?? 0);
+				//if(type_filters[cdb.chipDB[id].elem].isOn) {    // chip is of type that matches an active type filter
+				//	if(!cost_filter || ((cost_min <= cdb.chipDB[id].base_cost) && (cdb.chipDB[id].base_cost <= cost_max))) {	// chip within cost range
+				//		if((selected_color == null) || (cdb.chipDB[id].color_opt.Contains(selected_color.GetValueOrDefault()))) {	// selected color is valid option for cip
+				//			if(!searchfilter || cdb.chipDB[id].chipName.Contains(searchstring) || cdb.chipDB[id].chipText.Contains(searchstring)) {
+				if(type_filters[ChipDatabase.chipDB[id].elem].isOn) {    // chip is of type that matches an active type filter
+					if(!cost_filter || ((cost_min <= ChipDatabase.chipDB[id].base_cost) && (ChipDatabase.chipDB[id].base_cost <= cost_max))) {    // chip within cost range
+						if((selected_color == null) || (ChipDatabase.chipDB[id].color_opt.Contains(selected_color.GetValueOrDefault()))) {   // selected color is valid option for cip
+							if(!searchfilter || ChipDatabase.chipDB[id].chipName.Contains(searchstring) || ChipDatabase.chipDB[id].chipText.Contains(searchstring)) {
+								GameObject mc = Instantiate(libChip);
+								mc.transform.SetParent(scroll_content.transform);
+								mc.transform.localScale = new Vector3(1, 1, 1);
+								mc.GetComponent<BattleChip>().RecieveData(new DeckSlot(id, selected_color ?? 0));
+								mc.GetComponent<BattleChip>().chip_logic.initColor(selected_color ?? 0);
+							}
 						}
 					}
 				}
@@ -164,13 +171,23 @@ public class Chip_Library : MonoBehaviour {
 		filters_changed();
 	}
 
+	public void deck_builder_drop_remove(BaseEventData data) {  // drag/drop deck editing
+		PointerEventData ped = (PointerEventData)data;
+		if(ped.pointerDrag.GetComponent<FolderSlot>() != null) {	// if the last dragged object was a folder slot, it is remove
+			ped.pointerDrag.GetComponent<FolderSlot>().remove();
+		}
+	}
+
 	private int compare_cost(int a, int b) {
-		return cdb.chipDB[a].base_cost.CompareTo(cdb.chipDB[b].base_cost);
+		//return cdb.chipDB[a].base_cost.CompareTo(cdb.chipDB[b].base_cost);
+		return ChipDatabase.chipDB[a].base_cost.CompareTo(ChipDatabase.chipDB[b].base_cost);
 	}
 	private int compare_name(int a, int b) {
-		return cdb.chipDB[a].chipName.CompareTo(cdb.chipDB[b].chipName);
+		//return cdb.chipDB[a].chipName.CompareTo(cdb.chipDB[b].chipName);
+		return ChipDatabase.chipDB[a].chipName.CompareTo(ChipDatabase.chipDB[b].chipName);
 	}
 	private int compare_power(int a, int b) {
-		return cdb.chipDB[a].power.CompareTo(cdb.chipDB[b].power);
+		//return cdb.chipDB[a].power.CompareTo(cdb.chipDB[b].power);
+		return ChipDatabase.chipDB[a].power.CompareTo(ChipDatabase.chipDB[b].power);
 	}
 }

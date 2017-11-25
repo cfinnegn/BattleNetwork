@@ -39,6 +39,12 @@ public class CE_Cannon : ChipEffect {
 		navi.rate_controlled = true;
 		navi.shootAnim = true;
 		navi.controlledSpriteSet(0);
+
+		//audio
+		navi.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Audio/Cannon HQ"));
+		// audio clip needs silenced trimmed from start
+
+		c.interrupt = true;	// cannons can be interrupted at any time
 	}
 
 	public override void OnSyncedUpdate(Navi navi, ChipLogic c) {
@@ -52,7 +58,7 @@ public class CE_Cannon : ChipEffect {
 					navi.controlledSpriteSet(c.chip_anim_frame - 1);
 				}
 				if(c.chip_anim_frame == 2) {
-					navi.shot_handler.check_bust(c.power, navi.playerNumber, 2, c.elem); // shot fired on 3rd frame
+					navi.shot_handler.check_bust(c.power, navi.playerNumber, c.stun, c.elem); // shot fired on 3rd frame
 				}
 			}
 			else {  // animation finished

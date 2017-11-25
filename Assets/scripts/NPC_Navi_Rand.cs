@@ -31,6 +31,11 @@ public class NPC_Navi_Rand : Navi {
 	// Update is called once per frame
 	public override void OnSyncedUpdate () {
 		if(!defeated) {
+			// Prevents getting stuck in dodge state; may change if stun implemented for dummy
+			dodge = false;
+			stunned = false;
+			spstunned = false;
+
 			if(isIdle) {	// resolve the movement
 				field_space = next_space;
 			}

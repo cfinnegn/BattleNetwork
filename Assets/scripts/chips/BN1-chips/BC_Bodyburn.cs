@@ -11,11 +11,12 @@ public class BC_Bodyburn : ChipLogic {
 		this.ID = 12;
 		this.chipName = "Body Burn";
 		this.color_code = 0;
-		this.color_opt = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+		this.color_opt = new List<int>() { ChipData.YELLOW, ChipData.ORANGE, ChipData.RED, ChipData.PINK, ChipData.PURPLE};
 		this.base_cost = 2; // setup if statement for setting cost based on color
 		this.cost = this.base_cost;
 		this.elem = ChipData.FIRE;
 		this.power = 60;
+		this.stun = 2;
 		this.chipimg = Resources.Load<Sprite>("Sprites/Chip_img/Bodyburn");
 		this.chipText = "Ignite a ring of fire around yourself.";
 		this.chipFR = 0.045f;
