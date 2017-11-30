@@ -740,6 +740,7 @@ public class Navi : TrueSyncBehaviour {
 					Debug.Log("Chip: " + active_chip.chipName + " flagged with hit_eff, but has no onHit() method");
 				}
 			}
+			// TODO: add elem effect multiplier check
 			HP -= dmg;
 			HP = (HP < 0) ? 0 : HP; // no negative HP
 			HP = (HP > 750) ? 750 : HP; // capped max HP
@@ -751,14 +752,16 @@ public class Navi : TrueSyncBehaviour {
 			}
 			else if(stun == 2) { // regular stun (invulnerable)
 				interrupt();
+				stunAnim = true;
 				dodge = true;
 				stunned = true;
-				spstunned = false;	// getting hit by regular stun in spstun clears spstun status and restarts anim
+				spstunned = false;  // getting hit by regular stun in spstun clears spstun status and restarts anim
 				currentFrame = 0;
 			}
 
 			else if (stun > 2) { // special stun (longer and vulnerable)
 				interrupt();
+				stunAnim = true;
 				if(!spstunned) { currentFrame = 0; }
 				spstunned = true;
 			}
@@ -779,10 +782,6 @@ public class Navi : TrueSyncBehaviour {
 			}
 		}
 	}
-
-	//public void stunned(int stun) {
-
-	//}
 
 	public void useChip(int chipId, int chipColor) {
 		// cost calculation

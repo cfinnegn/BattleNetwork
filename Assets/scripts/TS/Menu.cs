@@ -255,7 +255,7 @@ public class Menu : PunBehaviour {
 
 		// #######################	Game Version set for connecting here ##############################
 		// #######################	Game Version set for connecting here ##############################
-		PhotonNetwork.ConnectUsingSettings("v1.0");
+		PhotonNetwork.ConnectUsingSettings("v0.1.0.1");
 		// #######################	Game Version set for connecting here ##############################
 		// #######################	Game Version set for connecting here ##############################
 
