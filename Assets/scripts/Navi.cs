@@ -305,6 +305,7 @@ public class Navi : TrueSyncBehaviour {
 			chip_hand = GameObject.Find("Chip Bay").GetComponent<Chip_Hand>();
 			chip_hand.init();
 			GameObject.Find ("Swiper").GetComponent<Swiper> ().Navi = this;
+			GameObject.Find("Field Swipe").GetComponent<Swiper>().Navi = this;
 			field.Tapref.Navi = this;   // field is holding reference to tapper/keylistener to allow disabled
 			field.KeyListenref.Navi = this;
 			GameObject.Find ("Buster Button").GetComponent<Buster> ().navi = this;
